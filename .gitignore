@@ -1,0 +1,6 @@
+﻿.env
+vendor/
+*.log
+*.sql
+.DS_Store
+Thumbs.db
