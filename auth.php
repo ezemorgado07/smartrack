@@ -309,4 +309,45 @@ function registrar_security_log(
         // Nunca debe romper el flujo principal por un fallo de logging.
     }
 }
+
+/* ==========================================================
+   HEADERS DE SEGURIDAD HTTP (tarea prioritaria #8)
+   ========================================================== */
+
+/**
+ * Envía los headers de seguridad HTTP estándar del proyecto.
+ * Debe llamarse antes de cualquier output (después de ob_start() si el
+ * archivo lo usa, y antes del primer echo/HTML).
+ *
+ * NOTA CSP: se agregó maxcdn.bootstrapcdn.com a style-src porque varias
+ * páginas de autenticación (index.php, alta.php, cambiar_contra.php,
+ * recuperar_clave.php, recuperar_clave_confirmar.php) cargan Bootstrap 4.4.1
+ * desde ese CDN. Sin ese dominio, el CSP rompe el estilo de esas páginas.
+ *
+ * 'unsafe-inline' en script-src y style-src es una limitación conocida:
+ * el proyecto tiene JS y CSS inline en los dashboards. Queda así para la v1;
+ * refactorizar a scripts/estilos externos con nonces es trabajo de una
+ * versión futura.
+ */
+function enviar_headers_seguridad(): void
+{
+    if (headers_sent()) {
+        return;
+    }
+
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: DENY');
+    header('X-XSS-Protection: 1; mode=block');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+    header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
+    header(
+        "Content-Security-Policy: default-src 'self'; " .
+        "script-src 'self' 'unsafe-inline' cdn.jsdelivr.net cdnjs.cloudflare.com; " .
+        "style-src 'self' 'unsafe-inline' cdn.jsdelivr.net cdnjs.cloudflare.com fonts.googleapis.com maxcdn.bootstrapcdn.com; " .
+        "font-src 'self' cdnjs.cloudflare.com fonts.gstatic.com; " .
+        "img-src 'self' data: https://images.unsplash.com; " .
+        "connect-src 'self' https://maxcdn.bootstrapcdn.com; " .
+        "frame-ancestors 'none'"
+    );
+}
 ?>

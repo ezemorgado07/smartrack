@@ -1,6 +1,7 @@
 <?php
 require_once 'auth.php';
 require_once 'dbconn.php';
+enviar_headers_seguridad();
 
 $mensaje_feedback = "";
 

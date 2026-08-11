@@ -6,6 +6,7 @@ ini_set('display_errors', 0);
 require_once 'auth.php';
 require_once 'dbconn.php';
 requerir_login();
+enviar_headers_seguridad();
 
 // ── Obtener PDU y verificar modo ──────────────────────────────
 $uid = (int) $_SESSION['usuario_id'];

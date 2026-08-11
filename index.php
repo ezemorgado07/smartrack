@@ -1,3 +1,7 @@
+<?php
+require_once 'auth.php';
+enviar_headers_seguridad();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

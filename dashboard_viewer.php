@@ -2,6 +2,7 @@
 require_once 'auth.php';
 require_once 'dbconn.php';
 requerir_rol(array('viewer'));
+enviar_headers_seguridad();
 
 // ── Obtener PDU y modo del usuario ───────────────────────────
 $uid     = (int) $_SESSION['usuario_id'];

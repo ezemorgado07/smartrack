@@ -1,4 +1,7 @@
 <?php
+require_once 'auth.php';
+enviar_headers_seguridad();
+
 $status = isset($_GET['status']) ? $_GET['status'] : null;
 $email_enviado = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
 ?>

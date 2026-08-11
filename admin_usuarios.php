@@ -2,6 +2,7 @@
 require_once 'auth.php';
 require_once 'dbconn.php';
 requerir_rol(array('admin'), $conex);
+enviar_headers_seguridad();
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 

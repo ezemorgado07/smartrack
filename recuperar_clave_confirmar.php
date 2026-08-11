@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once 'auth.php';
+enviar_headers_seguridad();
 
 $exito   = false;
 $mensaje_titulo = '';
