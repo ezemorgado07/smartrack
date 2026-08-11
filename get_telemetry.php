@@ -14,9 +14,9 @@ $uid = (int) $_SESSION['usuario_id'];
 
 // ── Leer codigo_pdu opcional (GET o POST) ────────────────────
 $codigo_pdu_param = '';
-if (!empty($_POST['codigo_pdu'])) {
+if (!empty($_POST['codigo_pdu']) && is_string($_POST['codigo_pdu'])) {
     $codigo_pdu_param = trim($_POST['codigo_pdu']);
-} elseif (!empty($_GET['codigo_pdu'])) {
+} elseif (!empty($_GET['codigo_pdu']) && is_string($_GET['codigo_pdu'])) {
     $codigo_pdu_param = trim($_GET['codigo_pdu']);
 }
 

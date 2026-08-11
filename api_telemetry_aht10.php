@@ -155,7 +155,7 @@ if ($humidity_pct < 0 || $humidity_pct > 100) {
 }
 
 // reading_timestamp: usa el del ESP32 si viene, sino NOW(3)
-if (!empty($data['reading_timestamp'])) {
+if (!empty($data['reading_timestamp']) && is_string($data['reading_timestamp'])) {
     $ts = mysqli_real_escape_string($conex, $data['reading_timestamp']);
     $reading_ts = "'$ts'";
 } else {

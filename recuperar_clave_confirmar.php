@@ -6,7 +6,7 @@ $exito   = false;
 $mensaje_titulo = '';
 $mensaje_sub    = '';
 
-if (isset($_GET['e']) && isset($_GET['t'])) {
+if (isset($_GET['e']) && isset($_GET['t']) && is_string($_GET['e']) && is_string($_GET['t'])) {
 
     require_once 'dbconn.php';
 

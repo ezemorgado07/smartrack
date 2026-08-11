@@ -13,7 +13,13 @@ $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 //  ACTION: TOGGLE_ACTIVE — activar/desactivar PDU
 // ══════════════════════════════════════════════════════════════
 if ($action === 'toggle_active' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $codigo_pdu    = mysqli_real_escape_string($conex, $_POST['codigo_pdu']    ?? '');
+    $csrf_token = $_POST['csrf_token'] ?? '';
+    if (!validar_csrf_token($csrf_token)) {
+        header("Location: admin_pdus.php?msg=err_csrf"); exit();
+    }
+
+    $codigo_pdu    = (isset($_POST['codigo_pdu']) && is_string($_POST['codigo_pdu']))
+        ? mysqli_real_escape_string($conex, $_POST['codigo_pdu']) : '';
     $current_state = (int) ($_POST['current_state'] ?? 0);
 
     if (!$codigo_pdu) {
@@ -29,7 +35,13 @@ if ($action === 'toggle_active' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 //  ACTION: ADD_LICENCIA — activar licencia premium
 // ══════════════════════════════════════════════════════════════
 if ($action === 'add_licencia' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $codigo_pdu = mysqli_real_escape_string($conex, $_POST['codigo_pdu'] ?? '');
+    $csrf_token = $_POST['csrf_token'] ?? '';
+    if (!validar_csrf_token($csrf_token)) {
+        header("Location: admin_pdus.php?msg=err_csrf"); exit();
+    }
+
+    $codigo_pdu = (isset($_POST['codigo_pdu']) && is_string($_POST['codigo_pdu']))
+        ? mysqli_real_escape_string($conex, $_POST['codigo_pdu']) : '';
     $duracion_años  = (int) ($_POST['duracion_años'] ?? 1);
 
     if (!$codigo_pdu || !in_array($duracion_años, [1, 3, 5])) {
@@ -57,7 +69,13 @@ if ($action === 'add_licencia' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 //  ACTION: VINCULAR_USUARIO — asignar PDU a un usuario admin
 // ══════════════════════════════════════════════════════════════
 if ($action === 'vincular_usuario' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $codigo_pdu = mysqli_real_escape_string($conex, $_POST['codigo_pdu'] ?? '');
+    $csrf_token = $_POST['csrf_token'] ?? '';
+    if (!validar_csrf_token($csrf_token)) {
+        header("Location: admin_pdus.php?msg=err_csrf"); exit();
+    }
+
+    $codigo_pdu = (isset($_POST['codigo_pdu']) && is_string($_POST['codigo_pdu']))
+        ? mysqli_real_escape_string($conex, $_POST['codigo_pdu']) : '';
     $user_id    = (int) ($_POST['user_id'] ?? 0);
 
     if (!$codigo_pdu || !$user_id) {
@@ -96,6 +114,7 @@ $mensajes = [
     'ok_licencia' => ['success', 'Licencia premium activada correctamente.'],
     'ok_vinculo'  => ['success', 'Usuario vinculado al PDU correctamente.'],
     'err_invalid' => ['danger',  'Datos inválidos. Intentá nuevamente.'],
+    'err_csrf'    => ['danger',  'La sesión del formulario expiró o es inválida. Volvé a intentarlo.'],
 ];
 ob_clean();
 ?>
@@ -331,6 +350,7 @@ ob_clean();
 
                                 <!-- Toggle activo/inactivo -->
                                 <form method="POST" action="admin_pdus.php?action=toggle_active" class="d-inline">
+                                    <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(generar_csrf_token()); ?>">
                                     <input type="hidden" name="codigo_pdu"    value="<?php echo htmlspecialchars($pdu['codigo_pdu']); ?>">
                                     <input type="hidden" name="current_state" value="<?php echo (int)$pdu['activo']; ?>">
                                     <button type="submit"
@@ -367,6 +387,7 @@ ob_clean();
   <div class="modal-dialog modal-dialog-centered modal-sm">
     <div class="modal-content">
       <form method="POST" action="admin_pdus.php?action=add_licencia">
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(generar_csrf_token()); ?>">
         <input type="hidden" id="lic-codigo" name="codigo_pdu" value="">
         <div class="modal-header" style="background: var(--at-navy);">
           <h5 class="modal-title text-white" id="modal-lic-title" style="font-family:'Montserrat',sans-serif;">
@@ -408,6 +429,7 @@ ob_clean();
   <div class="modal-dialog modal-dialog-centered modal-sm">
     <div class="modal-content">
       <form method="POST" action="admin_pdus.php?action=vincular_usuario">
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(generar_csrf_token()); ?>">
         <input type="hidden" id="vinc-codigo" name="codigo_pdu" value="">
         <div class="modal-header" style="background: var(--at-navy);">
           <h5 class="modal-title text-white" id="modal-vinc-title" style="font-family:'Montserrat',sans-serif;">

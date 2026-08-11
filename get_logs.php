@@ -13,7 +13,7 @@ header('Content-Type: application/json');
 $uid = (int) $_SESSION['usuario_id'];
 
 // ── Resolver codigo_pdu ───────────────────────────────────────
-$codigo_pdu_param = isset($_GET['codigo_pdu']) ? trim($_GET['codigo_pdu']) : '';
+$codigo_pdu_param = (isset($_GET['codigo_pdu']) && is_string($_GET['codigo_pdu'])) ? trim($_GET['codigo_pdu']) : '';
 
 if (!empty($codigo_pdu_param)) {
     $param_sql = mysqli_real_escape_string($conex, $codigo_pdu_param);

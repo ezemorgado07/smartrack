@@ -50,7 +50,8 @@ if (!$data) {
 }
 
 // Validar campos obligatorios
-if (empty($data['mac_address']) || empty($data['ip_local'])) {
+if (empty($data['mac_address']) || empty($data['ip_local'])
+    || !is_string($data['mac_address']) || !is_string($data['ip_local'])) {
     http_response_code(400);
     echo json_encode(['success' => false, 'error' => 'Faltan campos obligatorios: mac_address, ip_local.']);
     exit();
@@ -72,7 +73,9 @@ if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
     exit();
 }
 
-$nombre = isset($data['nombre']) ? mysqli_real_escape_string($conex, trim($data['nombre'])) : null;
+$nombre = (isset($data['nombre']) && is_string($data['nombre']))
+    ? mysqli_real_escape_string($conex, trim($data['nombre']))
+    : null;
 $nombre_sql = $nombre ? "'$nombre'" : "NULL";
 
 // Generar codigo_pdu = SHA256(MAC)

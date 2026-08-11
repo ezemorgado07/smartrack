@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-$alerta_id = isset($_POST['alerta_id']) ? (int) $_POST['alerta_id'] : 0;
+$alerta_id = (isset($_POST['alerta_id']) && is_scalar($_POST['alerta_id'])) ? (int) $_POST['alerta_id'] : 0;
 
 if ($alerta_id <= 0) {
     echo json_encode(['success' => false, 'error' => 'ID de alerta inválido.']);

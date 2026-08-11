@@ -25,7 +25,7 @@ if (!validar_csrf_token($csrf_token)) {
 }
 
 // ── Validar input ─────────────────────────────────────────────
-$codigo_raw = isset($_POST['codigo_activacion']) ? trim($_POST['codigo_activacion']) : '';
+$codigo_raw = (isset($_POST['codigo_activacion']) && is_string($_POST['codigo_activacion'])) ? trim($_POST['codigo_activacion']) : '';
 
 if (empty($codigo_raw)) {
     echo json_encode(['success' => false, 'error' => 'Debes ingresar el código de activación.']);
@@ -64,7 +64,7 @@ $codigo_pdu = $licencia['codigo_pdu'];
 // ── Si viene codigo_pdu en el POST, verificar que coincida ───
 // Permite que el selector de PDU indique a qué dispositivo aplicar el código.
 // Si no viene, se usa el codigo_pdu de la licencia (comportamiento estándar).
-if (!empty($_POST['codigo_pdu'])) {
+if (!empty($_POST['codigo_pdu']) && is_string($_POST['codigo_pdu'])) {
     $pdu_post = trim($_POST['codigo_pdu']);
     if ($pdu_post !== $codigo_pdu) {
         echo json_encode(['success' => false, 'error' => 'El código no corresponde al PDU seleccionado.']);

@@ -150,7 +150,7 @@ $energy_kwh   = round((float) $data['energy_kwh'],   3);
 $is_buffered  = isset($data['is_buffered']) ? (int)(bool)$data['is_buffered'] : 0;
 
 // reading_timestamp: usa el del ESP32 si viene, sino NOW(3)
-if (!empty($data['reading_timestamp'])) {
+if (!empty($data['reading_timestamp']) && is_string($data['reading_timestamp'])) {
     $ts = mysqli_real_escape_string($conex, $data['reading_timestamp']);
     $reading_ts = "'$ts'";
 } else {

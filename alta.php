@@ -11,10 +11,26 @@ if (isset($_POST['Enviar'])) {
     if (!validar_csrf_token($csrf_token)) {
         $mensaje_feedback = "<div class='alert alert-danger'><i class='fas fa-exclamation-triangle me-1'></i> La sesión del formulario expiró. Recargá la página e intentá de nuevo.</div>";
     } elseif (
-        !empty($_POST['nombre']) && !empty($_POST['apellido']) &&
-        !empty($_POST['email']) && !empty($_POST['User']) &&
-        !empty($_POST['password']) && !empty($_POST['empresa']) &&
-        !empty($_POST['codigo_pdu']) &&
+        !empty($_POST['nombre']) && is_string($_POST['nombre']) &&
+        !empty($_POST['apellido']) && is_string($_POST['apellido']) &&
+        !empty($_POST['email']) && is_string($_POST['email']) &&
+        !empty($_POST['User']) && is_string($_POST['User']) &&
+        !empty($_POST['password']) && is_string($_POST['password']) &&
+        !empty($_POST['empresa']) && is_string($_POST['empresa']) &&
+        !empty($_POST['codigo_pdu']) && is_string($_POST['codigo_pdu']) &&
+        isset($_POST['Cpassword']) && is_string($_POST['Cpassword']) &&
+        !preg_match('/^[a-zA-Z0-9._-]{3,50}$/', trim($_POST['User']))
+    ) {
+        $mensaje_feedback = "<div class='alert alert-danger'><i class='fas fa-exclamation-triangle me-1'></i> El nombre de usuario solo puede contener letras, números, puntos, guiones (-) y guiones bajos (_), entre 3 y 50 caracteres.</div>";
+    } elseif (
+        !empty($_POST['nombre']) && is_string($_POST['nombre']) &&
+        !empty($_POST['apellido']) && is_string($_POST['apellido']) &&
+        !empty($_POST['email']) && is_string($_POST['email']) &&
+        !empty($_POST['User']) && is_string($_POST['User']) &&
+        !empty($_POST['password']) && is_string($_POST['password']) &&
+        !empty($_POST['empresa']) && is_string($_POST['empresa']) &&
+        !empty($_POST['codigo_pdu']) && is_string($_POST['codigo_pdu']) &&
+        isset($_POST['Cpassword']) && is_string($_POST['Cpassword']) &&
         ($_POST['password'] === $_POST['Cpassword'])
     ) {
         $nombre     = mysqli_real_escape_string($conex, trim($_POST['nombre']));
@@ -104,7 +120,12 @@ if (isset($_POST['Enviar'])) {
 
         <div class="form-group m-0">
             <label class="field-label" for="reg-user">Usuario</label>
-            <input type="text" id="reg-user" name="User" class="form-control-netflix w-100" placeholder="Ingrese su Nombre de Usuario" required>
+            <input type="text" id="reg-user" name="User" class="form-control-netflix w-100"
+                   placeholder="Ingrese su Nombre de Usuario" pattern="[a-zA-Z0-9._-]{3,50}"
+                   title="Solo letras, números, puntos, guiones y guiones bajos (3 a 50 caracteres)" required>
+            <small style="color:rgba(255,255,255,0.6); font-size:11px; margin-top:3px; display:block;">
+                Solo letras, números, puntos, guiones (-) y guiones bajos (_)
+            </small>
         </div>
 
         <div class="form-group m-0">

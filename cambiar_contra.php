@@ -16,7 +16,9 @@ if (isset($_POST['Cambiar'])) {
 
     if (!validar_csrf_token($csrf_token)) {
         $mensaje_feedback = "<div class='alert alert-danger'><i class='fas fa-exclamation-triangle me-1'></i> La sesión del formulario expiró. Recargá la página e intentá de nuevo.</div>";
-    } elseif (!empty($_POST['pass_actual']) && !empty($_POST['pass_nueva']) && !empty($_POST['pass_conf'])) {
+    } elseif (!empty($_POST['pass_actual']) && is_string($_POST['pass_actual']) &&
+              !empty($_POST['pass_nueva'])  && is_string($_POST['pass_nueva'])  &&
+              !empty($_POST['pass_conf'])   && is_string($_POST['pass_conf'])) {
 
         $pass_actual = $_POST['pass_actual'];
         $pass_nueva  = $_POST['pass_nueva'];

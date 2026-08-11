@@ -3,7 +3,7 @@ require_once 'auth.php';
 enviar_headers_seguridad();
 
 $status = isset($_GET['status']) ? $_GET['status'] : null;
-$email_enviado = isset($_GET['email']) ? htmlspecialchars($_GET['email']) : '';
+$email_enviado = (isset($_GET['email']) && is_string($_GET['email'])) ? htmlspecialchars($_GET['email']) : '';
 ?>
 <!DOCTYPE html>
 <html lang="es">

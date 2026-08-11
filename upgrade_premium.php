@@ -87,7 +87,7 @@ ob_clean();
                     <div class="text-white fw-bold" style="font-family:'Montserrat',sans-serif;font-size:13px;">
                         <?php echo htmlspecialchars($_SESSION['usuario']); ?>
                     </div>
-                    <div class="text-white-50" style="font-size:11px;"><?php echo ucfirst($rol_actual); ?></div>
+                    <div class="text-white-50" style="font-size:11px;"><?php echo htmlspecialchars(ucfirst($rol_actual)); ?></div>
                 </div>
             </div>
             <nav>

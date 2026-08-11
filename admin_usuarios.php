@@ -22,13 +22,13 @@ if ($action === 'create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: admin_usuarios.php?msg=err_csrf"); exit();
     }
 
-    $nombre   = mysqli_real_escape_string($conex, trim($_POST['nombre']   ?? ''));
-    $apellido = mysqli_real_escape_string($conex, trim($_POST['apellido'] ?? ''));
-    $email    = mysqli_real_escape_string($conex, trim($_POST['email']    ?? ''));
-    $username = mysqli_real_escape_string($conex, trim($_POST['username'] ?? ''));
-    $pass     = $_POST['pass']      ?? '';
-    $pass2    = $_POST['pass_conf'] ?? '';
-    $rol      = mysqli_real_escape_string($conex, $_POST['rol'] ?? 'viewer');
+    $nombre   = (isset($_POST['nombre'])   && is_string($_POST['nombre']))   ? mysqli_real_escape_string($conex, trim($_POST['nombre']))   : '';
+    $apellido = (isset($_POST['apellido']) && is_string($_POST['apellido'])) ? mysqli_real_escape_string($conex, trim($_POST['apellido'])) : '';
+    $email    = (isset($_POST['email'])    && is_string($_POST['email']))    ? mysqli_real_escape_string($conex, trim($_POST['email']))    : '';
+    $username = (isset($_POST['username']) && is_string($_POST['username'])) ? mysqli_real_escape_string($conex, trim($_POST['username'])) : '';
+    $pass     = (isset($_POST['pass'])      && is_string($_POST['pass']))      ? $_POST['pass']      : '';
+    $pass2    = (isset($_POST['pass_conf']) && is_string($_POST['pass_conf'])) ? $_POST['pass_conf'] : '';
+    $rol      = (isset($_POST['rol']) && is_string($_POST['rol'])) ? mysqli_real_escape_string($conex, $_POST['rol']) : 'viewer';
     $must_cp  = isset($_POST['must_change']) ? 1 : 0;
     $roles_ok = array('admin', 'operator', 'viewer');
 
@@ -71,7 +71,7 @@ if ($action === 'change_rol' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $user_id   = (int) ($_POST['user_id']   ?? 0);
-    $nuevo_rol = mysqli_real_escape_string($conex, $_POST['nuevo_rol'] ?? '');
+    $nuevo_rol = (isset($_POST['nuevo_rol']) && is_string($_POST['nuevo_rol'])) ? mysqli_real_escape_string($conex, $_POST['nuevo_rol']) : '';
     $roles_ok  = array('admin', 'operator', 'viewer');
     $mi_id     = (int) ($_SESSION['usuario_id'] ?? 0);
 
@@ -349,7 +349,7 @@ $mensajes = array(
                                 <td><?php echo htmlspecialchars($u['email']); ?></td>
                                 <td>
                                     <span class="badge <?php echo $rol_badge; ?>">
-                                        <?php echo ucfirst($u['rol']); ?>
+                                        <?php echo htmlspecialchars(ucfirst($u['rol'])); ?>
                                     </span>
                                 </td>
                                 <td>

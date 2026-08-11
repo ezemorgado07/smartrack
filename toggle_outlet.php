@@ -29,8 +29,8 @@ if (!validar_csrf_token($csrf_token)) {
     exit();
 }
 
-$outlet_number = isset($_POST['outlet_number']) ? (int) $_POST['outlet_number'] : 0;
-$new_state     = isset($_POST['new_state'])     ? (int) $_POST['new_state']     : -1;
+$outlet_number = (isset($_POST['outlet_number']) && is_scalar($_POST['outlet_number'])) ? (int) $_POST['outlet_number'] : 0;
+$new_state     = (isset($_POST['new_state'])     && is_scalar($_POST['new_state']))     ? (int) $_POST['new_state']     : -1;
 
 // Validar rango de toma
 if ($outlet_number < 1 || $outlet_number > 5) {
@@ -55,7 +55,7 @@ if ($uid === 0) {
     exit();
 }
 
-$codigo_pdu_param = isset($_POST['codigo_pdu']) ? trim($_POST['codigo_pdu']) : '';
+$codigo_pdu_param = (isset($_POST['codigo_pdu']) && is_string($_POST['codigo_pdu'])) ? trim($_POST['codigo_pdu']) : '';
 
 if (!empty($codigo_pdu_param)) {
     // PDU explícito — validar que le pertenezca al usuario

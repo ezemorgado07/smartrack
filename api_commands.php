@@ -67,7 +67,7 @@ $cod_sql    = mysqli_real_escape_string($conex, $codigo_pdu);
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     // Verificar que el codigo_pdu del query string coincide con el token
-    $qp = isset($_GET['codigo_pdu']) ? trim($_GET['codigo_pdu']) : '';
+    $qp = (isset($_GET['codigo_pdu']) && is_string($_GET['codigo_pdu'])) ? trim($_GET['codigo_pdu']) : '';
     if ($qp !== $codigo_pdu) {
         http_response_code(403);
         echo json_encode(['success' => false, 'error' => 'codigo_pdu no coincide con el token.']);

@@ -16,9 +16,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $uid = (int) $_SESSION['usuario_id'];
 
 // ── Validar inputs ────────────────────────────────────────────
-$tipo  = isset($_POST['tipo'])  ? trim($_POST['tipo'])  : '';
-$desde = isset($_POST['desde']) ? trim($_POST['desde']) : '';
-$hasta = isset($_POST['hasta']) ? trim($_POST['hasta']) : '';
+$tipo  = (isset($_POST['tipo'])  && is_string($_POST['tipo']))  ? trim($_POST['tipo'])  : '';
+$desde = (isset($_POST['desde']) && is_string($_POST['desde'])) ? trim($_POST['desde']) : '';
+$hasta = (isset($_POST['hasta']) && is_string($_POST['hasta'])) ? trim($_POST['hasta']) : '';
 
 if (!in_array($tipo, ['pzem', 'aht10', 'ambos'])) {
     ob_clean(); exit('Tipo inválido.');
@@ -85,7 +85,7 @@ if (!$pdu) {
 }
 
 // Si vino codigo_pdu por POST, validar que coincida con el PDU resuelto
-$codigo_pdu_param = isset($_POST['codigo_pdu']) ? trim($_POST['codigo_pdu']) : '';
+$codigo_pdu_param = (isset($_POST['codigo_pdu']) && is_string($_POST['codigo_pdu'])) ? trim($_POST['codigo_pdu']) : '';
 if (!empty($codigo_pdu_param) && $codigo_pdu_param !== $pdu['codigo_pdu']) {
     ob_clean(); exit('PDU no encontrado o no autorizado.');
 }
