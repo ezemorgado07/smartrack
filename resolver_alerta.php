@@ -5,7 +5,7 @@ ini_set('display_errors', 0);
 
 require_once 'auth.php';
 require_once 'dbconn.php';
-requerir_rol(array('admin', 'operator'));
+requerir_rol(array('admin', 'operator'), $conex);
 
 ob_clean();
 header('Content-Type: application/json');

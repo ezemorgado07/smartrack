@@ -5,7 +5,7 @@ ini_set('display_errors', 0);
 
 require_once 'auth.php';
 require_once 'dbconn.php';
-requerir_rol(array('admin'));
+requerir_rol(array('admin'), $conex);
 
 $action = isset($_GET['action']) ? $_GET['action'] : 'list';
 

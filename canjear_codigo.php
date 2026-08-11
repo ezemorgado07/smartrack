@@ -18,6 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // ── Validar token CSRF ────────────────────────────────────────
 $csrf_token = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : '';
 if (!validar_csrf_token($csrf_token)) {
+    $ip_log = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+    registrar_security_log($conex, 'csrf_invalido', $ip_log, isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null, 'Endpoint: canjear_codigo.php');
     echo json_encode(['success' => false, 'error' => 'Token CSRF inválido.']);
     exit();
 }

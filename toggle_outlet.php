@@ -9,7 +9,7 @@ ini_set('display_errors', 0);
 require_once 'auth.php';
 require_once 'dbconn.php';
 require_once 'MqttClient.php';
-requerir_rol(array('admin', 'operator'));
+requerir_rol(array('admin', 'operator'), $conex);
 
 // Descartar cualquier output que haya escapado hasta acá (session warnings, etc.)
 ob_clean();
@@ -23,6 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // ── Validar token CSRF ────────────────────────────────────────
 $csrf_token = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : '';
 if (!validar_csrf_token($csrf_token)) {
+    $ip_log = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+    registrar_security_log($conex, 'csrf_invalido', $ip_log, isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null, 'Endpoint: toggle_outlet.php');
     echo json_encode(array('success' => false, 'error' => 'Token CSRF inválido.'));
     exit();
 }

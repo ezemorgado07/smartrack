@@ -32,11 +32,21 @@ function requerir_login()
     }
 }
 
-function requerir_rol($roles_permitidos)
+function requerir_rol($roles_permitidos, ?mysqli $conex = null)
 {
     requerir_login();
 
     if (!in_array(rol_actual(), $roles_permitidos)) {
+        if ($conex !== null) {
+            $ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
+            registrar_security_log(
+                $conex,
+                'acceso_denegado',
+                $ip,
+                isset($_SESSION['usuario']) ? $_SESSION['usuario'] : null,
+                'Rol actual: ' . rol_actual() . ' — requerido: ' . implode(',', $roles_permitidos)
+            );
+        }
         redirigir_por_rol(rol_actual());
     }
 }
@@ -109,6 +119,7 @@ function verificar_rate_limit(mysqli $conex, string $ip): void
 
             if (time() < $bloqueado_hasta_ts) {
                 $minutos_restantes = (int) ceil(($bloqueado_hasta_ts - time()) / 60);
+                registrar_security_log($conex, 'bloqueo_ip', $ip, null, "Bloqueada por $minutos_restantes min restantes.");
                 mysqli_close($conex);
                 mostrar_pagina_bloqueado($minutos_restantes);
             }
@@ -261,5 +272,41 @@ function validar_csrf_token(string $token_recibido): bool
         return false;
     }
     return hash_equals($_SESSION['csrf_token'], $token_recibido);
+}
+
+/* ==========================================================
+   AUDITORÍA - SECURITY LOGS (tarea prioritaria #4)
+   ========================================================== */
+
+/**
+ * Registra un evento de seguridad en la tabla security_logs.
+ * Nunca interrumpe el flujo principal: si el INSERT falla, se ignora
+ * silenciosamente (no se lanza excepción ni se corta la ejecución).
+ *
+ * Eventos esperados: login_exitoso, login_fallido, bloqueo_ip,
+ * csrf_invalido, acceso_denegado.
+ */
+function registrar_security_log(
+    mysqli $conex,
+    string $evento,
+    string $ip,
+    ?string $usuario = null,
+    ?string $detalle = null
+): void {
+    $evento_esc  = mysqli_real_escape_string($conex, $evento);
+    $ip_esc      = mysqli_real_escape_string($conex, $ip);
+    $usuario_esc = $usuario  ? "'" . mysqli_real_escape_string($conex, $usuario)  . "'" : 'NULL';
+    $ua_esc      = isset($_SERVER['HTTP_USER_AGENT'])
+                   ? "'" . mysqli_real_escape_string($conex, substr($_SERVER['HTTP_USER_AGENT'], 0, 255)) . "'"
+                   : 'NULL';
+    $detalle_esc = $detalle  ? "'" . mysqli_real_escape_string($conex, $detalle)  . "'" : 'NULL';
+
+    try {
+        @mysqli_query($conex,
+            "INSERT INTO security_logs (evento, usuario, ip, user_agent, detalle, created_at)
+             VALUES ('$evento_esc', $usuario_esc, '$ip_esc', $ua_esc, $detalle_esc, NOW())");
+    } catch (\Throwable $e) {
+        // Nunca debe romper el flujo principal por un fallo de logging.
+    }
 }
 ?>

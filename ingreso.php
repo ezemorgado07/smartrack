@@ -13,8 +13,9 @@ $ip = $_SERVER['REMOTE_ADDR'];
 verificar_rate_limit($conex, $ip);
 
 if (isset($_POST['Enviar'])) {
-    $usuario  = mysqli_real_escape_string($conex, trim($_POST['usuario']));
-    $password = $_POST['password'];
+    $usuario_raw = trim($_POST['usuario']);
+    $usuario     = mysqli_real_escape_string($conex, $usuario_raw);
+    $password    = $_POST['password'];
 
     $sql    = "SELECT * FROM users WHERE user = '$usuario' AND is_active = 1 LIMIT 1";
     $result = mysqli_query($conex, $sql);
@@ -29,6 +30,7 @@ if (isset($_POST['Enviar'])) {
             $login_exitoso = true;
 
             resetear_intentos($conex, $ip);
+            registrar_security_log($conex, 'login_exitoso', $ip, $row['user']);
 
             $_SESSION['usuario']              = $row['user'];
             $_SESSION['usuario_id']           = $row['id'];
@@ -51,6 +53,7 @@ if (isset($_POST['Enviar'])) {
 
     if (!$login_exitoso) {
         registrar_intento_fallido($conex, $ip);
+        registrar_security_log($conex, 'login_fallido', $ip, $usuario_raw);
         mysqli_close($conex);
         header("Location: index.php?error=1");
         exit();
