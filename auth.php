@@ -328,6 +328,25 @@ function registrar_security_log(
  * el proyecto tiene JS y CSS inline en los dashboards. Queda así para la v1;
  * refactorizar a scripts/estilos externos con nonces es trabajo de una
  * versión futura.
+ *
+ * NOTA HSTS preload: agregar "preload" es el primer paso para poder
+ * enviar el dominio a la lista de precarga de los navegadores (hstspreload.org).
+ * Es una decisión difícil de revertir una vez que el dominio queda en esa
+ * lista — quitar el header no alcanza, hay que pedir la baja y esperar a
+ * que los navegadores propaguen el cambio (puede tardar meses). No hace
+ * falta enviar el dominio a la lista para que el header funcione, pero
+ * conviene tenerlo claro antes de asumir el compromiso.
+ *
+ * NOTA COEP require-corp: este es el header más riesgoso de los cuatro.
+ * Exige que todo recurso cross-origin (CSS, imágenes, fuentes) tenga un
+ * header Cross-Origin-Resource-Policy o CORS válido desde su propio
+ * servidor, o el navegador lo bloquea sin ningún error de PHP visible.
+ * maxcdn.bootstrapcdn.com (Bootstrap 4.4.1) es un CDN legado y no hay
+ * certeza de que lo envíe — si no lo hace, se rompe el CSS en index.php,
+ * alta.php, cambiar_contra.php, recuperar_clave.php y
+ * recuperar_clave_confirmar.php. Mismo riesgo para images.unsplash.com
+ * (fondo del login). Probar en local/staging con la pestaña Network del
+ * navegador antes de desplegar a producción.
  */
 function enviar_headers_seguridad(): void
 {
@@ -339,7 +358,10 @@ function enviar_headers_seguridad(): void
     header('X-Frame-Options: DENY');
     header('X-XSS-Protection: 1; mode=block');
     header('Referrer-Policy: strict-origin-when-cross-origin');
-    header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
+    header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload');
+    header('Cross-Origin-Opener-Policy: same-origin');
+    header('Cross-Origin-Embedder-Policy: require-corp');
+    header('Cross-Origin-Resource-Policy: same-origin');
     header(
         "Content-Security-Policy: default-src 'self'; " .
         "script-src 'self' 'unsafe-inline' cdn.jsdelivr.net cdnjs.cloudflare.com; " .
