@@ -2,7 +2,8 @@
 // ============================================================
 //  SmartRACK — mqtt_worker.php
 //  Proceso continuo que escucha el broker MQTT y procesa
-//  telemetría, estados de toma y LWT de todos los PDUs.
+//  telemetría, estados de toma, alertas del firmware y LWT
+//  de todos los PDUs.
 //
 //  NO es un endpoint web — se ejecuta desde la terminal:
 //    php mqtt_worker.php
@@ -19,7 +20,7 @@ if (php_sapi_name() !== 'cli') {
     exit('Este script solo puede ejecutarse desde la terminal.');
 }
 
-set_time_limit(0); // Sin límite de tiempo — proceso infinito
+set_time_limit(0);
 
 use PhpMqtt\Client\MqttClient as PhpMqttClient;
 use PhpMqtt\Client\ConnectionSettings;
@@ -43,7 +44,7 @@ function wlog(string $msg): void {
     echo $linea;
 }
 
-// ── Conexión DB (persistente para el worker) ─────────────────
+// ── Conexión DB ───────────────────────────────────────────────
 function db_connect() {
     $host     = $_ENV['DB_HOST']  ?? 'localhost';
     $db_user  = $_ENV['DB_USER']  ?? 'root';
@@ -68,9 +69,8 @@ if (!$conex) {
     exit(1);
 }
 
-// ── Helpers de procesamiento ──────────────────────────────────
+// ── Helpers ───────────────────────────────────────────────────
 
-// Verifica que un PDU existe y tiene premium activo
 function pdu_premium_activo($conex, string $codigo_pdu): bool {
     $cod_sql = mysqli_real_escape_string($conex, $codigo_pdu);
     $res = mysqli_query($conex,
@@ -86,7 +86,6 @@ function pdu_premium_activo($conex, string $codigo_pdu): bool {
         && strtotime($row['fecha_vencimiento']) >= strtotime('today');
 }
 
-// Extrae el codigo_pdu de un tópico pdu/{codigo}/...
 function extraer_codigo_pdu(string $topic): ?string {
     if (preg_match('#^pdu/([^/]+)/#', $topic, $m)) {
         return $m[1];
@@ -111,13 +110,13 @@ function procesar_pzem($conex, string $codigo_pdu, array $data): void {
         }
     }
 
-    $voltage   = (float) $data['voltage_v'];
-    $current   = (float) $data['current_a'];
-    $power     = (float) $data['power_w'];
-    $pf        = (float) $data['power_factor'];
-    $freq      = (float) $data['frequency_hz'];
-    $energy    = (float) $data['energy_kwh'];
-    $ts        = !empty($data['timestamp'])
+    $voltage = (float) $data['voltage_v'];
+    $current = (float) $data['current_a'];
+    $power   = (float) $data['power_w'];
+    $pf      = (float) $data['power_factor'];
+    $freq    = (float) $data['frequency_hz'];
+    $energy  = (float) $data['energy_kwh'];
+    $ts      = !empty($data['timestamp'])
         ? "'" . mysqli_real_escape_string($conex, $data['timestamp']) . "'"
         : 'NOW(3)';
 
@@ -132,7 +131,6 @@ function procesar_pzem($conex, string $codigo_pdu, array $data): void {
     mysqli_query($conex,
         "UPDATE pdus SET ultimo_contacto = NOW() WHERE codigo_pdu = '$cod_sql'");
 
-    // Verificar umbrales (reutiliza alertas_helper.php)
     verificar_umbral($conex, $codigo_pdu, 'current_a',    $current);
     verificar_umbral($conex, $codigo_pdu, 'power_w',      $power);
     verificar_umbral($conex, $codigo_pdu, 'frequency_hz', $freq);
@@ -196,11 +194,63 @@ function procesar_estado_toma($conex, string $codigo_pdu, int $outlet_number, ar
     wlog("[ESTADO] $codigo_pdu toma $outlet_number → " . ($state ? 'ON' : 'OFF'));
 }
 
-// ── Procesar LWT (offline) ────────────────────────────────────
+// ── Procesar alerta del firmware ──────────────────────────────
+function procesar_alerta_firmware($conex, string $codigo_pdu, array $data): void {
+    $cod_sql = mysqli_real_escape_string($conex, $codigo_pdu);
+
+    // Validar campos mínimos
+    if (!isset($data['tipo'], $data['valor'], $data['umbral'])
+        || !is_string($data['tipo'])
+        || !is_numeric($data['valor'])
+        || !is_numeric($data['umbral'])) {
+        wlog("[ALERTA] $codigo_pdu — payload inválido, descartado");
+        return;
+    }
+
+    $tipo   = mysqli_real_escape_string($conex, $data['tipo']);
+    $valor  = (float) $data['valor'];
+    $umbral = (float) $data['umbral'];
+    $ts     = !empty($data['timestamp'])
+        ? "'" . mysqli_real_escape_string($conex, $data['timestamp']) . "'"
+        : 'NOW()';
+
+    // Mapeo de tipo firmware → mensaje legible
+    $mensajes = [
+        'voltaje_bajo'      => "Voltaje por debajo del mínimo permitido",
+        'voltaje_alto'      => "Voltaje por encima del máximo permitido",
+        'temperatura_alta'  => "Temperatura interna del PDU superó el umbral máximo",
+    ];
+    $mensaje = isset($mensajes[$data['tipo']])
+        ? $mensajes[$data['tipo']]
+        : "Alerta del firmware: " . $data['tipo'];
+    $mensaje_sql = mysqli_real_escape_string($conex, $mensaje);
+
+    // Insertar en tabla alertas solo si no hay una activa del mismo tipo para este PDU
+    $res_check = mysqli_query($conex,
+        "SELECT id FROM alertas
+         WHERE codigo_pdu = '$cod_sql'
+           AND tipo = '$tipo'
+           AND estado = 'activa'
+         LIMIT 1");
+
+    if (mysqli_num_rows($res_check) > 0) {
+        wlog("[ALERTA] $codigo_pdu $tipo ya tiene alerta activa — ignorado");
+        return;
+    }
+
+    mysqli_query($conex,
+        "INSERT INTO alertas
+           (codigo_pdu, tipo, mensaje, valor_detectado, umbral_configurado, estado, notificado_mail, created_at)
+         VALUES
+           ('$cod_sql', '$tipo', '$mensaje_sql', $valor, $umbral, 'activa', 0, NOW())");
+
+    wlog("[ALERTA] $codigo_pdu $tipo — valor=$valor umbral=$umbral guardado");
+}
+
+// ── Procesar LWT ──────────────────────────────────────────────
 function procesar_lwt($conex, string $codigo_pdu, array $data): void {
     $cod_sql = mysqli_real_escape_string($conex, $codigo_pdu);
 
-    // Obtener device_id para el log
     $res = mysqli_query($conex,
         "SELECT id FROM pdus WHERE codigo_pdu = '$cod_sql' LIMIT 1");
     $pdu = mysqli_fetch_assoc($res);
@@ -243,6 +293,8 @@ function procesar_mensaje($conex, string $topic, string $message): void {
         procesar_aht10($conex, $codigo_pdu, $data);
     } elseif (preg_match('#/estado/toma/(\d+)$#', $topic, $m)) {
         procesar_estado_toma($conex, $codigo_pdu, (int) $m[1], $data);
+    } elseif (preg_match('#/alertas$#', $topic)) {
+        procesar_alerta_firmware($conex, $codigo_pdu, $data);
     } elseif (preg_match('#/lwt$#', $topic)) {
         procesar_lwt($conex, $codigo_pdu, $data);
     } else {
@@ -251,8 +303,9 @@ function procesar_mensaje($conex, string $topic, string $message): void {
 }
 
 // ══════════════════════════════════════════════════════════════
-//  LOOP PRINCIPAL con reconexión automática
+//  LOOP PRINCIPAL
 // ══════════════════════════════════════════════════════════════
+
 $mqtt_host = $_ENV['MQTT_HOST'] ?? '';
 $mqtt_port = (int) ($_ENV['MQTT_PORT'] ?? 8883);
 $mqtt_user = $_ENV['MQTT_USER'] ?? '';
@@ -277,17 +330,17 @@ while (true) {
         $mqtt->connect($settings, true);
         wlog('Conectado al broker MQTT.');
 
-        // Suscribir a todos los tópicos con wildcard
+        // Tópicos — se agregó pdu/+/alertas para recibir alertas del firmware
         $topicos = [
             'pdu/+/telemetria/pzem',
             'pdu/+/telemetria/aht10',
             'pdu/+/estado/toma/+',
+            'pdu/+/alertas',
             'pdu/+/lwt',
         ];
 
         foreach ($topicos as $t) {
             $mqtt->subscribe($t, function (string $topic, string $message) use ($conex) {
-                // Verificar que la DB sigue viva; reconectar si no
                 global $conex;
                 if (!mysqli_ping($conex)) {
                     wlog('DB caída — reconectando...');
@@ -298,7 +351,6 @@ while (true) {
             wlog("Suscrito a: $t");
         }
 
-        // Loop bloqueante — procesa mensajes entrantes
         $mqtt->loop(true);
 
     } catch (MqttClientException $e) {
