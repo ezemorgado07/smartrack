@@ -98,7 +98,7 @@ El hardware está basado en un ESP32 con módulo Ethernet W5500 que se comunica 
 
 - **Portal web (producción):** https://aucateksmartrack.alwaysdata.net
 - **Documentación del proyecto:** https://ezemorgado07.github.io/Presentacion-Proyectos-ILM-3
-- **Manual de usuario:** <!-- REEMPLAZAR con la URL cuando se suba -->
+- **Manual de usuario:** https://raw.githubusercontent.com/ezemorgado07/smartrack/main/SmartRACK_Manual_Usuario.pdf
 
 ---
 
