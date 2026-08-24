@@ -85,11 +85,11 @@ El hardware está basado en un ESP32 con módulo Ethernet W5500 que se comunica 
 | Integrante | Rol |
 |---|---|
 | Ezequiel Morgado |Project Manager, Backend, base de datos, integración MQTT |
-| Camilo | Hardware, firmware|
-| Sofía | Frontend, UX/UI Design |
-| Violeta | Diseño industrial |
+| Camilo Spinelli | Hardware, firmware|
+| Sofía Hermosilla | Frontend, UX/UI Design |
+| Violeta Martini | Diseño industrial |
 | Martín Barral | Asesor técnico |
-| Diego | CEO AucaTek — cliente |
+| Diego Martini | CEO AucaTek — cliente |
 
 ---
 
