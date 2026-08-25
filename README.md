@@ -1,6 +1,6 @@
 # SmartRACK — ePDU Inteligente
 
-Sistema de distribución de energía inteligente (ePDU) con monitoreo en tiempo real, control remoto por toma y comunicación segura vía MQTT sobre TLS. Desarrollado como proyecto interdisciplinario de cuarto año del Instituto Leonardo Murialdo en colaboración con AucaTek.
+Sistema de distribución de energía inteligente (ePDU) con monitoreo en tiempo real, control remoto por toma y comunicación segura vía MQTT sobre TLS. Desarrollado como proyecto interdisciplinario de septimo año del Instituto Leonardo Murialdo en colaboración con AucaTek.
 
 ---
 
