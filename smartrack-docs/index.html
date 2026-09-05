@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documentación Técnica · SmartRACK ePDU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy:    #23264f;
+      --navy2:   #1a1d3a;
+      --orange:  #f49825;
+      --celeste: #5f7dbe;
+      --gray:    #6d6968;
+      --white:   #ffffff;
+      --bg:      #f8f9fb;
+      --border:  #e2e4ed;
+      --muted:   #6b7280;
+      --text:    #1f2937;
+      --code-bg: #1e2030;
+      --sidebar-w: 280px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      height: 56px; background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .topbar-brand { display: flex; align-items: center; gap: 10px; }
+    .topbar-brand .logo-dot { width: 10px; height: 10px; background: var(--orange); border-radius: 50%; }
+    .topbar-brand span { font-size: 16px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+    .topbar-brand span em { color: var(--orange); font-style: normal; }
+    .topbar-meta { font-size: 12px; color: rgba(255,255,255,0.55); }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: #fff; font-size: 22px; }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: fixed; top: 56px; left: 0; bottom: 0;
+      width: var(--sidebar-w);
+      background: var(--white);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      z-index: 200;
+      padding: 20px 0 40px;
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    .nav-section { padding: 8px 20px 4px; font-size: 10px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 12px; }
+    .nav-item { display: block; padding: 6px 20px 6px 20px; font-size: 13px; color: var(--muted); text-decoration: none; border-left: 3px solid transparent; transition: all 0.15s; }
+    .nav-item:hover { color: var(--navy); background: rgba(95,125,190,0.06); }
+    .nav-item.active { color: var(--navy); font-weight: 600; border-left-color: var(--orange); background: rgba(244,152,37,0.06); }
+    .nav-item.sub { padding-left: 36px; font-size: 12px; }
+    .nav-item.sub2 { padding-left: 52px; font-size: 11px; }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      margin-left: var(--sidebar-w);
+      margin-top: 56px;
+      padding: 48px 60px 80px;
+      max-width: 1060px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
+      border-radius: 16px; padding: 48px; margin-bottom: 48px;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: ''; position: absolute; right: -40px; top: -40px;
+      width: 220px; height: 220px; border-radius: 50%;
+      background: rgba(244,152,37,0.08);
+    }
+    .hero-eyebrow { font-size: 11px; font-weight: 700; color: var(--orange); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+    .hero h1 { font-size: 38px; font-weight: 800; color: #fff; line-height: 1.1; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero h1 span { color: var(--orange); }
+    .hero-sub { font-size: 15px; color: rgba(255,255,255,0.65); max-width: 520px; margin-bottom: 28px; }
+    .hero-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+    .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 5px 12px; font-size: 12px; color: rgba(255,255,255,0.8); }
+    .badge-o { background: rgba(244,152,37,0.15); border-color: rgba(244,152,37,0.35); color: var(--orange); }
+    .hero-meta { margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
+    .hero-meta-item label { font-size: 10px; color: rgba(255,255,255,0.4); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: block; }
+    .hero-meta-item span { font-size: 13px; color: rgba(255,255,255,0.85); font-weight: 500; }
+
+    /* ── SECTIONS ── */
+    .doc-section { margin-bottom: 64px; scroll-margin-top: 80px; }
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; padding-bottom: 16px; border-bottom: 2px solid var(--border); }
+    .section-num { width: 40px; height: 40px; background: var(--navy); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: var(--orange); flex-shrink: 0; }
+    .section-title { font-size: 24px; font-weight: 700; color: var(--navy); letter-spacing: -0.5px; }
+    .subsection { margin: 32px 0; scroll-margin-top: 80px; }
+    .subsection-title { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .subsection-title::before { content: ''; display: block; width: 4px; height: 18px; background: var(--orange); border-radius: 2px; flex-shrink: 0; }
+    .sub2-title { font-size: 14px; font-weight: 600; color: var(--celeste); margin: 20px 0 10px; }
+
+    p { font-size: 14px; color: var(--text); margin-bottom: 14px; line-height: 1.75; }
+    ul, ol { padding-left: 20px; margin-bottom: 14px; }
+    li { font-size: 14px; color: var(--text); margin-bottom: 6px; line-height: 1.6; }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: rgba(95,125,190,0.1); color: var(--celeste); padding: 2px 6px; border-radius: 4px; }
+    pre { background: var(--code-bg); border-radius: 10px; padding: 20px; overflow-x: auto; margin: 16px 0; }
+    pre code { background: none; color: #a9b7c6; padding: 0; font-size: 13px; line-height: 1.7; }
+
+    /* ── TABLES ── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead tr { background: var(--navy); }
+    thead th { padding: 12px 16px; text-align: left; color: #fff; font-weight: 600; font-size: 12px; letter-spacing: 0.3px; }
+    tbody tr:nth-child(even) { background: var(--bg); }
+    tbody tr:hover { background: rgba(95,125,190,0.04); }
+    td { padding: 11px 16px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
+    tbody tr:last-child td { border-bottom: none; }
+    td code { font-size: 11px; }
+    td strong { color: var(--navy); font-weight: 600; }
+
+    /* ── CALLOUTS ── */
+    .callout { border-radius: 10px; padding: 16px 20px; margin: 16px 0; display: flex; gap: 14px; align-items: flex-start; }
+    .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .callout-body { font-size: 13px; line-height: 1.6; }
+    .callout-body strong { display: block; margin-bottom: 4px; font-size: 13px; }
+    .callout-info  { background: rgba(95,125,190,0.08); border-left: 4px solid var(--celeste); }
+    .callout-warn  { background: rgba(244,152,37,0.08); border-left: 4px solid var(--orange); }
+    .callout-note  { background: rgba(35,38,79,0.05); border-left: 4px solid var(--navy); }
+
+    /* ── PLACEHOLDER ── */
+    .placeholder { border: 2px dashed var(--border); border-radius: 10px; padding: 32px; text-align: center; margin: 20px 0; background: rgba(95,125,190,0.03); }
+    .placeholder-icon { font-size: 32px; margin-bottom: 10px; }
+    .placeholder-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+    .placeholder-desc { font-size: 13px; color: var(--muted); }
+
+    /* ── ARCH DIAGRAM ── */
+    .arch-flow { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin: 20px 0; }
+    .arch-box { background: var(--navy); color: #fff; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+    .arch-box.orange { background: var(--orange); color: var(--navy); }
+    .arch-box.celeste { background: var(--celeste); }
+    .arch-arrow { color: var(--muted); font-size: 16px; }
+
+    /* ── TEAM CARDS ── */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 20px 0; }
+    .team-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: box-shadow 0.2s; }
+    .team-card:hover { box-shadow: 0 4px 16px rgba(35,38,79,0.08); }
+    .team-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--celeste)); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: #fff; margin: 0 auto 12px; }
+    .team-name { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+    .team-role { font-size: 12px; color: var(--orange); font-weight: 500; margin-bottom: 6px; }
+    .team-area { font-size: 11px; color: var(--muted); }
+
+    /* ── TOPIC CHIPS ── */
+    .topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin: 16px 0; }
+    .topic-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .topic-card .topic-label { font-size: 11px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-family: 'JetBrains Mono', monospace; }
+    .topic-card .topic-dir { font-size: 10px; color: var(--celeste); font-weight: 600; margin-bottom: 6px; }
+    .topic-card p { font-size: 12px; margin-bottom: 0; color: var(--muted); }
+
+    /* ── TOOLS GRID ── */
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+    .tool-chip { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+    .tool-chip .tool-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+    .tool-chip .tool-name { font-size: 13px; font-weight: 600; color: var(--navy); }
+    .tool-chip .tool-desc { font-size: 11px; color: var(--muted); }
+
+    /* ── REQUIREMENTS ── */
+    .req-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; margin-bottom: 16px; overflow: hidden; }
+    .req-header { background: var(--navy); padding: 10px 16px; display: flex; align-items: center; gap: 12px; }
+    .req-num { font-size: 11px; font-weight: 700; color: var(--orange); font-family: 'JetBrains Mono', monospace; }
+    .req-title { font-size: 13px; font-weight: 600; color: #fff; flex: 1; }
+    .req-badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; background: rgba(244,152,37,0.2); color: var(--orange); }
+    .req-body { padding: 14px 16px; font-size: 13px; color: var(--text); line-height: 1.6; }
+
+    /* ── VERSION BADGE ── */
+    .ver-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(244,152,37,0.1); border: 1px solid rgba(244,152,37,0.3); border-radius: 6px; padding: 4px 10px; font-size: 11px; font-weight: 600; color: var(--orange); font-family: 'JetBrains Mono', monospace; }
+
+    /* ── DER WRAPPER ── */
+    .der-wrap { background: var(--navy2); border-radius: 12px; padding: 24px; margin: 20px 0; overflow-x: auto; }
+    .der-wrap svg { max-width: 100%; }
+
+    /* ── FOOTER ── */
+    .doc-footer { margin-top: 80px; padding-top: 32px; border-top: 2px solid var(--border); text-align: center; }
+    .doc-footer p { font-size: 13px; color: var(--muted); }
+    .doc-footer strong { color: var(--navy); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .sidebar { transform: translateX(-100%); transition: transform 0.25s; }
+      .sidebar.open { transform: translateX(0); }
+      .main { margin-left: 0; padding: 32px 24px 60px; }
+      .menu-toggle { display: block; }
+      .topbar-meta { display: none; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 26px; }
+      .hero { padding: 28px; }
+      .main { padding: 24px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<header class="topbar">
+  <div class="topbar-brand">
+    <!-- Reemplazar por: <img src="logo_smartrack.svg" alt="SmartRACK" style="height:32px;"> cuando esté disponible -->
+    <div class="logo-dot"></div>
+    <span>Smart<em>RACK</em></span>
+  </div>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <!-- Reemplazar por: <img src="logo_murialdo.png" alt="Instituto Leonardo Murialdo" style="height:36px;filter:brightness(0) invert(1);"> cuando esté disponible -->
+    <div class="topbar-meta">Documentación Técnica v1.0</div>
+    <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')"></button>
+  </div>
+</header>
+
+<!-- ── SIDEBAR ── -->
+<nav class="sidebar" id="sidebar">
+  <a class="nav-item active" href="#s1">1. Control de Cambios</a>
+  <a class="nav-item" href="#s2">2. Introducción</a>
+  <a class="nav-item sub" href="#s2-1">2.1 Propósito</a>
+  <a class="nav-item sub" href="#s2-2">2.2 Alcance</a>
+  <a class="nav-item sub" href="#s2-3">2.3 Personal involucrado</a>
+  <a class="nav-item sub" href="#s2-4">2.4 Definiciones y acrónimos</a>
+  <a class="nav-item sub" href="#s2-5">2.5 Referencias</a>
+  <a class="nav-item sub" href="#s2-6">2.6 Resumen ejecutivo</a>
+  <a class="nav-item" href="#s3">3. Descripción General</a>
+  <a class="nav-item sub" href="#s3-1">3.1 Perspectiva</a>
+  <a class="nav-item sub" href="#s3-2">3.2 Funcionalidad</a>
+  <a class="nav-item sub" href="#s3-3">3.3 Usuarios</a>
+  <a class="nav-item sub" href="#s3-4">3.4 Restricciones</a>
+  <a class="nav-item sub" href="#s3-5">3.5 Suposiciones</a>
+  <a class="nav-item sub" href="#s3-6">3.6 Evolución previsible</a>
+  <a class="nav-item" href="#s4">4. Requisitos Específicos</a>
+  <a class="nav-item sub" href="#s4-1">4.1 Requerimientos Funcionales</a>
+  <a class="nav-item sub" href="#s4-2">4.2 Interfaces de Usuario</a>
+  <a class="nav-item sub" href="#s4-3">4.3 Interfaces de Hardware</a>
+  <a class="nav-item sub" href="#s4-4">4.4 Interfaces de Software</a>
+  <a class="nav-item sub2" href="#s4-4-1">4.4.1 Backend</a>
+  <a class="nav-item sub2" href="#s4-4-2">4.4.2 Frontend</a>
+  <a class="nav-item sub2" href="#s4-4-3">4.4.3 Firmware</a>
+  <a class="nav-item sub2" href="#s4-4-4">4.4.4 Modelo de BD</a>
+  <a class="nav-item sub" href="#s4-5">4.5 Interfaces de Comunicación</a>
+  <a class="nav-item" href="#s5">5. Oferta de Gestión</a>
+  <a class="nav-item sub" href="#s5-1">5.1 GANTT</a>
+  <a class="nav-item sub" href="#s5-2">5.2 Infraestructura Administrativa</a>
+</nav>
+
+<!-- ── MAIN CONTENT ── -->
+<main class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Documentación Técnica · Instituto Leonardo Murialdo</div>
+    <h1>Smart<span>RACK</span><br>ePDU Inteligente</h1>
+    <p class="hero-sub">Sistema de distribución de energía electrónica con monitoreo en tiempo real, control remoto por toma y comunicación segura vía MQTT sobre TLS. Desarrollado para AucaTek.</p>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item"><label>Cliente</label><span>AucaTek — innovate IT</span></div>
+      <div class="hero-meta-item"><label>Institución</label><span>Instituto Leonardo Murialdo</span></div>
+      <div class="hero-meta-item"><label>Carrera</label><span>7mo Informática A</span></div>
+      <div class="hero-meta-item"><label>Año</label><span>2026</span></div>
+      <div class="hero-meta-item"><label>Portal en producción</label><span>aucateksmartrack.alwaysdata.net</span></div>
+    </div>
+  </div>
+
+  <!-- ══ 1. CONTROL DE CAMBIOS ══ -->
+  <section class="doc-section" id="s1">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Control de Cambios</div>
+    </div>
+    <p>Registro de las modificaciones realizadas sobre la documentación y el alcance del proyecto SmartRACK. Cada cambio de requerimiento validado con el cliente (AucaTek) se registra como una fila nueva.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Versión</th><th>Fecha</th><th>Responsable</th><th>Descripción del cambio</th></tr></thead>
+        <tbody>
+          <tr><td><span class="ver-badge">1.0</span></td><td>22/08/2026</td><td>Ezequiel Morgado</td><td>Creación del documento. Redacción de la Sección 2 — Introducción completa.</td></tr>
+          <tr><td><span class="ver-badge">1.1</span></td><td>04/09/2026</td><td>Ezequiel Morgado</td><td>Cambio de formato de documentación: de documento Word a página web (GitHub Pages). Contenido sin modificaciones.</td></tr>
+          <tr><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <!-- ══ 2. INTRODUCCIÓN ══ -->
+  <section class="doc-section" id="s2">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Introducción</div>
+    </div>
+
+    <div class="subsection" id="s2-1">
+      <div class="subsection-title">2.1 Propósito</div>
+      <p>El presente documento tiene como propósito describir de manera formal y detallada el sistema SmartRACK, una Unidad de Distribución de Energía Electrónica (ePDU) inteligente desarrollada para AucaTek. SmartRACK resuelve una necesidad concreta en entornos de infraestructura tecnológica: la imposibilidad de monitorear y controlar remotamente las tomas de corriente de un rack de servidores sin intervención física en el lugar.</p>
+      <p>Los administradores de datacenters y salas de servidores enfrentan problemas recurrentes como la incapacidad de detectar consumos anómalos en tiempo real, la necesidad de desplazarse físicamente para apagar o encender equipos conectados al rack, y la falta de registros históricos de consumo eléctrico. SmartRACK aborda estos problemas integrando hardware de medición eléctrica con un portal web accesible desde cualquier dispositivo con conexión a internet.</p>
+      <p>Este documento está dirigido al equipo de desarrollo del proyecto, al cliente (AucaTek) y a los evaluadores/profesores del Instituto Leonardo Murialdo. Sirve como referencia técnica durante el desarrollo y como evidencia formal de las decisiones de diseño tomadas.</p>
+    </div>
+
+    <div class="subsection" id="s2-2">
+      <div class="subsection-title">2.2 Alcance</div>
+      <p>SmartRACK en su versión 1 (MVP) comprende los siguientes componentes y funcionalidades:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Componente / Funcionalidad</th><th>Incluido en v1</th><th>Previsto para v2</th></tr></thead>
+          <tbody>
+            <tr><td>Control ON/OFF de 4 tomas inteligentes</td><td> Sí</td><td>Sí</td></tr>
+            <tr><td>Monitoreo eléctrico en tiempo real (V, A, W, PF, Hz, kWh)</td><td> Sí (Premium)</td><td>Sí (Premium)</td></tr>
+            <tr><td>Monitoreo de temperatura y humedad interna</td><td> Sí (Premium)</td><td>Sí (Premium)</td></tr>
+            <tr><td>Alertas por umbral con notificación por correo</td><td> Sí (Premium)</td><td>Sí</td></tr>
+            <tr><td>Portal web con 3 roles (Admin, Operator, Viewer)</td><td> Sí</td><td>Sí</td></tr>
+            <tr><td>Exportación de datos históricos en CSV</td><td> Sí (Premium)</td><td>Sí (Premium)</td></tr>
+            <tr><td>Sistema de licencias Normal/Premium</td><td> Sí</td><td>Sí</td></tr>
+            <tr><td>PCB fabricada y gabinete industrial</td><td> Sí</td><td>Sí (mejorado)</td></tr>
+            <tr><td>OTA (actualización de firmware inalámbrica)</td><td> No</td><td>Sí</td></tr>
+            <tr><td>Display OLED en el dispositivo</td><td> No</td><td>Sí</td></tr>
+            <tr><td>Broker MQTT propio (Mosquitto)</td><td> No</td><td>Sí</td></tr>
+            <tr><td>Soporte completo para múltiples PDUs simultáneos</td><td>️ Parcial</td><td>Completo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection" id="s2-3">
+      <div class="subsection-title">2.3 Personal involucrado</div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">EM</div>
+          <div class="team-name">Ezequiel Morgado</div>
+          <div class="team-role">Project Manager · Backend Developer</div>
+          <div class="team-area">Base de datos, API, MQTT, ciberseguridad, integración general, gestión del proyecto</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">CS</div>
+          <div class="team-name">Camilo Spinelli</div>
+          <div class="team-role">Dev Firmware</div>
+          <div class="team-area">Firmware ESP32 y sensores</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">SH</div>
+          <div class="team-name">Sofía Hermosilla</div>
+          <div class="team-role">Dev Frontend · UX/UI</div>
+          <div class="team-area">Diseño de interfaz, dashboards, experiencia de usuario</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">VM</div>
+          <div class="team-name">Violeta Martini</div>
+          <div class="team-role">Diseño Industrial</div>
+          <div class="team-area">Diseño del gabinete PDU en AutoCAD y Fusion 360</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">IM</div>
+          <div class="team-name">Ignacio Marticorena</div>
+          <div class="team-role">Multimedia</div>
+          <div class="team-area">Logo, identidad visual, video promocional</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">FS</div>
+          <div class="team-name">Federico Sparta</div>
+          <div class="team-role">Electrónica</div>
+          <div class="team-area">PCB v1/v2, firmware sensores y ESP32</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">SV</div>
+          <div class="team-name">Santiago Villarosa</div>
+          <div class="team-role">Electrónica</div>
+          <div class="team-area">PCB v1/v2, firmware sensores y ESP32</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">MB</div>
+          <div class="team-name">Martín Barral</div>
+          <div class="team-role">Asesor Técnico</div>
+          <div class="team-area">Revisión del diseño electrónico y PCB, guías técnicas</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">DM</div>
+          <div class="team-name">Diego Martini</div>
+          <div class="team-role">CEO AucaTek · Cliente</div>
+          <div class="team-area">Definición de requerimientos, validación técnica, firma del contrato</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection" id="s2-4">
+      <div class="subsection-title">2.4 Definiciones, acrónimos y abreviaturas</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Término / Acrónimo</th><th>Definición</th></tr></thead>
+          <tbody>
+            <tr><td><code>ePDU</code></td><td>Electronic Power Distribution Unit. Unidad de distribución de energía electrónica con capacidad de monitoreo y control remoto.</td></tr>
+            <tr><td><code>PDU</code></td><td>Power Distribution Unit. Dispositivo que distribuye energía eléctrica a múltiples equipos en un rack.</td></tr>
+            <tr><td><code>MQTT</code></td><td>Message Queuing Telemetry Transport. Protocolo de mensajería liviano basado en publicación/suscripción, diseñado para IoT.</td></tr>
+            <tr><td><code>TLS</code></td><td>Transport Layer Security. Protocolo criptográfico que garantiza la comunicación segura a través de redes.</td></tr>
+            <tr><td><code>PZEM</code></td><td>Módulo de medición de energía eléctrica AC fabricado por Peacefair. Mide voltaje, corriente, potencia, factor de potencia, frecuencia y energía acumulada.</td></tr>
+            <tr><td><code>AHT10</code></td><td>Sensor digital de temperatura y humedad fabricado por AOSONG Electronics. Comunicación I2C.</td></tr>
+            <tr><td><code>ESP32</code></td><td>Microcontrolador de doble núcleo fabricado por Espressif Systems. En este proyecto se usa exclusivamente con Ethernet (sin WiFi).</td></tr>
+            <tr><td><code>W5500</code></td><td>Controlador Ethernet hardwired fabricado por WIZnet. Implementa el stack TCP/IP en hardware, conectado al ESP32 mediante SPI.</td></tr>
+            <tr><td><code>UART</code></td><td>Universal Asynchronous Receiver-Transmitter. Protocolo de comunicación serie asíncrono. Usado por el PZEM-004T.</td></tr>
+            <tr><td><code>I2C</code></td><td>Inter-Integrated Circuit. Protocolo de comunicación serie síncrono de dos hilos (SDA y SCL). Usado por el AHT10.</td></tr>
+            <tr><td><code>SPI</code></td><td>Serial Peripheral Interface. Protocolo de comunicación serie síncrono de cuatro hilos. Usado por el W5500.</td></tr>
+            <tr><td><code>broker</code></td><td>Servidor intermediario MQTT (HiveMQ Cloud) que gestiona los mensajes entre el ESP32 y el backend PHP.</td></tr>
+            <tr><td><code>LWT</code></td><td>Last Will Testament. Mensaje que el broker publica automáticamente cuando el ESP32 se desconecta abruptamente.</td></tr>
+            <tr><td><code>CSRF</code></td><td>Cross-Site Request Forgery. Ataque de falsificación de solicitudes entre sitios. Mitigado con tokens de sesión.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection" id="s2-5">
+      <div class="subsection-title">2.5 Referencias</div>
+      <ul>
+        <li>Espressif Systems. (2024). <em>ESP32 Series Datasheet</em> (v5.3). <a href="https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf" target="_blank">espressif.com</a></li>
+        <li>Espressif Systems. (2024). <em>ESP32 Technical Reference Manual</em> (v5.1). <a href="https://www.espressif.com/sites/default/files/documentation/esp32_technical_reference_manual_en.pdf" target="_blank">espressif.com</a></li>
+        <li>Peacefair. (2019). <em>PZEM-004T V3.0 User Manual</em>. <a href="https://innovatorsguru.com/wp-content/uploads/2019/06/PZEM-004T-V3.0-Datasheet-User-Manual.pdf" target="_blank">innovatorsguru.com</a></li>
+        <li>AOSONG Electronics. (2020). <em>AHT10 Technical Manual</em>. <a href="https://server4.eca.ir/eshop/AHT10/Aosong_AHT10_en_draft_0c.pdf" target="_blank">eca.ir</a></li>
+        <li>WIZnet. (2013). <em>W5500 Datasheet v1.1.0</em>. <a href="https://docs.wiznet.io/img/products/w5500/W5500_ds_v110e.pdf" target="_blank">wiznet.io</a></li>
+        <li>HiveMQ. (2026). <em>MQTT Essentials</em>. <a href="https://www.hivemq.com/blog/mqtt-essentials-part-1-introducing-mqtt/" target="_blank">hivemq.com</a></li>
+        <li>HiveMQ. (2026). <em>HiveMQ Cloud Documentation</em>. <a href="https://docs.hivemq.com/hivemq-cloud/latest/" target="_blank">hivemq.com</a></li>
+        <li>OPEnSLab — Oregon State University. (2022). <em>SSLClient Library for Arduino</em>. <a href="https://github.com/OPEnSLab-OSU/SSLClient" target="_blank">GitHub</a></li>
+        <li>Knolleary. (2023). <em>PubSubClient — MQTT library for Arduino</em>. <a href="https://github.com/knolleary/pubsubclient" target="_blank">GitHub</a></li>
+        <li>Tabler. (2023). <em>Tabler — Open Source Dashboard Template</em>. <a href="https://tabler.io/" target="_blank">tabler.io</a></li>
+        <li>Chart.js Contributors. (2023). <em>Chart.js</em>. <a href="https://www.chartjs.org/" target="_blank">chartjs.org</a></li>
+        <li>The PHP Group. (2024). <em>PHP 8.2 Manual</em>. <a href="https://www.php.net/manual/es/" target="_blank">php.net</a></li>
+        <li>alwaysdata. (2024). <em>Documentación de la plataforma alwaysdata</em>. <a href="https://help.alwaysdata.com/" target="_blank">alwaysdata.com</a></li>
+        <li>OASIS Open. (2019). <em>MQTT Version 5.0 — OASIS Standard</em>. <a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html" target="_blank">oasis-open.org</a></li>
+      </ul>
+    </div>
+
+    <div class="subsection" id="s2-6">
+      <div class="subsection-title">2.6 Resumen ejecutivo</div>
+      <p>SmartRACK es un sistema de distribución de energía electrónica inteligente (ePDU) diseñado para entornos de rack de servidores y equipamiento de red. El producto integra hardware embebido (ESP32 + módulo Ethernet W5500) con un portal web multirol accesible desde cualquier dispositivo con conexión a internet.</p>
+      <p>El sistema resuelve tres problemas medibles en la gestión de racks: la imposibilidad de controlar las tomas de forma remota sin intervención física, la falta de visibilidad del consumo eléctrico en tiempo real, y la ausencia de alertas automáticas ante condiciones de operación anormales.</p>
+      <p><strong>Público objetivo:</strong> datacenters, salas de servidores y empresas de IT que necesitan visibilidad y control sobre su infraestructura eléctrica sin invertir en soluciones comerciales de alto costo.</p>
+      <p><strong>Resultados del MVP v1:</strong> 4 tomas inteligentes con control ON/OFF remoto, medición eléctrica completa (V, A, W, PF, Hz, kWh) y ambiental (temperatura, humedad), sistema de alertas automáticas por mail, portal web con tres roles de acceso y sistema de licencias Normal/Premium.</p>
+    </div>
+  </section>
+
+  <!-- ══ 3. DESCRIPCIÓN GENERAL ══ -->
+  <section class="doc-section" id="s3">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Descripción General</div>
+    </div>
+
+    <div class="subsection" id="s3-1">
+      <div class="subsection-title">3.1 Perspectiva del producto</div>
+      <p>SmartRACK es un sistema nuevo — no reemplaza ni mejora ningún producto existente en la infraestructura del cliente. Se integra a la red LAN existente mediante Ethernet por cable y al broker MQTT en la nube (HiveMQ Cloud) para la comunicación con el portal web.</p>
+      <p>Arquitectura en tres capas:</p>
+      <div class="arch-flow">
+        <div class="arch-box orange">Sensores + ESP32</div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-box celeste">Ethernet · MQTT/TLS</div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-box">HiveMQ Cloud</div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-box celeste">mqtt_worker.php</div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-box">MySQL · PHP 8.2</div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-box orange">Portal web</div>
+      </div>
+    </div>
+
+    <div class="subsection" id="s3-2">
+      <div class="subsection-title">3.2 Funcionalidad del producto</div>
+      <p>A nivel general, el sistema SmartRACK permite:</p>
+      <ul>
+        <li>Controlar individualmente cada una de las 4 tomas inteligentes (ON/OFF) de forma remota desde el portal web.</li>
+        <li>Medir en tiempo real el consumo eléctrico global del rack: voltaje, corriente, potencia activa, factor de potencia, frecuencia y energía acumulada en kWh.</li>
+        <li>Monitorear la temperatura y humedad interna del rack mediante el sensor AHT10.</li>
+        <li>Generar alertas automáticas por correo electrónico cuando una métrica supera los umbrales configurados.</li>
+        <li>Almacenar el historial de telemetría y permitir su exportación en formato CSV para análisis externo.</li>
+        <li>Gestionar el acceso con tres roles diferenciados: Administrador, Operador y Visualizador.</li>
+        <li>Operar localmente por IP en la LAN sin dependencia de internet, incluyendo un buffer offline para no perder datos durante cortes de conectividad.</li>
+      </ul>
+    </div>
+
+    <div class="subsection" id="s3-3">
+      <div class="subsection-title">3.3 Características de los usuarios</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tipo de usuario</th><th>Perfil</th><th>Actividades principales</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Administrador</strong></td>
+              <td>Administrador de IT o responsable técnico del rack. Conocimiento técnico alto. Acceso total al sistema.</td>
+              <td>Gestión de usuarios y PDUs, activación de licencias, control de tomas, visualización de telemetría, resolución de alertas, exportación CSV.</td>
+            </tr>
+            <tr>
+              <td><strong>Operador</strong></td>
+              <td>Técnico de soporte o guardia de turno. Conocimiento técnico medio.</td>
+              <td>Control de tomas ON/OFF, visualización de telemetría y alertas en tiempo real, exportación CSV.</td>
+            </tr>
+            <tr>
+              <td><strong>Visualizador</strong></td>
+              <td>Personal no técnico que necesita monitorear sin modificar el sistema.</td>
+              <td>Solo lectura: visualización de métricas, estado de tomas y log de eventos.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection" id="s3-4">
+      <div class="subsection-title">3.4 Restricciones</div>
+      <div class="sub2-title">3.4.1 Políticas regulatorias</div>
+      <p>El sistema se desarrolla íntegramente con software libre y de código abierto (PHP, MySQL, Arduino Core, librerías públicas). Las credenciales de acceso (broker MQTT, base de datos, SMTP) se almacenan en variables de entorno mediante phpdotenv y nunca se incluyen en el código fuente. El repositorio es privado en GitHub con el equipo docente como colaborador.</p>
+      <div class="sub2-title">3.4.2 Limitaciones de hardware</div>
+      <p>El GPIO12 del ESP32 es un pin de bootstrap y no puede usarse para control de relés. El módulo W5500 (USR-ES1) utiliza el bus VSPI del ESP32. El PZEM-004T requiere el puerto Serial2 (GPIO16/17). El AHT10 utiliza I2C en GPIO21/22. La fuente de alimentación debe proveer 5V estables con capacidad mínima de 2A para alimentar el ESP32, el W5500 y el módulo de relés.</p>
+      <div class="sub2-title">3.4.3 Interfaces con otras aplicaciones</div>
+      <p>El sistema se comunica con HiveMQ Cloud (broker MQTT externo) y con Gmail (SMTP para notificaciones). No se integra con ningún sistema ERP, CRM o software de gestión de datacenter externo en esta versión.</p>
+      <div class="sub2-title">3.4.4 Función de control</div>
+      <p>Autenticación con bcrypt, CSRF tokens en todas las operaciones de escritura, rate limiting de login (5 intentos / 10 minutos → bloqueo 15 minutos por IP, almacenado en base de datos), security logs, HSTS y CSP activos en producción.</p>
+      <div class="sub2-title">3.4.5 Requisitos del lenguaje</div>
+      <p>Toda la interfaz, documentación y mensajes del sistema están en español. Los nombres de variables, funciones y endpoints del código están en inglés o español según el contexto.</p>
+      <div class="sub2-title">3.4.6 Protocolos señalados</div>
+      <p>Comunicación firmware-backend por MQTT 3.1.1 sobre TLS (puerto 8883). Comunicación cliente-portal por HTTPS. Comunicación SMTP por TLS (puerto 587, STARTTLS). Sincronización horaria por NTP (UDP, puerto 123).</p>
+      <div class="sub2-title">3.4.7 Requisitos de fiabilidad</div>
+      <p>El firmware mantiene un buffer circular en RAM de hasta 20 lecturas PZEM y 10 AHT10 durante la desconexión. Al recuperar la conexión MQTT, las lecturas pendientes se publican automáticamente con el flag <code>is_buffered=1</code>. El dashboard se actualiza por polling AJAX cada 10 segundos.</p>
+      <div class="sub2-title">3.4.8 Credibilidad</div>
+      <p>El sistema publica telemetría real medida por sensores físicos (PZEM-004T y AHT10). Los timestamps se sincronizan mediante NTP con offset UTC-3 (Argentina). El estado del dispositivo se determina por el campo <code>ultimo_contacto</code> en la base de datos, con umbral de 5 minutos para declarar offline.</p>
+      <div class="sub2-title">3.4.9 Consideraciones de seguridad</div>
+      <p>Contraseñas almacenadas con bcrypt. Sesiones PHP con regeneración de ID. CSRF tokens en formularios de escritura. Rate limiting por IP en login. Security logs de todos los eventos de acceso. Headers de seguridad HTTP: HSTS, CSP, X-Frame-Options, X-Content-Type-Options. Comunicación MQTT cifrada con TLS (BearSSL sobre SSLClient). Credenciales en archivo .env nunca incluido en el repositorio.</p>
+    </div>
+
+    <div class="subsection" id="s3-5">
+      <div class="subsection-title">3.5 Suposiciones y dependencias</div>
+      <ul>
+        <li>Se asume que el rack tiene conectividad Ethernet a la red LAN con acceso a internet.</li>
+        <li>El sistema depende de HiveMQ Cloud para la comunicación MQTT. Si el broker no está disponible, el ESP32 opera en modo local y almacena telemetría en el buffer offline.</li>
+        <li>El hosting en alwaysdata requiere disponibilidad del servicio para el acceso al portal web desde internet.</li>
+        <li>Las notificaciones por correo dependen de la cuenta Gmail configurada en el archivo .env del servidor.</li>
+        <li>El certificado TLS de HiveMQ es gestionado por Let's Encrypt. El archivo <code>trust_anchors.h</code> incluye los certificados intermediario (YR1, válido hasta 2028) y raíz (Root YR, válido hasta 2032), por lo que la rotación del certificado leaf no requiere actualizar el firmware.</li>
+      </ul>
+    </div>
+
+    <div class="subsection" id="s3-6">
+      <div class="subsection-title">3.6 Evolución previsible del sistema</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Versión</th><th>Mejora prevista</th><th>Justificación</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ver-badge">v2</span></td><td>Broker MQTT propio con Mosquitto en servidor Claro</td><td>Eliminar dependencia de HiveMQ Cloud y reducir latencia.</td></tr>
+            <tr><td><span class="ver-badge">v2</span></td><td>OTA — actualización de firmware inalámbrica</td><td>Permitir actualizaciones sin acceso físico al rack.</td></tr>
+            <tr><td><span class="ver-badge">v2</span></td><td>Display OLED en el dispositivo físico</td><td>Mostrar métricas localmente sin necesidad del portal.</td></tr>
+            <tr><td><span class="ver-badge">v2</span></td><td>Soporte completo para múltiples PDUs simultáneos</td><td>Gestionar varios racks desde una sola cuenta.</td></tr>
+            <tr><td><span class="ver-badge">v2</span></td><td>Retención de datos configurable</td><td>Limitar el crecimiento de las tablas de telemetría.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 4. REQUISITOS ESPECÍFICOS ══ -->
+  <section class="doc-section" id="s4">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">Requisitos Específicos</div>
+    </div>
+
+    <div class="subsection" id="s4-1">
+      <div class="subsection-title">4.1 Requerimientos Funcionales</div>
+      <p>Los siguientes requisitos describen las funcionalidades que el sistema SmartRACK debe proveer. Cada requisito está identificado por un número único e incluye descripción detallada y prioridad de implementación.</p>
+
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-01</span><span class="req-title">Control individual de tomas ON/OFF</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">El administrador y el operador pueden controlar el estado (ON/OFF) de cada una de las 4 tomas inteligentes de forma independiente desde el portal web o desde la interfaz local del ESP32. El cambio de estado se ejecuta mediante un relé físico y se confirma mediante un mensaje MQTT de retorno del firmware.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-02</span><span class="req-title">Telemetría eléctrica en tiempo real cada 30 segundos</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">El firmware lee del sensor PZEM-004T los valores de voltaje (V), corriente (A), potencia activa (W), factor de potencia, frecuencia (Hz) y energía acumulada (kWh), y los publica vía MQTT. El backend los recibe y almacena en la tabla <code>telemetry_pzem</code>. Disponible únicamente en Modo Premium.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-03</span><span class="req-title">Telemetría ambiental cada 60 segundos</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">El firmware lee del sensor AHT10 los valores de temperatura (°C) y humedad relativa (%), y los publica vía MQTT. El backend los recibe y almacena en la tabla <code>telemetry_aht10</code>. Disponible únicamente en Modo Premium.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-04</span><span class="req-title">Alertas automáticas por umbral</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">El firmware detecta condiciones fuera de umbral (voltaje &lt; 210V, voltaje &gt; 240V, temperatura &gt; 45°C) y publica alertas en el tópico <code>pdu/{codigo}/alertas</code>. El backend las registra en la tabla <code>alertas</code>, envía notificación por correo y evita duplicación verificando alertas activas del mismo tipo.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-05</span><span class="req-title">Autenticación con tres roles diferenciados</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">El portal requiere login con usuario y contraseña hasheada con bcrypt. Los roles son: Administrador (control total), Operador (control de tomas y visualización) y Visualizador (solo lectura). El primer login obliga al cambio de contraseña por defecto.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-06</span><span class="req-title">Gestión de usuarios</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">El administrador puede crear, editar y eliminar usuarios asignándoles rol, contraseña y PDU vinculado. La operación requiere verificación adicional de identidad mediante contraseña. Disponible únicamente para el rol Administrador.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-07</span><span class="req-title">Gestión de PDUs</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">El administrador puede registrar nuevos PDUs, editarlos y desactivarlos. Cada PDU tiene un <code>codigo_pdu</code> derivado de la MAC del ESP32, IP local, modo (normal/premium) y estado de conexión basado en el campo <code>ultimo_contacto</code>.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-08</span><span class="req-title">Sistema de licencias Normal y Premium</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">El Modo Normal permite únicamente el control de tomas. El Modo Premium habilita telemetría, gráficos, exportación CSV y alertas. La activación se realiza mediante un código de licencia. El sistema registra la fecha de vencimiento, envía avisos de gracia y mantiene un período de gracia de 30 días.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-09</span><span class="req-title">Buffer offline de telemetría</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">Si el firmware pierde la conexión al broker, las lecturas se guardan en buffers circulares en memoria (máximo 20 lecturas PZEM y 10 AHT10). Al recuperar la conexión, se publican automáticamente con el flag <code>is_buffered=1</code>.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-10</span><span class="req-title">Gráfico histórico de consumo</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">El dashboard muestra un gráfico de líneas con las últimas 48 lecturas de potencia (W) y voltaje (V), actualizado cada 10 segundos mediante polling AJAX. Renderizado con Chart.js. Disponible únicamente en Modo Premium.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-11</span><span class="req-title">Exportación CSV de datos históricos</span><span class="req-badge">Media · Deseado</span></div>
+        <div class="req-body">El administrador y operador en Modo Premium pueden descargar un CSV con datos de telemetría PZEM y AHT10 filtrados por rango de fechas. El archivo incluye todos los campos de medición y el timestamp de cada lectura.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-12</span><span class="req-title">Rate limiting en login</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">Tras 5 intentos fallidos desde una misma IP en 10 minutos, el sistema bloquea esa IP por 15 minutos. El bloqueo se almacena en la tabla <code>login_attempts</code>, no en sesión, para evitar evasión por eliminación de cookies.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-13</span><span class="req-title">Registro de eventos de seguridad</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">La tabla <code>security_logs</code> registra: login_exitoso, login_fallido, bloqueo_ip, csrf_invalido y acceso_denegado. Cada registro incluye evento, usuario (si aplica), IP, user agent y timestamp.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-14</span><span class="req-title">Interfaz web local embebida en el ESP32</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">El firmware sirve una interfaz HTTP en el puerto 80 de la IP local del ESP32, con autenticación. Permite visualizar y controlar las 4 tomas desde la LAN, sin necesidad de internet ni del portal web en la nube.</div>
+      </div>
+      <div class="req-card">
+        <div class="req-header"><span class="req-num">RF-15</span><span class="req-title">Notificaciones por correo electrónico</span><span class="req-badge">Alta · Esencial</span></div>
+        <div class="req-body">Se envían correos mediante PHPMailer + Gmail SMTP en los siguientes casos: alerta de umbral detectada, licencia próxima a vencer y recupero de contraseña. Los correos incluyen detalle del evento, PDU afectado y fecha/hora.</div>
+      </div>
+    </div>
+
+    <div class="subsection" id="s4-2">
+      <div class="subsection-title">4.2 Interfaces de Usuario</div>
+      <p>El portal web es el único punto de contacto del usuario con el sistema a nivel de software. Está diseñado con criterio de usabilidad: estado del sistema comunicado de forma clara, actualizaciones automáticas sin recargar la página, y diseño responsive para acceso desde PC o celular.</p>
+      <div class="placeholder">
+<img src="img/dashboard-principal.png" alt="Dashboard principal SmartRACK" style="width:100%; border-radius:10px; margin:20px 0;">
+      </div>
+      <img src="img/panel-tomas.png" alt="Panel de control de tomas SmartRACK" style="width:100%; border-radius:10px; margin:20px 0;">
+    </div>
+
+    <div class="subsection" id="s4-3">
+      <div class="subsection-title">4.3 Interfaces de Hardware</div>
+      <p>El hardware del SmartRACK consiste en una placa principal (PCB) que integra el ESP32, el módulo W5500 y los relés, y una placa de anclaje para el sensor AHT10 y el módulo Ethernet, que permite el montaje atornillado dentro del gabinete.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Componente</th><th>Interfaz</th><th>Pines ESP32</th><th>Función</th></tr></thead>
+          <tbody>
+            <tr><td><strong>W5500 (USR-ES1)</strong></td><td>SPI (VSPI)</td><td>SCK=18, MISO=19, MOSI=23, CS=5, RST=4</td><td>Conectividad Ethernet 100 Mbps</td></tr>
+            <tr><td><strong>PZEM-004T v3</strong></td><td>UART (Serial2)</td><td>RX2=16, TX2=17</td><td>Medición eléctrica completa</td></tr>
+            <tr><td><strong>AHT10</strong></td><td>I2C (Fast Mode)</td><td>SDA=21, SCL=22</td><td>Temperatura y humedad</td></tr>
+            <tr><td><strong>Relés Toma 1-4</strong></td><td>GPIO Digital</td><td>26, 27, 32, 33</td><td>Control ON/OFF de tomas 220V AC</td></tr>
+            <tr><td><strong>Entropía TLS</strong></td><td>ADC1 (solo entrada)</td><td>GPIO36</td><td>Semilla aleatoria para handshake TLS</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout-warn">
+        <div class="callout-icon">️</div>
+        <div class="callout-body"><strong>GPIO12 — Pin de bootstrap</strong>GPIO12 no puede usarse para control de relés. Si está en HIGH durante el arranque del ESP32, cambia el voltaje de la flash a 1.8V y el dispositivo no inicia.</div>
+      </div>
+      <div class="placeholder">
+        <div class="placeholder-icon"></div>
+        <div class="placeholder-title">Acá va el modelo 3D del gabinete (Violeta — Fusion 360)</div>
+        <div class="placeholder-desc">Insertar renders del diseño 3D del gabinete PDU v2 con vistas frontal, lateral y trasera mostrando la ubicación de las tomas, el panel de LEDs y los conectores.</div>
+      </div>
+    </div>
+
+    <div class="subsection" id="s4-4">
+      <div class="subsection-title">4.4 Interfaces de Software</div>
+
+      <div id="s4-4-1">
+        <div class="sub2-title">4.4.1 Backend — Portal web</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Componente</th><th>Versión</th><th>Rol en el sistema</th></tr></thead>
+            <tbody>
+              <tr><td><strong>PHP</strong></td><td>8.2+</td><td>Lenguaje principal del backend. Procesa todas las peticiones HTTP, maneja la sesión, autenticación, roles y lógica de negocio.</td></tr>
+              <tr><td><strong>MySQLi</strong></td><td>8.2+</td><td>Interfaz de acceso a la base de datos MySQL en modo procedural con <code>mysqli_real_escape_string()</code>.</td></tr>
+              <tr><td><strong>PHPMailer</strong></td><td>6.x</td><td>Librería para envío de correos vía Gmail SMTP con TLS. Usada para alertas, avisos de licencia y recupero de contraseña.</td></tr>
+              <tr><td><strong>phpdotenv</strong></td><td>5.x</td><td>Carga variables de entorno desde el archivo .env. Evita hardcodear credenciales en el código fuente.</td></tr>
+              <tr><td><strong>php-mqtt/client</strong></td><td>2.3.2</td><td>Cliente MQTT para PHP. Usado en <code>mqtt_worker.php</code> para suscribir a todos los tópicos del broker y procesar telemetría, estados y alertas.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="s4-4-2">
+        <div class="sub2-title">4.4.2 Frontend — Portal web</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Componente</th><th>Versión</th><th>Rol en el sistema</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Tabler.io</strong></td><td>1.0.0-beta20</td><td>Framework UI basado en Bootstrap 5. Provee componentes visuales, cards, tablas y navegación. El layout es completamente custom (CSS propio) para evitar conflictos con los scripts de Tabler.</td></tr>
+              <tr><td><strong>Chart.js</strong></td><td>CDN</td><td>Renderiza el gráfico de líneas de potencia y voltaje en los dashboards Premium.</td></tr>
+              <tr><td><strong>Font Awesome</strong></td><td>5.15.4</td><td>Íconos vectoriales usados en el sidebar, botones, métricas y badges del portal.</td></tr>
+              <tr><td><strong>Montserrat</strong></td><td>Google Fonts</td><td>Tipografía principal del portal web.</td></tr>
+              <tr><td><strong>Vanilla JS</strong></td><td>ES6+</td><td>Maneja el polling AJAX cada 10 segundos, el control de tomas, el modal de verificación de identidad y la navegación activa del sidebar. Sin jQuery ni frameworks.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="s4-4-3">
+        <div class="sub2-title">4.4.3 Firmware — ESP32</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Librería</th><th>Fuente</th><th>Rol en el firmware</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Arduino core ESP32</strong></td><td>Espressif (Arduino IDE)</td><td>Core base del firmware. Provee el entorno de desarrollo, acceso a periféricos y funciones del sistema.</td></tr>
+              <tr><td><strong>Ethernet.h</strong></td><td>Arduino (built-in)</td><td>Control del chip W5500 vía SPI. Maneja la conexión Ethernet, DHCP y el stack TCP/IP en hardware.</td></tr>
+              <tr><td><strong>SSLClient</strong></td><td>OPEnS Lab — Noah Koontz</td><td>Implementa TLS sobre cualquier clase Client de Arduino. Envuelve EthernetClient para proveer comunicación MQTT cifrada con BearSSL.</td></tr>
+              <tr><td><strong>PubSubClient</strong></td><td>Knolleary</td><td>Cliente MQTT para Arduino. Maneja la conexión, suscripción a tópicos, publicación de mensajes y el loop de mensajes entrantes.</td></tr>
+              <tr><td><strong>PZEM004Tv30</strong></td><td>dbuezas</td><td>Comunicación con el PZEM-004T v3 por UART. Provee métodos para leer voltaje, corriente, potencia, PF, frecuencia y energía.</td></tr>
+              <tr><td><strong>AHTxx</strong></td><td>enjoyneering</td><td>Comunicación con el AHT10 por I2C. Provee métodos para leer temperatura y humedad.</td></tr>
+              <tr><td><strong>ArduinoJson</strong></td><td>6.x</td><td>Serialización y deserialización de JSON en el firmware. Usado para construir payloads MQTT y parsear comandos entrantes.</td></tr>
+              <tr><td><strong>NTPClient</strong></td><td>Fabrice Weinberg</td><td>Cliente NTP para sincronización horaria. Se conecta a pool.ntp.org con offset UTC-3 (Argentina).</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="s4-4-4">
+        <div class="sub2-title">4.4.4 Modelo de Base de Datos — DER</div>
+        <p>El siguiente diagrama muestra las 17 tablas de la base de datos MySQL del sistema SmartRACK y sus relaciones. Las tablas están agrupadas por área funcional mediante colores.</p>
+        <div class="der-wrap" id="der-container">
+          <!-- El SVG del DER se inserta acá -->
+          <div class="placeholder" style="border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.03);">
+            <div class="placeholder-icon">️</div>
+            <div class="placeholder-title" style="color:#fff;">Acá va el diagrama DER (SmartRACK_DER.svg)</div>
+            <div class="placeholder-desc" style="color:rgba(255,255,255,0.5);">Copiar el contenido del archivo SmartRACK_DER.svg y reemplazar este bloque con la etiqueta &lt;img src="SmartRACK_DER.svg"&gt; o inlinearlo directamente.</div>
+          </div>
+        </div>
+        <p style="font-size:12px; color:var(--muted); margin-top:8px;">Figura 1. Diagrama Entidad-Relación de SmartRACK — 17 tablas. <strong>PK</strong> = clave primaria · <strong>FK</strong> = clave foránea.</p>
+      </div>
+    </div>
+
+    <div class="subsection" id="s4-5">
+      <div class="subsection-title">4.5 Interfaces de Comunicación</div>
+      <p>Esta sección describe los protocolos y canales de comunicación utilizados en SmartRACK para el intercambio de datos entre el firmware, el backend y los servicios externos.</p>
+
+      <div class="sub2-title">4.5.1 MQTT sobre TLS — Firmware ↔ Backend</div>
+      <p>La comunicación principal entre el firmware del ESP32 y el backend PHP se realiza mediante MQTT v3.1.1 sobre TLS (puerto 8883) a través del broker HiveMQ Cloud. Esta comunicación es bidireccional: el firmware publica telemetría y alertas, y el backend publica comandos de control de tomas.</p>
+      <div class="topic-grid">
+        <div class="topic-card">
+          <div class="topic-label">pdu/{codigo}/telemetria/pzem</div>
+          <div class="topic-dir">ESP32 → Backend</div>
+          <p>Telemetría eléctrica cada 30s: voltage_v, current_a, power_w, power_factor, frequency_hz, energy_kwh, timestamp.</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-label">pdu/{codigo}/telemetria/aht10</div>
+          <div class="topic-dir">ESP32 → Backend</div>
+          <p>Telemetría ambiental cada 60s: temperature_c, humidity_pct, timestamp.</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-label">pdu/{codigo}/comando/toma/{N}</div>
+          <div class="topic-dir">Backend → ESP32</div>
+          <p>Comando de control de toma N (1-4). Payload: <code>{"command":"on"}</code> o <code>{"command":"off"}</code>.</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-label">pdu/{codigo}/estado/toma/{N}</div>
+          <div class="topic-dir">ESP32 → Backend</div>
+          <p>Confirmación del nuevo estado tras ejecutar un comando. Payload: <code>{"state":1,"timestamp":"..."}</code>.</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-label">pdu/{codigo}/alertas</div>
+          <div class="topic-dir">ESP32 → Backend</div>
+          <p>Alerta de umbral detectada. Payload: <code>{"tipo":"...","valor":X,"umbral":Y,"timestamp":"..."}</code>.</p>
+        </div>
+        <div class="topic-card">
+          <div class="topic-label">pdu/{codigo}/lwt</div>
+          <div class="topic-dir">Broker → Backend</div>
+          <p>Last Will Testament. Publicado automáticamente por el broker si el ESP32 se desconecta abruptamente.</p>
+        </div>
+      </div>
+
+      <div class="sub2-title">4.5.2 HTTP/HTTPS — Cliente ↔ Portal web</div>
+      <p>La comunicación entre el navegador y el portal web se realiza por HTTPS en producción (alwaysdata). El portal combina rendering PHP con llamadas AJAX para actualización en tiempo real.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Endpoint</th><th>Método</th><th>Descripción</th></tr></thead>
+          <tbody>
+            <tr><td><code>index.php</code></td><td>GET / POST</td><td>Login. POST procesa credenciales y establece la sesión.</td></tr>
+            <tr><td><code>dashboard_admin.php</code></td><td>GET</td><td>Dashboard del Administrador. Requiere rol admin y sesión activa.</td></tr>
+            <tr><td><code>dashboard_operator.php</code></td><td>GET</td><td>Dashboard del Operador. Requiere rol operator.</td></tr>
+            <tr><td><code>dashboard_viewer.php</code></td><td>GET</td><td>Dashboard de solo lectura. Requiere rol viewer.</td></tr>
+            <tr><td><code>toggle_outlet.php</code></td><td>POST</td><td>Cambia el estado de una toma. Requiere CSRF token válido. Publica comando MQTT al ESP32.</td></tr>
+            <tr><td><code>get_telemetry.php</code></td><td>GET</td><td>Devuelve JSON con telemetría, estado de tomas y alertas activas. Usado por el polling AJAX cada 10 segundos.</td></tr>
+            <tr><td><code>get_logs.php</code></td><td>GET</td><td>Devuelve JSON con los últimos 10 eventos del log del sistema.</td></tr>
+            <tr><td><code>resolver_alerta.php</code></td><td>POST</td><td>Marca una alerta como resuelta. Requiere CSRF token.</td></tr>
+            <tr><td><code>exportar_datos.php</code></td><td>POST</td><td>Genera y descarga un CSV con telemetría filtrada por fechas. Solo Modo Premium.</td></tr>
+            <tr><td><code>verify_password.php</code></td><td>POST</td><td>Verifica la contraseña del usuario para operaciones sensibles.</td></tr>
+            <tr><td><code>admin_usuarios.php</code></td><td>GET / POST</td><td>CRUD de usuarios. Solo Administrador. Requiere verificación previa de identidad.</td></tr>
+            <tr><td><code>admin_pdus.php</code></td><td>GET / POST</td><td>CRUD de PDUs. Solo Administrador.</td></tr>
+            <tr><td><code>cerrar_sesion.php</code></td><td>GET</td><td>Destruye la sesión activa y redirige al login.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub2-title">4.5.3 UART — ESP32 ↔ PZEM-004T</div>
+      <p>La comunicación con el sensor PZEM-004T v3 se realiza mediante UART (RS-485 simplificado) sobre el puerto Serial2 del ESP32 (RX2=GPIO16, TX2=GPIO17) a 9600 baudios. La librería PZEM004Tv30 abstrae el protocolo Modbus RTU. El ESP32 actúa como maestro y el PZEM como esclavo.</p>
+
+      <div class="sub2-title">4.5.4 I2C — ESP32 ↔ AHT10</div>
+      <p>La comunicación con el sensor AHT10 se realiza mediante I2C a 400kHz (Fast Mode) sobre los pines SDA=GPIO21 y SCL=GPIO22 del ESP32. La dirección I2C del AHT10 es 0x38. La librería AHTxx abstrae la inicialización del sensor y la lectura de temperatura y humedad.</p>
+
+      <div class="sub2-title">4.5.5 SPI — ESP32 ↔ W5500</div>
+      <p>La comunicación con el módulo Ethernet W5500 (USR-ES1) se realiza mediante SPI en el bus VSPI del ESP32: SCK=GPIO18, MISO=GPIO19, MOSI=GPIO23, CS=GPIO5, RESET=GPIO4. El W5500 opera por polling — el pin INT queda sin conectar. La librería Ethernet.h expone una interfaz Client compatible con SSLClient y PubSubClient.</p>
+
+      <div class="sub2-title">4.5.6 SMTP — Backend ↔ Gmail</div>
+      <p>El envío de correos se realiza mediante PHPMailer conectándose a smtp.gmail.com en el puerto 587 con autenticación STARTTLS. La cuenta de correo y la contraseña de aplicación se almacenan en el archivo .env del servidor y nunca se hardcodean en el código fuente.</p>
+      <div class="callout callout-info">
+        <div class="callout-icon">️</div>
+        <div class="callout-body"><strong>Nota sobre el remitente</strong>La cuenta de correo actual es provisional y corresponde al entorno de desarrollo. En la versión comercial del producto, AucaTek reemplazará esta cuenta por una dirección oficial (ej. notificaciones@aucatek.com.ar) utilizando un servicio de correo transaccional como SendGrid o Mailgun. El destinatario de cada correo es el mail del usuario registrado en el portal — cada cliente recibe las alertas en su propia cuenta.</div>
+      </div>
+
+      <div class="sub2-title">4.5.7 NTP — Firmware ↔ Internet</div>
+      <p>El firmware sincroniza la hora del ESP32 al arrancar mediante NTP (UDP, puerto 123) contra pool.ntp.org. Se aplica un offset de UTC-3 correspondiente a la zona horaria de Argentina (ART). La sincronización se renueva automáticamente cada 60 segundos. El timestamp resultante se incluye en todos los mensajes MQTT publicados por el firmware.</p>
+    </div>
+  </section>
+
+  <!-- ══ 5. OFERTA DE GESTIÓN ══ -->
+  <section class="doc-section" id="s5">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Oferta de Gestión</div>
+    </div>
+
+    <div class="subsection" id="s5-1">
+      <div class="subsection-title">5.1 GANTT</div>
+      <p>El cronograma del proyecto SmartRACK se organiza en 10 etapas que cubren desde la configuración inicial de entornos hasta la documentación y lanzamiento. La planilla completa con fechas y responsables se encuentra en el repositorio del proyecto.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Etapa</th><th>Tareas principales</th><th>Estado</th></tr></thead>
+          <tbody>
+            <tr><td><strong>E0 · Inicio</strong></td><td>Definición del alcance, equipo y herramientas.</td><td> Completa</td></tr>
+            <tr><td><strong>E1 · Config. de entornos</strong></td><td>Setup de GitHub, XAMPP, Arduino IDE, alwaysdata, HiveMQ Cloud.</td><td> Completa</td></tr>
+            <tr><td><strong>E2 · Comunicación e integración</strong></td><td>MQTT sobre TLS, integración ESP32-backend, firmware v1.</td><td> Completa</td></tr>
+            <tr><td><strong>E3 · Validación</strong></td><td>Pruebas de integración, corrección de bugs críticos.</td><td> Completa</td></tr>
+            <tr><td><strong>E4 · Entorno web</strong></td><td>Dashboard por roles, autenticación, exportación CSV.</td><td> Completa</td></tr>
+            <tr><td><strong>E5 · Ensamble y testing</strong></td><td>PCB, firmware v2.1, pruebas físicas, gabinete.</td><td> En curso</td></tr>
+            <tr><td><strong>E6 · Deploy</strong></td><td>Deploy en producción, HSTS, CSP, mqtt_worker.</td><td> Completa</td></tr>
+            <tr><td><strong>E7 · Panel admin</strong></td><td>Gestión de usuarios, licencias, alertas.</td><td> Completa</td></tr>
+            <tr><td><strong>E8 · Ciberseguridad</strong></td><td>Rate limiting, CSRF, security logs.</td><td> Completa</td></tr>
+            <tr><td><strong>E9 · Documentación y lanzamiento</strong></td><td>Documentación técnica, manual, video, entrega final.</td><td> En curso</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="placeholder">
+        <div class="placeholder-icon"></div>
+        <div class="placeholder-title">Acá va el GANTT completo (Google Sheets o imagen)</div>
+        <div class="placeholder-desc">Insertar el embed de Google Sheets o una captura del GANTT con las fechas reales de cada tarea y sus responsables.</div>
+      </div>
+    </div>
+
+    <div class="subsection" id="s5-2">
+      <div class="subsection-title">5.2 Infraestructura Administrativa</div>
+      <p>El equipo de desarrollo de SmartRACK es un grupo interdisciplinario conformado por estudiantes de séptimo año del Instituto Leonardo Murialdo, organizado bajo la supervisión académica de los profesores Diego Martini, Lourdes Pedaci, Maximiliano Ariza y Gisela Bianchi, y con AucaTek como empresa cliente. La estructura sigue un modelo de organización matricial orientado al proyecto.</p>
+
+      <div class="sub2-title">Integrantes y responsabilidades</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nombre</th><th>Área</th><th>Herramientas principales</th><th>Responsabilidades</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Ezequiel Morgado</strong></td><td>Project Manager · Backend</td><td>XAMPP, VS Code, phpMyAdmin, alwaysdata, GitHub, Claude</td><td>Desarrollo del portal web, base de datos MySQL, integración MQTT, ciberseguridad, deploy en producción, gestión completa del proyecto.</td></tr>
+            <tr><td><strong>Camilo Spinelli</strong></td><td>Hardware y Firmware</td><td>Arduino IDE, GitHub, Claude</td><td>Firmware ESP32 y sensores.</td></tr>
+            <tr><td><strong>Sofía Hermosilla</strong></td><td>Frontend</td><td>VS Code, Chrome DevTools, Lighthouse, GitHub, Claude</td><td>Diseño e implementación de la interfaz web, dashboards por rol, bocetos en papel.</td></tr>
+            <tr><td><strong>Violeta Martini</strong></td><td>Diseño Industrial</td><td>Fusion 360, AutoCAD</td><td>Diseño del gabinete PDU v1/v2 y prototipo físico del dispositivo.</td></tr>
+            <tr><td><strong>Ignacio Marticorena</strong></td><td>Multimedia</td><td>CapCut, Runway ML, Kling AI, Adobe Illustrator</td><td>Logo del proyecto, identidad visual, video promocional.</td></tr>
+            <tr><td><strong>Federico Sparta</strong></td><td>Electrónica</td><td>Arduino IDE, KiCad, Claude</td><td>PCB v1/v2, desarrollo del código para sensores y ESP32.</td></tr>
+            <tr><td><strong>Santiago Villarosa</strong></td><td>Electrónica</td><td>Arduino IDE, KiCad, Claude</td><td>PCB v1/v2, desarrollo del código para sensores y ESP32.</td></tr>
+            <tr><td><strong>Martín Barral</strong></td><td>Asesor Técnico</td><td>AutoCAD, Fusion 360</td><td>Revisión del diseño electrónico y PCB, construcción del prototipo físico v1.</td></tr>
+            <tr><td><strong>Diego Martini</strong></td><td>CEO AucaTek · Cliente</td><td>Google Sheets, WhatsApp</td><td>Definición de requerimientos, validación técnica y comercial, firma del contrato.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sub2-title">Herramientas por categoría</div>
+      <div class="tools-grid">
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">GitHub</div><div class="tool-desc">Control de versiones</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">WhatsApp</div><div class="tool-desc">Comunicación diaria</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">Google Sheets</div><div class="tool-desc">GANTT y seguimiento</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">VS Code</div><div class="tool-desc">Editor principal</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">XAMPP</div><div class="tool-desc">Entorno local</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">phpMyAdmin</div><div class="tool-desc">Gestión de BD</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">Arduino IDE</div><div class="tool-desc">Firmware ESP32</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">alwaysdata</div><div class="tool-desc">Hosting producción</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">Lighthouse</div><div class="tool-desc">Auditoría web · 96/82/100</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">Fusion 360</div><div class="tool-desc">Diseño 3D gabinete</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">AutoCAD</div><div class="tool-desc">Planos técnicos PCB</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">KiCad</div><div class="tool-desc">Diseño PCB</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">Claude (Anthropic)</div><div class="tool-desc">IA asistente de desarrollo</div></div></div>
+        <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">Chrome DevTools</div><div class="tool-desc">Depuración frontend</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <p><strong>SmartRACK ePDU Inteligente</strong> · Documentación Técnica v1.0 · Agosto 2026</p>
+    <p>AucaTek — innovate IT · Instituto Leonardo Murialdo · 7mo Informática A</p>
+    <p style="margin-top:8px;"><a href="https://github.com/ezemorgado07/smartrack" target="_blank" style="color:var(--celeste);">github.com/ezemorgado07/smartrack</a> · <a href="https://aucateksmartrack.alwaysdata.net" target="_blank" style="color:var(--celeste);">aucateksmartrack.alwaysdata.net</a></p>
+  </div>
+
+</main>
+
+<script>
+  // Sidebar active link on scroll
+  const sections = document.querySelectorAll('.doc-section, .subsection');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(n => n.classList.remove('active'));
+        const match = document.querySelector(`.nav-item[href="#${entry.target.id}"]`);
+        if (match) match.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-56px 0px -60% 0px', threshold: 0 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Close sidebar on mobile nav click
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelector('.sidebar').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
