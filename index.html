@@ -6,7 +6,7 @@
   <title>Documentación Técnica · SmartRACK ePDU</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
       --navy:    #23264f;
@@ -24,7 +24,7 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
 
     /* ── TOP BAR ── */
     .topbar {
@@ -205,36 +205,35 @@
 <!-- ── TOP BAR ── -->
 <header class="topbar">
   <div class="topbar-brand">
+    <!-- Reemplazar por: <img src="logo_smartrack.svg" alt="SmartRACK" style="height:32px;"> cuando esté disponible -->
     <div class="logo-dot"></div>
     <span>Smart<em>RACK</em></span>
   </div>
-  <div class="topbar-meta">Documentación Técnica v1.0 · AucaTek · 2026</div>
-  <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <!-- Reemplazar por: <img src="logo_murialdo.png" alt="Instituto Leonardo Murialdo" style="height:36px;filter:brightness(0) invert(1);"> cuando esté disponible -->
+    <div class="topbar-meta">Documentación Técnica v1.0</div>
+    <button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')"></button>
+  </div>
 </header>
 
 <!-- ── SIDEBAR ── -->
 <nav class="sidebar" id="sidebar">
-  <div class="nav-section">Primera sección</div>
-  <a class="nav-item active" href="#s1">1 · Control de Cambios</a>
-  <a class="nav-item" href="#s2">2 · Introducción</a>
+  <a class="nav-item active" href="#s1">1. Control de Cambios</a>
+  <a class="nav-item" href="#s2">2. Introducción</a>
   <a class="nav-item sub" href="#s2-1">2.1 Propósito</a>
   <a class="nav-item sub" href="#s2-2">2.2 Alcance</a>
   <a class="nav-item sub" href="#s2-3">2.3 Personal involucrado</a>
   <a class="nav-item sub" href="#s2-4">2.4 Definiciones y acrónimos</a>
   <a class="nav-item sub" href="#s2-5">2.5 Referencias</a>
   <a class="nav-item sub" href="#s2-6">2.6 Resumen ejecutivo</a>
-
-  <div class="nav-section">Segunda sección</div>
-  <a class="nav-item" href="#s3">3 · Descripción General</a>
+  <a class="nav-item" href="#s3">3. Descripción General</a>
   <a class="nav-item sub" href="#s3-1">3.1 Perspectiva</a>
   <a class="nav-item sub" href="#s3-2">3.2 Funcionalidad</a>
   <a class="nav-item sub" href="#s3-3">3.3 Usuarios</a>
   <a class="nav-item sub" href="#s3-4">3.4 Restricciones</a>
   <a class="nav-item sub" href="#s3-5">3.5 Suposiciones</a>
   <a class="nav-item sub" href="#s3-6">3.6 Evolución previsible</a>
-
-  <div class="nav-section">Tercera sección</div>
-  <a class="nav-item" href="#s4">4 · Requisitos Específicos</a>
+  <a class="nav-item" href="#s4">4. Requisitos Específicos</a>
   <a class="nav-item sub" href="#s4-1">4.1 Requerimientos Funcionales</a>
   <a class="nav-item sub" href="#s4-2">4.2 Interfaces de Usuario</a>
   <a class="nav-item sub" href="#s4-3">4.3 Interfaces de Hardware</a>
@@ -244,9 +243,7 @@
   <a class="nav-item sub2" href="#s4-4-3">4.4.3 Firmware</a>
   <a class="nav-item sub2" href="#s4-4-4">4.4.4 Modelo de BD</a>
   <a class="nav-item sub" href="#s4-5">4.5 Interfaces de Comunicación</a>
-
-  <div class="nav-section">Gestión</div>
-  <a class="nav-item" href="#s5">5 · Oferta de Gestión</a>
+  <a class="nav-item" href="#s5">5. Oferta de Gestión</a>
   <a class="nav-item sub" href="#s5-1">5.1 GANTT</a>
   <a class="nav-item sub" href="#s5-2">5.2 Infraestructura Administrativa</a>
 </nav>
@@ -259,13 +256,7 @@
     <div class="hero-eyebrow">Documentación Técnica · Instituto Leonardo Murialdo</div>
     <h1>Smart<span>RACK</span><br>ePDU Inteligente</h1>
     <p class="hero-sub">Sistema de distribución de energía electrónica con monitoreo en tiempo real, control remoto por toma y comunicación segura vía MQTT sobre TLS. Desarrollado para AucaTek.</p>
-    <div class="hero-badges">
-      <span class="badge badge-o">v1.0 — Agosto 2026</span>
-      <span class="badge">ESP32 + W5500</span>
-      <span class="badge">MQTT sobre TLS</span>
-      <span class="badge">PHP 8.2 + MySQL</span>
-      <span class="badge">4 tomas inteligentes</span>
-    </div>
+
     <div class="hero-meta">
       <div class="hero-meta-item"><label>Cliente</label><span>AucaTek — innovate IT</span></div>
       <div class="hero-meta-item"><label>Institución</label><span>Instituto Leonardo Murialdo</span></div>
@@ -287,14 +278,12 @@
         <thead><tr><th>Versión</th><th>Fecha</th><th>Responsable</th><th>Descripción del cambio</th></tr></thead>
         <tbody>
           <tr><td><span class="ver-badge">1.0</span></td><td>22/08/2026</td><td>Ezequiel Morgado</td><td>Creación del documento. Redacción de la Sección 2 — Introducción completa.</td></tr>
+          <tr><td><span class="ver-badge">1.1</span></td><td>04/09/2026</td><td>Ezequiel Morgado</td><td>Cambio de formato de documentación: de documento Word a página web (GitHub Pages). Contenido sin modificaciones.</td></tr>
           <tr><td>—</td><td>—</td><td>—</td><td>—</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="callout callout-note">
-      <div class="callout-icon">📋</div>
-      <div class="callout-body"><strong>A completar por el equipo</strong>Las fechas y versiones definitivas se cargan a medida que el proyecto avanza. Mantener una fila por cada cambio de alcance validado con Diego Martini (AucaTek).</div>
-    </div>
+
   </section>
 
   <!-- ══ 2. INTRODUCCIÓN ══ -->
@@ -318,18 +307,18 @@
         <table>
           <thead><tr><th>Componente / Funcionalidad</th><th>Incluido en v1</th><th>Previsto para v2</th></tr></thead>
           <tbody>
-            <tr><td>Control ON/OFF de 4 tomas inteligentes</td><td>✅ Sí</td><td>Sí</td></tr>
-            <tr><td>Monitoreo eléctrico en tiempo real (V, A, W, PF, Hz, kWh)</td><td>✅ Sí (Premium)</td><td>Sí (Premium)</td></tr>
-            <tr><td>Monitoreo de temperatura y humedad interna</td><td>✅ Sí (Premium)</td><td>Sí (Premium)</td></tr>
-            <tr><td>Alertas por umbral con notificación por correo</td><td>✅ Sí (Premium)</td><td>Sí</td></tr>
-            <tr><td>Portal web con 3 roles (Admin, Operator, Viewer)</td><td>✅ Sí</td><td>Sí</td></tr>
-            <tr><td>Exportación de datos históricos en CSV</td><td>✅ Sí (Premium)</td><td>Sí (Premium)</td></tr>
-            <tr><td>Sistema de licencias Normal/Premium</td><td>✅ Sí</td><td>Sí</td></tr>
-            <tr><td>PCB fabricada y gabinete industrial</td><td>✅ Sí</td><td>Sí (mejorado)</td></tr>
-            <tr><td>OTA (actualización de firmware inalámbrica)</td><td>❌ No</td><td>Sí</td></tr>
-            <tr><td>Display OLED en el dispositivo</td><td>❌ No</td><td>Sí</td></tr>
-            <tr><td>Broker MQTT propio (Mosquitto)</td><td>❌ No</td><td>Sí</td></tr>
-            <tr><td>Soporte completo para múltiples PDUs simultáneos</td><td>⚠️ Parcial</td><td>Completo</td></tr>
+            <tr><td>Control ON/OFF de 4 tomas inteligentes</td><td> Sí</td><td>Sí</td></tr>
+            <tr><td>Monitoreo eléctrico en tiempo real (V, A, W, PF, Hz, kWh)</td><td> Sí (Premium)</td><td>Sí (Premium)</td></tr>
+            <tr><td>Monitoreo de temperatura y humedad interna</td><td> Sí (Premium)</td><td>Sí (Premium)</td></tr>
+            <tr><td>Alertas por umbral con notificación por correo</td><td> Sí (Premium)</td><td>Sí</td></tr>
+            <tr><td>Portal web con 3 roles (Admin, Operator, Viewer)</td><td> Sí</td><td>Sí</td></tr>
+            <tr><td>Exportación de datos históricos en CSV</td><td> Sí (Premium)</td><td>Sí (Premium)</td></tr>
+            <tr><td>Sistema de licencias Normal/Premium</td><td> Sí</td><td>Sí</td></tr>
+            <tr><td>PCB fabricada y gabinete industrial</td><td> Sí</td><td>Sí (mejorado)</td></tr>
+            <tr><td>OTA (actualización de firmware inalámbrica)</td><td> No</td><td>Sí</td></tr>
+            <tr><td>Display OLED en el dispositivo</td><td> No</td><td>Sí</td></tr>
+            <tr><td>Broker MQTT propio (Mosquitto)</td><td> No</td><td>Sí</td></tr>
+            <tr><td>Soporte completo para múltiples PDUs simultáneos</td><td>️ Parcial</td><td>Completo</td></tr>
           </tbody>
         </table>
       </div>
@@ -642,12 +631,12 @@
       <div class="subsection-title">4.2 Interfaces de Usuario</div>
       <p>El portal web es el único punto de contacto del usuario con el sistema a nivel de software. Está diseñado con criterio de usabilidad: estado del sistema comunicado de forma clara, actualizaciones automáticas sin recargar la página, y diseño responsive para acceso desde PC o celular.</p>
       <div class="placeholder">
-        <div class="placeholder-icon">🖥️</div>
+        <div class="placeholder-icon">️</div>
         <div class="placeholder-title">Acá va la captura del Dashboard Principal</div>
         <div class="placeholder-desc">Insertar captura de pantalla del dashboard del Administrador mostrando el estado de las 4 tomas, métricas de telemetría en tiempo real y el gráfico de consumo.</div>
       </div>
       <div class="placeholder">
-        <div class="placeholder-icon">🔌</div>
+        <div class="placeholder-icon"></div>
         <div class="placeholder-title">Acá va la captura del Panel de Control de Tomas</div>
         <div class="placeholder-desc">Insertar captura mostrando el panel de tomas con los toggles ON/OFF, el estado de cada toma y el registro de últimas acciones.</div>
       </div>
@@ -669,11 +658,11 @@
         </table>
       </div>
       <div class="callout callout-warn">
-        <div class="callout-icon">⚠️</div>
+        <div class="callout-icon">️</div>
         <div class="callout-body"><strong>GPIO12 — Pin de bootstrap</strong>GPIO12 no puede usarse para control de relés. Si está en HIGH durante el arranque del ESP32, cambia el voltaje de la flash a 1.8V y el dispositivo no inicia.</div>
       </div>
       <div class="placeholder">
-        <div class="placeholder-icon">🔩</div>
+        <div class="placeholder-icon"></div>
         <div class="placeholder-title">Acá va el modelo 3D del gabinete (Violeta — Fusion 360)</div>
         <div class="placeholder-desc">Insertar renders del diseño 3D del gabinete PDU v2 con vistas frontal, lateral y trasera mostrando la ubicación de las tomas, el panel de LEDs y los conectores.</div>
       </div>
@@ -739,7 +728,7 @@
         <div class="der-wrap" id="der-container">
           <!-- El SVG del DER se inserta acá -->
           <div class="placeholder" style="border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.03);">
-            <div class="placeholder-icon">🗄️</div>
+            <div class="placeholder-icon">️</div>
             <div class="placeholder-title" style="color:#fff;">Acá va el diagrama DER (SmartRACK_DER.svg)</div>
             <div class="placeholder-desc" style="color:rgba(255,255,255,0.5);">Copiar el contenido del archivo SmartRACK_DER.svg y reemplazar este bloque con la etiqueta &lt;img src="SmartRACK_DER.svg"&gt; o inlinearlo directamente.</div>
           </div>
@@ -822,7 +811,7 @@
       <div class="sub2-title">4.5.6 SMTP — Backend ↔ Gmail</div>
       <p>El envío de correos se realiza mediante PHPMailer conectándose a smtp.gmail.com en el puerto 587 con autenticación STARTTLS. La cuenta de correo y la contraseña de aplicación se almacenan en el archivo .env del servidor y nunca se hardcodean en el código fuente.</p>
       <div class="callout callout-info">
-        <div class="callout-icon">ℹ️</div>
+        <div class="callout-icon">️</div>
         <div class="callout-body"><strong>Nota sobre el remitente</strong>La cuenta de correo actual es provisional y corresponde al entorno de desarrollo. En la versión comercial del producto, AucaTek reemplazará esta cuenta por una dirección oficial (ej. notificaciones@aucatek.com.ar) utilizando un servicio de correo transaccional como SendGrid o Mailgun. El destinatario de cada correo es el mail del usuario registrado en el portal — cada cliente recibe las alertas en su propia cuenta.</div>
       </div>
 
@@ -845,21 +834,21 @@
         <table>
           <thead><tr><th>Etapa</th><th>Tareas principales</th><th>Estado</th></tr></thead>
           <tbody>
-            <tr><td><strong>E0 · Inicio</strong></td><td>Definición del alcance, equipo y herramientas.</td><td>✅ Completa</td></tr>
-            <tr><td><strong>E1 · Config. de entornos</strong></td><td>Setup de GitHub, XAMPP, Arduino IDE, alwaysdata, HiveMQ Cloud.</td><td>✅ Completa</td></tr>
-            <tr><td><strong>E2 · Comunicación e integración</strong></td><td>MQTT sobre TLS, integración ESP32-backend, firmware v1.</td><td>✅ Completa</td></tr>
-            <tr><td><strong>E3 · Validación</strong></td><td>Pruebas de integración, corrección de bugs críticos.</td><td>✅ Completa</td></tr>
-            <tr><td><strong>E4 · Entorno web</strong></td><td>Dashboard por roles, autenticación, exportación CSV.</td><td>✅ Completa</td></tr>
-            <tr><td><strong>E5 · Ensamble y testing</strong></td><td>PCB, firmware v2.1, pruebas físicas, gabinete.</td><td>🔄 En curso</td></tr>
-            <tr><td><strong>E6 · Deploy</strong></td><td>Deploy en producción, HSTS, CSP, mqtt_worker.</td><td>✅ Completa</td></tr>
-            <tr><td><strong>E7 · Panel admin</strong></td><td>Gestión de usuarios, licencias, alertas.</td><td>✅ Completa</td></tr>
-            <tr><td><strong>E8 · Ciberseguridad</strong></td><td>Rate limiting, CSRF, security logs.</td><td>✅ Completa</td></tr>
-            <tr><td><strong>E9 · Documentación y lanzamiento</strong></td><td>Documentación técnica, manual, video, entrega final.</td><td>🔄 En curso</td></tr>
+            <tr><td><strong>E0 · Inicio</strong></td><td>Definición del alcance, equipo y herramientas.</td><td> Completa</td></tr>
+            <tr><td><strong>E1 · Config. de entornos</strong></td><td>Setup de GitHub, XAMPP, Arduino IDE, alwaysdata, HiveMQ Cloud.</td><td> Completa</td></tr>
+            <tr><td><strong>E2 · Comunicación e integración</strong></td><td>MQTT sobre TLS, integración ESP32-backend, firmware v1.</td><td> Completa</td></tr>
+            <tr><td><strong>E3 · Validación</strong></td><td>Pruebas de integración, corrección de bugs críticos.</td><td> Completa</td></tr>
+            <tr><td><strong>E4 · Entorno web</strong></td><td>Dashboard por roles, autenticación, exportación CSV.</td><td> Completa</td></tr>
+            <tr><td><strong>E5 · Ensamble y testing</strong></td><td>PCB, firmware v2.1, pruebas físicas, gabinete.</td><td> En curso</td></tr>
+            <tr><td><strong>E6 · Deploy</strong></td><td>Deploy en producción, HSTS, CSP, mqtt_worker.</td><td> Completa</td></tr>
+            <tr><td><strong>E7 · Panel admin</strong></td><td>Gestión de usuarios, licencias, alertas.</td><td> Completa</td></tr>
+            <tr><td><strong>E8 · Ciberseguridad</strong></td><td>Rate limiting, CSRF, security logs.</td><td> Completa</td></tr>
+            <tr><td><strong>E9 · Documentación y lanzamiento</strong></td><td>Documentación técnica, manual, video, entrega final.</td><td> En curso</td></tr>
           </tbody>
         </table>
       </div>
       <div class="placeholder">
-        <div class="placeholder-icon">📅</div>
+        <div class="placeholder-icon"></div>
         <div class="placeholder-title">Acá va el GANTT completo (Google Sheets o imagen)</div>
         <div class="placeholder-desc">Insertar el embed de Google Sheets o una captura del GANTT con las fechas reales de cada tarea y sus responsables.</div>
       </div>
