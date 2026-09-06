@@ -96,7 +96,8 @@ El hardware está basado en un ESP32 con módulo Ethernet W5500 que se comunica 
 ## Links
 
 - **Portal web (producción):** https://aucateksmartrack.alwaysdata.net
-- **Documentación del proyecto:** https://ezemorgado07.github.io/smartrack/smartrack-docs/ 
+- **Documentación del proyecto (web):** https://ezemorgado07.github.io/smartrack/smartrack-docs/
+- **Documentación del proyecto (PDF):** https://github.com/ezemorgado07/smartrack/blob/main/SmartRACK_DocumentaciónTécnica.pdf
 - **Manual de usuario:** [https://raw.githubusercontent.com/ezemorgado07/smartrack/main/SmartRACK_Manual_Usuario.pdf](https://github.com/ezemorgado07/smartrack/blob/main/SmartRACK_Manual_Usuario.pdf)
 
 ---
