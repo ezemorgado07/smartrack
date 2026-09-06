@@ -207,7 +207,8 @@ mysqli_close($conex);
                 </div>
             </div>
             <div class="row row-cards mb-4">
-                <?php foreach ($outlets as $outlet): $num=(int)$outlet['outlet_number']; ?>
+                <?php foreach ($outlets as $outlet): $num=(int)$outlet['outlet_number'];
+                if ($num === 5) continue; ?>
                 <div class="col-sm-6 col-lg">
                     <div class="card outlet-card" style="cursor:default;">
                         <div class="card-body text-center p-3">
@@ -269,7 +270,7 @@ mysqli_close($conex);
                                         <?php echo $es_premium ? 'Premium' : 'Normal'; ?>
                                     </span>
                                 </dd>
-                                <dt class="col-5" style="color:var(--at-text-muted);">Tomas ON</dt><dd class="col-7 fw-bold"><?php echo count(array_filter($outlets,fn($o)=>$o['is_on']));?> / 5</dd>
+                                <dt class="col-5" style="color:var(--at-text-muted);">Tomas ON</dt><dd class="col-7 fw-bold"><?php echo count(array_filter($outlets,fn($o)=>$o['is_on']&&(int)$o['outlet_number']!==5));?> / 4</dd>
                                 <dt class="col-5" style="color:var(--at-text-muted);">Energía</dt><dd class="col-7 fw-bold"><?php echo $telem?number_format($telem['energy_kwh'],3):'--';?> kWh</dd>
                                 <dt class="col-5" style="color:var(--at-text-muted);">IP Local</dt><dd class="col-7 fw-bold"><?php echo htmlspecialchars($pdu['ip_local'] ?? '—'); ?></dd>
                             </dl>
@@ -341,6 +342,7 @@ function actualizarDashboard(codigoPdu){
         if(!d||!d.success)return;
         if(d.outlets){
             d.outlets.forEach(function(o){
+                if(o.outlet_number===5)return; // toma fija, no mostrar
                 const dot=document.getElementById('dot-toma-'+o.outlet_number);
                 const text=document.getElementById('status-text-'+o.outlet_number);
                 if(!dot)return;

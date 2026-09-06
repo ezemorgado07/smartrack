@@ -14,9 +14,9 @@ $uid = (int) $_SESSION['usuario_id'];
 
 // ── Leer codigo_pdu opcional (GET o POST) ────────────────────
 $codigo_pdu_param = '';
-if (!empty($_POST['codigo_pdu']) && is_string($_POST['codigo_pdu'])) {
+if (!empty($_POST['codigo_pdu'])) {
     $codigo_pdu_param = trim($_POST['codigo_pdu']);
-} elseif (!empty($_GET['codigo_pdu']) && is_string($_GET['codigo_pdu'])) {
+} elseif (!empty($_GET['codigo_pdu'])) {
     $codigo_pdu_param = trim($_GET['codigo_pdu']);
 }
 
@@ -128,6 +128,7 @@ if ($modo === 'gracia') {
          FROM outlets WHERE codigo_pdu = '$cod_sql' ORDER BY outlet_number ASC");
     $outlets = [];
     while ($row = mysqli_fetch_assoc($outlets_res)) {
+        if ((int) $row['outlet_number'] === 5) continue; // toma fija, no exponer
         $outlets[] = [
             'outlet_number' => (int) $row['outlet_number'],
             'label'         => $row['label'],
@@ -170,6 +171,7 @@ $outlets_res = mysqli_query($conex,
 
 $outlets = [];
 while ($row = mysqli_fetch_assoc($outlets_res)) {
+    if ((int) $row['outlet_number'] === 5) continue; // toma fija, no exponer en API
     $outlets[] = [
         'outlet_number' => (int) $row['outlet_number'],
         'label'         => $row['label'],
@@ -220,34 +222,6 @@ $aht_res = mysqli_query($conex,
 
 $telemetry_aht10 = mysqli_fetch_assoc($aht_res);
 
-// ── Alertas activas del PDU ───────────────────────────────────
-$alertas_res = mysqli_query($conex,
-    "SELECT id, tipo, valor_detectado, umbral_configurado, created_at
-     FROM alertas
-     WHERE codigo_pdu = '$cod_sql' AND estado = 'activa'
-     ORDER BY created_at DESC");
-
-$labels_alerta = [
-    'temperature_c' => 'Temperatura del rack superó el umbral máximo',
-    'humidity_pct'  => 'Humedad del rack fuera de rango',
-    'current_a'     => 'Corriente superó el umbral máximo',
-    'power_w'       => 'Potencia superó el umbral máximo',
-    'frequency_hz'  => 'Frecuencia de red fuera de rango',
-    'voltage_v'     => 'Voltaje fuera de rango',
-];
-
-$alertas_activas = [];
-while ($al = mysqli_fetch_assoc($alertas_res)) {
-    $alertas_activas[] = [
-        'id'                 => (int)   $al['id'],
-        'tipo'               => $al['tipo'],
-        'mensaje'            => $labels_alerta[$al['tipo']] ?? $al['tipo'],
-        'valor_detectado'    => (float) $al['valor_detectado'],
-        'umbral_configurado' => (float) $al['umbral_configurado'],
-        'created_at'         => $al['created_at'],
-    ];
-}
-
 mysqli_close($conex);
 
 if (!$telemetry) {
@@ -263,8 +237,7 @@ if (!$telemetry) {
             'humidity_pct'      => (float) $telemetry_aht10['humidity_pct'],
             'reading_timestamp' => $telemetry_aht10['aht_ts'],
             'is_buffered'       => (int)   $telemetry_aht10['aht_buffered']
-        ] : null,
-        'alertas_activas' => $alertas_activas,
+        ] : null
     ]);
     exit();
 }
@@ -290,7 +263,6 @@ echo json_encode([
         'humidity_pct'      => (float) $telemetry_aht10['humidity_pct'],
         'reading_timestamp' => $telemetry_aht10['aht_ts'],
         'is_buffered'       => (int)   $telemetry_aht10['aht_buffered']
-    ] : null,
-    'alertas_activas' => $alertas_activas,
+    ] : null
 ]);
 ?>

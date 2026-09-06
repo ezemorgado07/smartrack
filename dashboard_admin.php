@@ -401,12 +401,13 @@ mysqli_close($conex);
                     <i class="fas fa-plug" style="color: var(--at-orange);"></i>
                     Control de Tomas
                     <span class="badge ms-2" style="background: var(--at-orange); color:#fff;" id="badge-tomas-on">
-                        <?php echo count(array_filter($outlets, fn($o) => $o['is_on'])); ?> / 5 ON
+                        <?php echo count(array_filter($outlets, fn($o) => $o['is_on'] && (int)$o['outlet_number'] !== 5)); ?> / 4 ON
                     </span>
                 </div>
             </div>
             <div class="row row-cards mb-4">
                 <?php foreach ($outlets as $outlet): ?>
+                <?php if ((int)$outlet['outlet_number'] === 5) continue; ?>
                 <?php $num = (int)$outlet['outlet_number']; ?>
                 <div class="col-sm-6 col-lg">
                     <div class="card outlet-card" id="card-toma-<?php echo $num; ?>">
@@ -482,7 +483,7 @@ mysqli_close($conex);
                                 </dd>
                                 <dt class="col-5" style="color: var(--at-text-muted);">Tomas ON</dt>
                                 <dd class="col-7 fw-bold" id="resumen-tomas-on">
-                                    <?php echo count(array_filter($outlets, fn($o) => $o['is_on'])); ?> / 5
+                                    <?php echo count(array_filter($outlets, fn($o) => $o['is_on'] && (int)$o['outlet_number'] !== 5)); ?> / 4
                                 </dd>
                                 <dt class="col-5" style="color: var(--at-text-muted);">Energía</dt>
                                 <dd class="col-7 fw-bold"><?php echo $telem ? number_format($telem['energy_kwh'],3) : '--'; ?> kWh</dd>
@@ -638,8 +639,8 @@ document.querySelectorAll('.outlet-switch').forEach(function(chk) {
                 }
                 let tomasOn = 0;
                 document.querySelectorAll('.outlet-switch').forEach(t => { if (t.checked) tomasOn++; });
-                document.getElementById('badge-tomas-on').textContent  = tomasOn + ' / 5 ON';
-                document.getElementById('resumen-tomas-on').textContent = tomasOn + ' / 5';
+                document.getElementById('badge-tomas-on').textContent  = tomasOn + ' / 4 ON';
+                document.getElementById('resumen-tomas-on').textContent = tomasOn + ' / 4';
             } else {
                 alert('Error: ' + (data.error || 'No se pudo actualizar la toma.'));
                 self.checked = !self.checked;
@@ -660,6 +661,7 @@ function actualizarDashboard(codigoPdu) {
         if (d.outlets) {
             let tomasOn = 0;
             d.outlets.forEach(function(o) {
+                if (o.outlet_number === 5) return; // toma fija, no mostrar
                 const num = o.outlet_number;
                 const dot  = document.getElementById('dot-toma-' + num);
                 const text = document.getElementById('status-text-' + num);
@@ -678,8 +680,8 @@ function actualizarDashboard(codigoPdu) {
             });
             const badge = document.getElementById('badge-tomas-on');
             const resumen = document.getElementById('resumen-tomas-on');
-            if (badge)   badge.textContent   = tomasOn + ' / 5 ON';
-            if (resumen) resumen.textContent = tomasOn + ' / 5';
+            if (badge)   badge.textContent   = tomasOn + ' / 4 ON';
+            if (resumen) resumen.textContent = tomasOn + ' / 4';
         }
 
         // Métricas solo si premium y hay telemetría

@@ -208,12 +208,13 @@ mysqli_close($conex);
                     <i class="fas fa-plug" style="color:var(--at-orange);"></i>
                     Control de Tomas
                     <span class="badge ms-2" style="background:var(--at-orange);color:#fff;" id="badge-tomas-on">
-                        <?php echo count(array_filter($outlets,fn($o)=>$o['is_on'])); ?> / 5 ON
+                        <?php echo count(array_filter($outlets,fn($o)=>$o['is_on']&&(int)$o['outlet_number']!==5)); ?> / 4 ON
                     </span>
                 </div>
             </div>
             <div class="row row-cards mb-4">
-                <?php foreach ($outlets as $outlet): $num=(int)$outlet['outlet_number']; ?>
+                <?php foreach ($outlets as $outlet): $num=(int)$outlet['outlet_number'];
+                if ($num === 5) continue; ?>
                 <div class="col-sm-6 col-lg">
                     <div class="card outlet-card" id="card-toma-<?php echo $num; ?>">
                         <div class="card-body text-center p-3">
@@ -281,7 +282,7 @@ mysqli_close($conex);
                                         <?php echo $es_premium ? 'Premium' : 'Normal'; ?>
                                     </span>
                                 </dd>
-                                <dt class="col-5" style="color:var(--at-text-muted);">Tomas ON</dt><dd class="col-7 fw-bold" id="resumen-tomas-on"><?php echo count(array_filter($outlets,fn($o)=>$o['is_on']));?> / 5</dd>
+                                <dt class="col-5" style="color:var(--at-text-muted);">Tomas ON</dt><dd class="col-7 fw-bold" id="resumen-tomas-on"><?php echo count(array_filter($outlets,fn($o)=>$o['is_on']&&(int)$o['outlet_number']!==5));?> / 4</dd>
                                 <dt class="col-5" style="color:var(--at-text-muted);">Energía</dt><dd class="col-7 fw-bold"><?php echo $telem?number_format($telem['energy_kwh'],3):'--';?> kWh</dd>
                                 <dt class="col-5" style="color:var(--at-text-muted);">IP Local</dt><dd class="col-7 fw-bold"><?php echo htmlspecialchars($pdu['ip_local'] ?? '—'); ?></dd>
                             </dl>
@@ -361,8 +362,8 @@ document.querySelectorAll('.outlet-switch').forEach(function(chk){
                 if(newState===1){ind.classList.remove('status-gray');ind.classList.add('status-green');st.textContent='● ON';st.className='fw-bold ms-1 outlet-status-on';}
                 else{ind.classList.remove('status-green');ind.classList.add('status-gray');st.textContent='● OFF';st.className='fw-bold ms-1 outlet-status-off';}
                 let on=0;document.querySelectorAll('.outlet-switch').forEach(t=>{if(t.checked)on++;});
-                document.getElementById('badge-tomas-on').textContent=on+' / 5 ON';
-                document.getElementById('resumen-tomas-on').textContent=on+' / 5';
+                document.getElementById('badge-tomas-on').textContent=on+' / 4 ON';
+                document.getElementById('resumen-tomas-on').textContent=on+' / 4';
             } else {alert('Error: '+(data.error||'No se pudo actualizar.'));self.checked=!self.checked;}
         }).catch(function(){console.error('Error toggle_outlet');self.checked=!self.checked;});
     });
@@ -376,6 +377,7 @@ function actualizarDashboard(codigoPdu){
         if(d.outlets){
             let on=0;
             d.outlets.forEach(function(o){
+                if(o.outlet_number===5)return; // toma fija, no mostrar
                 const num=o.outlet_number;
                 const dot=document.getElementById('dot-toma-'+num);
                 const text=document.getElementById('status-text-'+num);
@@ -385,7 +387,7 @@ function actualizarDashboard(codigoPdu){
                 else{dot.classList.remove('status-green');dot.classList.add('status-gray');if(text){text.textContent='● OFF';text.className='fw-bold ms-1 outlet-status-off';}if(chk)chk.checked=false;}
             });
             const b=document.getElementById('badge-tomas-on');const r=document.getElementById('resumen-tomas-on');
-            if(b)b.textContent=on+' / 5 ON';if(r)r.textContent=on+' / 5';
+            if(b)b.textContent=on+' / 4 ON';if(r)r.textContent=on+' / 4';
         }
         if(d.modo==='premium'&&d.telemetry){
             const t=d.telemetry;
