@@ -1,0 +1,557 @@
+<svg width="1240" height="1336" viewBox="0 0 1240 1336" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#8899bb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect width="1240" height="1336" fill="#f8f9fb"/>
+<text x="620" y="36" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#23264f">SmartRACK — Diagrama Entidad-Relación</text>
+<path d="M270,190 L300.0,190 L300.0,190 L330,190" fill="none" stroke="#5f7dbe" stroke-width="1.5"  marker-end="url(#arr)"/>
+<path d="M560,190 L590.0,190 L590.0,168 L620,168" fill="none" stroke="#4a7c59" stroke-width="1.5"  marker-end="url(#arr)"/>
+<path d="M445,320 L300.0,320 L300.0,360 L155,360" fill="none" stroke="#7a4a8c" stroke-width="1.5"  marker-end="url(#arr)"/>
+<path d="M445,320 L445,340.0 L445,340.0 L445,360" fill="none" stroke="#7a4a8c" stroke-width="1.5"  marker-end="url(#arr)"/>
+<path d="M270,490 L300.0,490 L300.0,468 L330,468" fill="none" stroke="#7a4a8c" stroke-width="1.5"  marker-end="url(#arr)"/>
+<path d="M155,320 L155,490.0 L155,490.0 L155,660" fill="none" stroke="#e67e22" stroke-width="1.5"  marker-end="url(#arr)"/>
+<path d="M735,576 L445.0,576 L445.0,660 L155,660" fill="none" stroke="#e67e22" stroke-width="1.5"  marker-end="url(#arr)"/>
+<path d="M445,320 L445,468.0 L445,468.0 L445,616" fill="none" stroke="#2c7a7b" stroke-width="1.5"  marker-end="url(#arr)"/>
+<path d="M445,320 L445,607.0 L155,607.0 L155,894" fill="none" stroke="#888888" stroke-width="1.5"  marker-end="url(#arr)"/>
+<rect x="43" y="63" width="230" height="260" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="40" y="60" width="230" height="260" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="40" y="60" width="230" height="34" rx="8" fill="#23264f"/>
+<rect x="40" y="86" width="230" height="8" fill="#23264f"/>
+<text x="155" y="78" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">users</text>
+<rect x="41" y="97" width="228" height="22" fill="#f2f2f2"/>
+<rect x="54" y="101" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="65" y="108" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="82" y="108" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="256" y="108" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="41" y="119" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="130" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">nombre</text>
+<text x="256" y="130" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="141" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="152" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">apellido</text>
+<text x="256" y="152" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="163" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="174" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">empresa</text>
+<text x="256" y="174" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="185" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="196" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="256" y="196" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="207" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="218" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">email</text>
+<text x="256" y="218" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="229" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="240" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">user</text>
+<text x="256" y="240" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="251" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="262" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">rol</text>
+<text x="256" y="262" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">enum</text>
+<rect x="41" y="273" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="284" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">is_active</text>
+<text x="256" y="284" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="41" y="295" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="306" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">created_at</text>
+<text x="256" y="306" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="40" y="314" width="230" height="6" rx="4" fill="#23264f" opacity="0.3"/>
+<rect x="333" y="63" width="230" height="260" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="330" y="60" width="230" height="260" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="330" y="60" width="230" height="34" rx="8" fill="#5f7dbe"/>
+<rect x="330" y="86" width="230" height="8" fill="#5f7dbe"/>
+<text x="445" y="78" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">pdus</text>
+<rect x="331" y="97" width="228" height="22" fill="#f2f2f2"/>
+<rect x="344" y="101" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="355" y="108" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="372" y="108" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="546" y="108" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="331" y="119" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="130" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="546" y="130" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="331" y="141" width="228" height="22" fill="#f2f2f2"/>
+<text x="344" y="152" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">mac_address</text>
+<text x="546" y="152" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="331" y="163" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="174" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">ip_local</text>
+<text x="546" y="174" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="331" y="185" width="228" height="22" fill="#f2f2f2"/>
+<text x="344" y="196" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">nombre</text>
+<text x="546" y="196" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="331" y="207" width="228" height="22" fill="#ffffff"/>
+<rect x="344" y="211" width="22" height="14" rx="3" fill="#5f7dbe"/>
+<text x="355" y="218" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">FK</text>
+<text x="372" y="218" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">user_id</text>
+<text x="546" y="218" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="331" y="229" width="228" height="22" fill="#f2f2f2"/>
+<text x="344" y="240" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">modo</text>
+<text x="546" y="240" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">enum</text>
+<rect x="331" y="251" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="262" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">activo</text>
+<text x="546" y="262" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="331" y="273" width="228" height="22" fill="#f2f2f2"/>
+<text x="344" y="284" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">fecha_registro</text>
+<text x="546" y="284" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="331" y="295" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="306" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">ultimo_contacto</text>
+<text x="546" y="306" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="330" y="314" width="230" height="6" rx="4" fill="#5f7dbe" opacity="0.3"/>
+<rect x="623" y="63" width="230" height="216" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="620" y="60" width="230" height="216" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="620" y="60" width="230" height="34" rx="8" fill="#4a7c59"/>
+<rect x="620" y="86" width="230" height="8" fill="#4a7c59"/>
+<text x="735" y="78" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">outlets</text>
+<rect x="621" y="97" width="228" height="22" fill="#f2f2f2"/>
+<rect x="634" y="101" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="645" y="108" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="662" y="108" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="836" y="108" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="621" y="119" width="228" height="22" fill="#ffffff"/>
+<rect x="634" y="123" width="22" height="14" rx="3" fill="#5f7dbe"/>
+<text x="645" y="130" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">FK</text>
+<text x="662" y="130" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">device_id</text>
+<text x="836" y="130" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="621" y="141" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="152" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="836" y="152" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="621" y="163" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="174" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">outlet_number</text>
+<text x="836" y="174" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="621" y="185" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="196" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">label</text>
+<text x="836" y="196" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="621" y="207" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="218" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">is_on</text>
+<text x="836" y="218" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="621" y="229" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="240" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">is_locked</text>
+<text x="836" y="240" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="621" y="251" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="262" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">updated_at</text>
+<text x="836" y="262" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="620" y="270" width="230" height="6" rx="4" fill="#4a7c59" opacity="0.3"/>
+<rect x="913" y="63" width="230" height="194" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="910" y="60" width="230" height="194" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="910" y="60" width="230" height="34" rx="8" fill="#4a7c59"/>
+<rect x="910" y="86" width="230" height="8" fill="#4a7c59"/>
+<text x="1025" y="78" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">outlet_commands</text>
+<rect x="911" y="97" width="228" height="22" fill="#f2f2f2"/>
+<rect x="924" y="101" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="935" y="108" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="952" y="108" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="1126" y="108" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="911" y="119" width="228" height="22" fill="#ffffff"/>
+<text x="924" y="130" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="1126" y="130" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="911" y="141" width="228" height="22" fill="#f2f2f2"/>
+<text x="924" y="152" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">outlet_number</text>
+<text x="1126" y="152" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="911" y="163" width="228" height="22" fill="#ffffff"/>
+<text x="924" y="174" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">command</text>
+<text x="1126" y="174" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">enum</text>
+<rect x="911" y="185" width="228" height="22" fill="#f2f2f2"/>
+<text x="924" y="196" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">status</text>
+<text x="1126" y="196" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">enum</text>
+<rect x="911" y="207" width="228" height="22" fill="#ffffff"/>
+<text x="924" y="218" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">created_at</text>
+<text x="1126" y="218" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="911" y="229" width="228" height="22" fill="#f2f2f2"/>
+<text x="924" y="240" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">executed_at</text>
+<text x="1126" y="240" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="910" y="248" width="230" height="6" rx="4" fill="#4a7c59" opacity="0.3"/>
+<rect x="43" y="363" width="230" height="260" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="40" y="360" width="230" height="260" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="40" y="360" width="230" height="34" rx="8" fill="#7a4a8c"/>
+<rect x="40" y="386" width="230" height="8" fill="#7a4a8c"/>
+<text x="155" y="378" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">licencias</text>
+<rect x="41" y="397" width="228" height="22" fill="#f2f2f2"/>
+<rect x="54" y="401" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="65" y="408" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="82" y="408" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="256" y="408" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="41" y="419" width="228" height="22" fill="#ffffff"/>
+<rect x="54" y="423" width="22" height="14" rx="3" fill="#5f7dbe"/>
+<text x="65" y="430" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">FK</text>
+<text x="82" y="430" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="256" y="430" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="441" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="452" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_activacion</text>
+<text x="256" y="452" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="463" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="474" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">duracion_anos</text>
+<text x="256" y="474" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="41" y="485" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="496" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">fecha_inicio</text>
+<text x="256" y="496" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">date</text>
+<rect x="41" y="507" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="518" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">fecha_vencimiento</text>
+<text x="256" y="518" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">date</text>
+<rect x="41" y="529" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="540" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">estado</text>
+<text x="256" y="540" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">enum</text>
+<rect x="41" y="551" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="562" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">aviso_10_enviado</text>
+<text x="256" y="562" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="41" y="573" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="584" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">aviso_3_enviado</text>
+<text x="256" y="584" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="41" y="595" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="606" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">fecha_fin_gracia</text>
+<text x="256" y="606" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">date</text>
+<rect x="40" y="614" width="230" height="6" rx="4" fill="#7a4a8c" opacity="0.3"/>
+<rect x="333" y="363" width="230" height="216" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="330" y="360" width="230" height="216" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="330" y="360" width="230" height="34" rx="8" fill="#7a4a8c"/>
+<rect x="330" y="386" width="230" height="8" fill="#7a4a8c"/>
+<text x="445" y="378" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">pagos</text>
+<rect x="331" y="397" width="228" height="22" fill="#f2f2f2"/>
+<rect x="344" y="401" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="355" y="408" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="372" y="408" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="546" y="408" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="331" y="419" width="228" height="22" fill="#ffffff"/>
+<rect x="344" y="423" width="22" height="14" rx="3" fill="#5f7dbe"/>
+<text x="355" y="430" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">FK</text>
+<text x="372" y="430" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">licencia_id</text>
+<text x="546" y="430" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="331" y="441" width="228" height="22" fill="#f2f2f2"/>
+<rect x="344" y="445" width="22" height="14" rx="3" fill="#5f7dbe"/>
+<text x="355" y="452" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">FK</text>
+<text x="372" y="452" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="546" y="452" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="331" y="463" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="474" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">monto</text>
+<text x="546" y="474" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="331" y="485" width="228" height="22" fill="#f2f2f2"/>
+<text x="344" y="496" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">moneda</text>
+<text x="546" y="496" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="331" y="507" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="518" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">estado</text>
+<text x="546" y="518" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">enum</text>
+<rect x="331" y="529" width="228" height="22" fill="#f2f2f2"/>
+<text x="344" y="540" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">metodo_pago</text>
+<text x="546" y="540" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="331" y="551" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="562" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">created_at</text>
+<text x="546" y="562" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="330" y="570" width="230" height="6" rx="4" fill="#7a4a8c" opacity="0.3"/>
+<rect x="623" y="319" width="230" height="260" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="620" y="316" width="230" height="260" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="620" y="316" width="230" height="34" rx="8" fill="#c0392b"/>
+<rect x="620" y="342" width="230" height="8" fill="#c0392b"/>
+<text x="735" y="334" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">alertas</text>
+<rect x="621" y="353" width="228" height="22" fill="#f2f2f2"/>
+<rect x="634" y="357" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="645" y="364" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="662" y="364" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="836" y="364" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">bigint</text>
+<rect x="621" y="375" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="386" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="836" y="386" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="621" y="397" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="408" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">tipo</text>
+<text x="836" y="408" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="621" y="419" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="430" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">mensaje</text>
+<text x="836" y="430" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">text</text>
+<rect x="621" y="441" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="452" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">valor_detectado</text>
+<text x="836" y="452" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="621" y="463" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="474" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">umbral_configurado</text>
+<text x="836" y="474" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="621" y="485" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="496" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">estado</text>
+<text x="836" y="496" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">enum</text>
+<rect x="621" y="507" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="518" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">notificado_mail</text>
+<text x="836" y="518" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="621" y="529" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="540" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">created_at</text>
+<text x="836" y="540" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="621" y="551" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="562" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">resolved_at</text>
+<text x="836" y="562" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="620" y="570" width="230" height="6" rx="4" fill="#c0392b" opacity="0.3"/>
+<rect x="913" y="297" width="230" height="194" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="910" y="294" width="230" height="194" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="910" y="294" width="230" height="34" rx="8" fill="#c0392b"/>
+<rect x="910" y="320" width="230" height="8" fill="#c0392b"/>
+<text x="1025" y="312" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">configuracion_alertas</text>
+<rect x="911" y="331" width="228" height="22" fill="#f2f2f2"/>
+<rect x="924" y="335" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="935" y="342" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="952" y="342" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="1126" y="342" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="911" y="353" width="228" height="22" fill="#ffffff"/>
+<text x="924" y="364" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="1126" y="364" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="911" y="375" width="228" height="22" fill="#f2f2f2"/>
+<text x="924" y="386" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">metrica</text>
+<text x="1126" y="386" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="911" y="397" width="228" height="22" fill="#ffffff"/>
+<text x="924" y="408" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">umbral_min</text>
+<text x="1126" y="408" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="911" y="419" width="228" height="22" fill="#f2f2f2"/>
+<text x="924" y="430" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">umbral_max</text>
+<text x="1126" y="430" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="911" y="441" width="228" height="22" fill="#ffffff"/>
+<text x="924" y="452" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">activo</text>
+<text x="1126" y="452" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="911" y="463" width="228" height="22" fill="#f2f2f2"/>
+<text x="924" y="474" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">created_at</text>
+<text x="1126" y="474" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="910" y="482" width="230" height="6" rx="4" fill="#c0392b" opacity="0.3"/>
+<rect x="43" y="663" width="230" height="194" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="40" y="660" width="230" height="194" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="40" y="660" width="230" height="34" rx="8" fill="#e67e22"/>
+<rect x="40" y="686" width="230" height="8" fill="#e67e22"/>
+<text x="155" y="678" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">notificaciones</text>
+<rect x="41" y="697" width="228" height="22" fill="#f2f2f2"/>
+<rect x="54" y="701" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="65" y="708" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="82" y="708" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="256" y="708" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">bigint</text>
+<rect x="41" y="719" width="228" height="22" fill="#ffffff"/>
+<rect x="54" y="723" width="22" height="14" rx="3" fill="#5f7dbe"/>
+<text x="65" y="730" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">FK</text>
+<text x="82" y="730" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">user_id</text>
+<text x="256" y="730" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="41" y="741" width="228" height="22" fill="#f2f2f2"/>
+<rect x="54" y="745" width="22" height="14" rx="3" fill="#5f7dbe"/>
+<text x="65" y="752" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">FK</text>
+<text x="82" y="752" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">alerta_id</text>
+<text x="256" y="752" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">bigint</text>
+<rect x="41" y="763" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="774" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="256" y="774" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="785" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="796" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">titulo</text>
+<text x="256" y="796" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="807" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="818" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">leida</text>
+<text x="256" y="818" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="41" y="829" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="840" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">created_at</text>
+<text x="256" y="840" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="40" y="848" width="230" height="6" rx="4" fill="#e67e22" opacity="0.3"/>
+<rect x="333" y="619" width="230" height="194" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="330" y="616" width="230" height="194" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="330" y="616" width="230" height="34" rx="8" fill="#2c7a7b"/>
+<rect x="330" y="642" width="230" height="8" fill="#2c7a7b"/>
+<text x="445" y="634" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">event_logs</text>
+<rect x="331" y="653" width="228" height="22" fill="#f2f2f2"/>
+<rect x="344" y="657" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="355" y="664" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="372" y="664" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="546" y="664" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">bigint</text>
+<rect x="331" y="675" width="228" height="22" fill="#ffffff"/>
+<rect x="344" y="679" width="22" height="14" rx="3" fill="#5f7dbe"/>
+<text x="355" y="686" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">FK</text>
+<text x="372" y="686" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">device_id</text>
+<text x="546" y="686" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="331" y="697" width="228" height="22" fill="#f2f2f2"/>
+<text x="344" y="708" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">user_id</text>
+<text x="546" y="708" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="331" y="719" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="730" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">event_type</text>
+<text x="546" y="730" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="331" y="741" width="228" height="22" fill="#f2f2f2"/>
+<text x="344" y="752" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">severity</text>
+<text x="546" y="752" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">enum</text>
+<rect x="331" y="763" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="774" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">message</text>
+<text x="546" y="774" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">text</text>
+<rect x="331" y="785" width="228" height="22" fill="#f2f2f2"/>
+<text x="344" y="796" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">event_timestamp</text>
+<text x="546" y="796" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="330" y="804" width="230" height="6" rx="4" fill="#2c7a7b" opacity="0.3"/>
+<rect x="623" y="619" width="230" height="260" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="620" y="616" width="230" height="260" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="620" y="616" width="230" height="34" rx="8" fill="#2c7a7b"/>
+<rect x="620" y="642" width="230" height="8" fill="#2c7a7b"/>
+<text x="735" y="634" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">telemetry_pzem</text>
+<rect x="621" y="653" width="228" height="22" fill="#f2f2f2"/>
+<rect x="634" y="657" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="645" y="664" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="662" y="664" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="836" y="664" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">bigint</text>
+<rect x="621" y="675" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="686" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="836" y="686" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="621" y="697" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="708" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">reading_timestamp</text>
+<text x="836" y="708" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="621" y="719" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="730" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">voltage_v</text>
+<text x="836" y="730" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="621" y="741" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="752" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">current_a</text>
+<text x="836" y="752" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="621" y="763" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="774" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">power_w</text>
+<text x="836" y="774" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="621" y="785" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="796" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">power_factor</text>
+<text x="836" y="796" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="621" y="807" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="818" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">frequency_hz</text>
+<text x="836" y="818" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="621" y="829" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="840" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">energy_kwh</text>
+<text x="836" y="840" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="621" y="851" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="862" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">is_buffered</text>
+<text x="836" y="862" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="620" y="870" width="230" height="6" rx="4" fill="#2c7a7b" opacity="0.3"/>
+<rect x="913" y="531" width="230" height="172" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="910" y="528" width="230" height="172" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="910" y="528" width="230" height="34" rx="8" fill="#2c7a7b"/>
+<rect x="910" y="554" width="230" height="8" fill="#2c7a7b"/>
+<text x="1025" y="546" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">telemetry_aht10</text>
+<rect x="911" y="565" width="228" height="22" fill="#f2f2f2"/>
+<rect x="924" y="569" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="935" y="576" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="952" y="576" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="1126" y="576" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">bigint</text>
+<rect x="911" y="587" width="228" height="22" fill="#ffffff"/>
+<text x="924" y="598" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="1126" y="598" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="911" y="609" width="228" height="22" fill="#f2f2f2"/>
+<text x="924" y="620" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">reading_timestamp</text>
+<text x="1126" y="620" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="911" y="631" width="228" height="22" fill="#ffffff"/>
+<text x="924" y="642" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">temperature_c</text>
+<text x="1126" y="642" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="911" y="653" width="228" height="22" fill="#f2f2f2"/>
+<text x="924" y="664" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">humidity_pct</text>
+<text x="1126" y="664" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="911" y="675" width="228" height="22" fill="#ffffff"/>
+<text x="924" y="686" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">is_buffered</text>
+<text x="1126" y="686" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="910" y="694" width="230" height="6" rx="4" fill="#2c7a7b" opacity="0.3"/>
+<rect x="43" y="897" width="230" height="194" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="40" y="894" width="230" height="194" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="40" y="894" width="230" height="34" rx="8" fill="#888888"/>
+<rect x="40" y="920" width="230" height="8" fill="#888888"/>
+<text x="155" y="912" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">telemetry</text>
+<rect x="41" y="931" width="228" height="22" fill="#f2f2f2"/>
+<rect x="54" y="935" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="65" y="942" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="82" y="942" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="256" y="942" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">bigint</text>
+<rect x="41" y="953" width="228" height="22" fill="#ffffff"/>
+<rect x="54" y="957" width="22" height="14" rx="3" fill="#5f7dbe"/>
+<text x="65" y="964" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">FK</text>
+<text x="82" y="964" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">device_id</text>
+<text x="256" y="964" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="41" y="975" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="986" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">reading_timestamp</text>
+<text x="256" y="986" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="41" y="997" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="1008" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">voltage_v</text>
+<text x="256" y="1008" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="41" y="1019" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="1030" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">current_a</text>
+<text x="256" y="1030" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="41" y="1041" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="1052" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">power_w</text>
+<text x="256" y="1052" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">decimal</text>
+<rect x="41" y="1063" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="1074" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">is_buffered</text>
+<text x="256" y="1074" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="40" y="1082" width="230" height="6" rx="4" fill="#888888" opacity="0.3"/>
+<rect x="333" y="853" width="230" height="172" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="330" y="850" width="230" height="172" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="330" y="850" width="230" height="34" rx="8" fill="#555555"/>
+<rect x="330" y="876" width="230" height="8" fill="#555555"/>
+<text x="445" y="868" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">api_tokens</text>
+<rect x="331" y="887" width="228" height="22" fill="#f2f2f2"/>
+<rect x="344" y="891" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="355" y="898" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="372" y="898" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="546" y="898" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="331" y="909" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="920" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">codigo_pdu</text>
+<text x="546" y="920" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="331" y="931" width="228" height="22" fill="#f2f2f2"/>
+<text x="344" y="942" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">token</text>
+<text x="546" y="942" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="331" y="953" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="964" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">created_at</text>
+<text x="546" y="964" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="331" y="975" width="228" height="22" fill="#f2f2f2"/>
+<text x="344" y="986" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">last_used</text>
+<text x="546" y="986" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="331" y="997" width="228" height="22" fill="#ffffff"/>
+<text x="344" y="1008" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">activo</text>
+<text x="546" y="1008" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">tinyint</text>
+<rect x="330" y="1016" width="230" height="6" rx="4" fill="#555555" opacity="0.3"/>
+<rect x="623" y="919" width="230" height="150" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="620" y="916" width="230" height="150" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="620" y="916" width="230" height="34" rx="8" fill="#555555"/>
+<rect x="620" y="942" width="230" height="8" fill="#555555"/>
+<text x="735" y="934" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">login_attempts</text>
+<rect x="621" y="953" width="228" height="22" fill="#f2f2f2"/>
+<rect x="634" y="957" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="645" y="964" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="662" y="964" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="836" y="964" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="621" y="975" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="986" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">ip</text>
+<text x="836" y="986" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="621" y="997" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="1008" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">intentos</text>
+<text x="836" y="1008" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="621" y="1019" width="228" height="22" fill="#ffffff"/>
+<text x="634" y="1030" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">primer_intento</text>
+<text x="836" y="1030" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="621" y="1041" width="228" height="22" fill="#f2f2f2"/>
+<text x="634" y="1052" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">bloqueado_hasta</text>
+<text x="836" y="1052" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="620" y="1060" width="230" height="6" rx="4" fill="#555555" opacity="0.3"/>
+<rect x="913" y="743" width="230" height="150" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="910" y="740" width="230" height="150" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="910" y="740" width="230" height="34" rx="8" fill="#555555"/>
+<rect x="910" y="766" width="230" height="8" fill="#555555"/>
+<text x="1025" y="758" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">security_logs</text>
+<rect x="911" y="777" width="228" height="22" fill="#f2f2f2"/>
+<rect x="924" y="781" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="935" y="788" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="952" y="788" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="1126" y="788" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="911" y="799" width="228" height="22" fill="#ffffff"/>
+<text x="924" y="810" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">evento</text>
+<text x="1126" y="810" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="911" y="821" width="228" height="22" fill="#f2f2f2"/>
+<text x="924" y="832" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">usuario</text>
+<text x="1126" y="832" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="911" y="843" width="228" height="22" fill="#ffffff"/>
+<text x="924" y="854" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">ip</text>
+<text x="1126" y="854" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="911" y="865" width="228" height="22" fill="#f2f2f2"/>
+<text x="924" y="876" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">created_at</text>
+<text x="1126" y="876" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="910" y="884" width="230" height="6" rx="4" fill="#555555" opacity="0.3"/>
+<rect x="43" y="1131" width="230" height="128" rx="8" fill="#cccccc" opacity="0.4"/>
+<rect x="40" y="1128" width="230" height="128" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1"/>
+<rect x="40" y="1128" width="230" height="34" rx="8" fill="#555555"/>
+<rect x="40" y="1154" width="230" height="8" fill="#555555"/>
+<text x="155" y="1146" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="white">recuperar</text>
+<rect x="41" y="1165" width="228" height="22" fill="#f2f2f2"/>
+<rect x="54" y="1169" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="65" y="1176" text-anchor="middle" dominant-baseline="central" font-family="Arial,sans-serif" font-size="8" font-weight="bold" fill="white">PK</text>
+<text x="82" y="1176" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">id</text>
+<text x="256" y="1176" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">int</text>
+<rect x="41" y="1187" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="1198" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">email</text>
+<text x="256" y="1198" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="1209" width="228" height="22" fill="#f2f2f2"/>
+<text x="54" y="1220" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">TOKEN</text>
+<text x="256" y="1220" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">varchar</text>
+<rect x="41" y="1231" width="228" height="22" fill="#ffffff"/>
+<text x="54" y="1242" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">FECHA_ALTA</text>
+<text x="256" y="1242" text-anchor="end" dominant-baseline="central" font-family="Arial,sans-serif" font-size="10" fill="#555555" font-style="italic">datetime</text>
+<rect x="40" y="1250" width="230" height="6" rx="4" fill="#555555" opacity="0.3"/>
+<rect x="40" y="1286" width="22" height="14" rx="3" fill="#f49825"/>
+<text x="68" y="1293" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">Clave primaria (PK)</text>
+<rect x="190" y="1286" width="22" height="14" rx="3" fill="#5f7dbe"/>
+<text x="218" y="1293" dominant-baseline="central" font-family="Arial,sans-serif" font-size="11" fill="#23264f">Clave foránea (FK)</text>
+</svg>
