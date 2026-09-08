@@ -1,0 +1,391 @@
+<svg width="1400" height="1200" viewBox="0 0 1400 1200" xmlns="http://www.w3.org/2000/svg" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpjZTg2OTYzYy1iN2QxLTQ4MzctODljYy0wMzJlZGFlYjU5M2YAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaFlt/vGhi424FVIRIIkPilAAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpmNDBkYWRjMy1iMjk2LTRhMmYtOWYzOS0xMjdlMzk2NDEzYjFscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoRYKFlMPa/0oOIkHHNSC13gAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggmPAvEAq1h7uMoKugOqxsw0XI2XdEjYW1s3842cx5BKCkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaOAPb+agQSp+A45/FwaGjRQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCCa/I7NHDocpTb0Qiyh0la/A8cWpO8SSlLRVNkkWuDJy2RuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBiaZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmNlODY5NjNjLWI3ZDEtNDgzNy04OWNjLTAzMmVkYWViNTkzZi9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjJiMjE3NmU5LTYxNmEtNDMwNC1iZmQ5LWViN2E1NDMwNWFkMXJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCCY8C8QCrWHu4ygq6A6rGzDRcjZd0SNhbWzfzjZzHkEoKJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggDG/ol3tS9Vob46VvFbtiZr175q8ZfG615hlNrnKxxhKiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggB0UZDZMQe3cDA8pKUtOiBS4Lja+aO9MxtBawCPQtVBF0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQM1BlIHb7ludt7D2N6NgnD7vAGs5EQKOFDUQSRFv+WPWrsxU8B9oC5IOUxrV1Ak1X6USEHcS7umTsELXE06bhy0=</c2pa:manifest></metadata>
+<defs><marker id="a23264f" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 2L8 5L2 8" fill="none" stroke="#23264f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="a5f7dbe" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 2L8 5L2 8" fill="none" stroke="#5f7dbe" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="a16a34a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 2L8 5L2 8" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="a7c3aed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 2L8 5L2 8" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="adc2626" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 2L8 5L2 8" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker>
+<marker id="aaab4cc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 2L8 5L2 8" fill="none" stroke="#aab4cc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="1400" height="1200" fill="#f8f9fb"/>
+<text x="700" y="36" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#23264f">SmartRACK — Normalización 3FN · Esquema Copo de Nieve</text>
+<text x="700" y="56" text-anchor="middle" font-family="Arial" font-size="11" fill="#888">Solo para documentación — la BD de producción mantiene su estructura original</text>
+<rect x="43" y="103" width="200" height="134" rx="8" fill="#cccccc" opacity="0.3"/>
+<rect x="40" y="100" width="200" height="134" rx="8" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+<rect x="40" y="100" width="200" height="30" rx="8" fill="#7c3aed"/>
+<rect x="40" y="124" width="200" height="6" fill="#7c3aed"/>
+<rect x="188" y="106" width="46" height="14" rx="7" fill="rgba(255,255,255,0.18)"/>
+<text x="211" y="113" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="700" fill="#ffffff" letter-spacing="0.5">DIM</text>
+<text x="140" y="116" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff">dim_tipos_alerta</text>
+<rect x="41" y="132" width="198" height="20" fill="#f9fafb"/>
+<rect x="50" y="136" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="60" y="142" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="74" y="142" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">id</text>
+<text x="232" y="142" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="41" y="152" width="198" height="20" fill="#ffffff"/>
+<text x="50" y="162" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">codigo</text>
+<text x="232" y="162" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="41" y="172" width="198" height="20" fill="#f9fafb"/>
+<text x="50" y="182" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">descripcion</text>
+<text x="232" y="182" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="41" y="192" width="198" height="20" fill="#ffffff"/>
+<text x="50" y="202" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">umbral_min</text>
+<text x="232" y="202" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="41" y="212" width="198" height="20" fill="#f9fafb"/>
+<text x="50" y="222" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">umbral_max</text>
+<text x="232" y="222" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="40" y="230" width="200" height="4" rx="3" fill="#7c3aed" opacity="0.2"/>
+<rect x="43" y="383" width="200" height="194" rx="8" fill="#cccccc" opacity="0.3"/>
+<rect x="40" y="380" width="200" height="194" rx="8" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+<rect x="40" y="380" width="200" height="30" rx="8" fill="#dc2626"/>
+<rect x="40" y="404" width="200" height="6" fill="#dc2626"/>
+<rect x="188" y="386" width="46" height="14" rx="7" fill="rgba(255,255,255,0.18)"/>
+<text x="211" y="393" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="700" fill="#ffffff" letter-spacing="0.5">DIM</text>
+<text x="140" y="396" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff">dim_alertas</text>
+<rect x="41" y="412" width="198" height="20" fill="#f9fafb"/>
+<rect x="50" y="416" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="60" y="422" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="74" y="422" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">id</text>
+<text x="232" y="422" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">bigint</text>
+<rect x="41" y="432" width="198" height="20" fill="#ffffff"/>
+<rect x="50" y="436" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="60" y="442" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="74" y="442" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">pdu_id</text>
+<text x="232" y="442" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="41" y="452" width="198" height="20" fill="#f9fafb"/>
+<rect x="50" y="456" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="60" y="462" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="74" y="462" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">tipo_alerta_id</text>
+<text x="232" y="462" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="41" y="472" width="198" height="20" fill="#ffffff"/>
+<text x="50" y="482" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">valor_detectado</text>
+<text x="232" y="482" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="41" y="492" width="198" height="20" fill="#f9fafb"/>
+<text x="50" y="502" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">umbral_configurado</text>
+<text x="232" y="502" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="41" y="512" width="198" height="20" fill="#ffffff"/>
+<text x="50" y="522" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">estado</text>
+<text x="232" y="522" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">enum</text>
+<rect x="41" y="532" width="198" height="20" fill="#f9fafb"/>
+<text x="50" y="542" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">notificado_mail</text>
+<text x="232" y="542" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">tinyint</text>
+<rect x="41" y="552" width="198" height="20" fill="#ffffff"/>
+<text x="50" y="562" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">created_at</text>
+<text x="232" y="562" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">datetime</text>
+<rect x="40" y="570" width="200" height="4" rx="3" fill="#dc2626" opacity="0.2"/>
+<rect x="313" y="83" width="200" height="94" rx="8" fill="#cccccc" opacity="0.3"/>
+<rect x="310" y="80" width="200" height="94" rx="8" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+<rect x="310" y="80" width="200" height="30" rx="8" fill="#7c3aed"/>
+<rect x="310" y="104" width="200" height="6" fill="#7c3aed"/>
+<rect x="458" y="86" width="46" height="14" rx="7" fill="rgba(255,255,255,0.18)"/>
+<text x="481" y="93" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="700" fill="#ffffff" letter-spacing="0.5">DIM</text>
+<text x="410" y="96" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff">dim_roles</text>
+<rect x="311" y="112" width="198" height="20" fill="#f9fafb"/>
+<rect x="320" y="116" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="330" y="122" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="344" y="122" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">id</text>
+<text x="502" y="122" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="311" y="132" width="198" height="20" fill="#ffffff"/>
+<text x="320" y="142" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">nombre</text>
+<text x="502" y="142" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="311" y="152" width="198" height="20" fill="#f9fafb"/>
+<text x="320" y="162" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">descripcion</text>
+<text x="502" y="162" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="310" y="170" width="200" height="4" rx="3" fill="#7c3aed" opacity="0.2"/>
+<rect x="313" y="263" width="200" height="174" rx="8" fill="#cccccc" opacity="0.3"/>
+<rect x="310" y="260" width="200" height="174" rx="8" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+<rect x="310" y="260" width="200" height="30" rx="8" fill="#5f7dbe"/>
+<rect x="310" y="284" width="200" height="6" fill="#5f7dbe"/>
+<rect x="458" y="266" width="46" height="14" rx="7" fill="rgba(255,255,255,0.18)"/>
+<text x="481" y="273" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="700" fill="#ffffff" letter-spacing="0.5">DIM</text>
+<text x="410" y="276" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff">dim_users</text>
+<rect x="311" y="292" width="198" height="20" fill="#f9fafb"/>
+<rect x="320" y="296" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="330" y="302" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="344" y="302" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">id</text>
+<text x="502" y="302" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="311" y="312" width="198" height="20" fill="#ffffff"/>
+<rect x="320" y="316" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="330" y="322" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="344" y="322" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">rol_id</text>
+<text x="502" y="322" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="311" y="332" width="198" height="20" fill="#f9fafb"/>
+<text x="320" y="342" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">nombre</text>
+<text x="502" y="342" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="311" y="352" width="198" height="20" fill="#ffffff"/>
+<text x="320" y="362" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">apellido</text>
+<text x="502" y="362" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="311" y="372" width="198" height="20" fill="#f9fafb"/>
+<text x="320" y="382" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">email</text>
+<text x="502" y="382" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="311" y="392" width="198" height="20" fill="#ffffff"/>
+<text x="320" y="402" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">user</text>
+<text x="502" y="402" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="311" y="412" width="198" height="20" fill="#f9fafb"/>
+<text x="320" y="422" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">is_active</text>
+<text x="502" y="422" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">tinyint</text>
+<rect x="310" y="430" width="200" height="4" rx="3" fill="#5f7dbe" opacity="0.2"/>
+<rect x="313" y="563" width="200" height="254" rx="8" fill="#cccccc" opacity="0.3"/>
+<rect x="310" y="560" width="200" height="254" rx="8" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+<rect x="310" y="560" width="200" height="30" rx="8" fill="#23264f"/>
+<rect x="310" y="584" width="200" height="6" fill="#23264f"/>
+<rect x="458" y="566" width="46" height="14" rx="7" fill="rgba(255,255,255,0.18)"/>
+<text x="481" y="573" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="700" fill="#ffffff" letter-spacing="0.5">HECHO</text>
+<text x="410" y="576" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff">telemetry_pzem</text>
+<rect x="311" y="592" width="198" height="20" fill="#f9fafb"/>
+<rect x="320" y="596" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="330" y="602" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="344" y="602" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">id</text>
+<text x="502" y="602" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">bigint</text>
+<rect x="311" y="612" width="198" height="20" fill="#ffffff"/>
+<rect x="320" y="616" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="330" y="622" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="344" y="622" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">pdu_id</text>
+<text x="502" y="622" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="311" y="632" width="198" height="20" fill="#f9fafb"/>
+<rect x="320" y="636" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="330" y="642" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="344" y="642" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">sesion_id</text>
+<text x="502" y="642" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">bigint</text>
+<rect x="311" y="652" width="198" height="20" fill="#ffffff"/>
+<text x="320" y="662" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">voltage_v</text>
+<text x="502" y="662" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="311" y="672" width="198" height="20" fill="#f9fafb"/>
+<text x="320" y="682" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">current_a</text>
+<text x="502" y="682" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="311" y="692" width="198" height="20" fill="#ffffff"/>
+<text x="320" y="702" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">power_w</text>
+<text x="502" y="702" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="311" y="712" width="198" height="20" fill="#f9fafb"/>
+<text x="320" y="722" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">power_factor</text>
+<text x="502" y="722" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="311" y="732" width="198" height="20" fill="#ffffff"/>
+<text x="320" y="742" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">frequency_hz</text>
+<text x="502" y="742" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="311" y="752" width="198" height="20" fill="#f9fafb"/>
+<text x="320" y="762" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">energy_kwh</text>
+<text x="502" y="762" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="311" y="772" width="198" height="20" fill="#ffffff"/>
+<text x="320" y="782" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">is_buffered</text>
+<text x="502" y="782" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">tinyint</text>
+<rect x="311" y="792" width="198" height="20" fill="#f9fafb"/>
+<text x="320" y="802" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">reading_timestamp</text>
+<text x="502" y="802" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">datetime</text>
+<rect x="310" y="810" width="200" height="4" rx="3" fill="#23264f" opacity="0.2"/>
+<rect x="313" y="883" width="200" height="174" rx="8" fill="#cccccc" opacity="0.3"/>
+<rect x="310" y="880" width="200" height="174" rx="8" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+<rect x="310" y="880" width="200" height="30" rx="8" fill="#23264f"/>
+<rect x="310" y="904" width="200" height="6" fill="#23264f"/>
+<rect x="458" y="886" width="46" height="14" rx="7" fill="rgba(255,255,255,0.18)"/>
+<text x="481" y="893" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="700" fill="#ffffff" letter-spacing="0.5">HECHO</text>
+<text x="410" y="896" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff">telemetry_aht10</text>
+<rect x="311" y="912" width="198" height="20" fill="#f9fafb"/>
+<rect x="320" y="916" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="330" y="922" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="344" y="922" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">id</text>
+<text x="502" y="922" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">bigint</text>
+<rect x="311" y="932" width="198" height="20" fill="#ffffff"/>
+<rect x="320" y="936" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="330" y="942" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="344" y="942" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">pdu_id</text>
+<text x="502" y="942" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="311" y="952" width="198" height="20" fill="#f9fafb"/>
+<rect x="320" y="956" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="330" y="962" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="344" y="962" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">sesion_id</text>
+<text x="502" y="962" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">bigint</text>
+<rect x="311" y="972" width="198" height="20" fill="#ffffff"/>
+<text x="320" y="982" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">temperature_c</text>
+<text x="502" y="982" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="311" y="992" width="198" height="20" fill="#f9fafb"/>
+<text x="320" y="1002" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">humidity_pct</text>
+<text x="502" y="1002" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">decimal</text>
+<rect x="311" y="1012" width="198" height="20" fill="#ffffff"/>
+<text x="320" y="1022" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">is_buffered</text>
+<text x="502" y="1022" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">tinyint</text>
+<rect x="311" y="1032" width="198" height="20" fill="#f9fafb"/>
+<text x="320" y="1042" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">reading_timestamp</text>
+<text x="502" y="1042" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">datetime</text>
+<rect x="310" y="1050" width="200" height="4" rx="3" fill="#23264f" opacity="0.2"/>
+<rect x="583" y="343" width="200" height="194" rx="8" fill="#cccccc" opacity="0.3"/>
+<rect x="580" y="340" width="200" height="194" rx="8" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+<rect x="580" y="340" width="200" height="30" rx="8" fill="#5f7dbe"/>
+<rect x="580" y="364" width="200" height="6" fill="#5f7dbe"/>
+<rect x="728" y="346" width="46" height="14" rx="7" fill="rgba(255,255,255,0.18)"/>
+<text x="751" y="353" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="700" fill="#ffffff" letter-spacing="0.5">DIM</text>
+<text x="680" y="356" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff">dim_pdus</text>
+<rect x="581" y="372" width="198" height="20" fill="#f9fafb"/>
+<rect x="590" y="376" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="600" y="382" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="614" y="382" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">id</text>
+<text x="772" y="382" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="581" y="392" width="198" height="20" fill="#ffffff"/>
+<rect x="590" y="396" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="600" y="402" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="614" y="402" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">user_id</text>
+<text x="772" y="402" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="581" y="412" width="198" height="20" fill="#f9fafb"/>
+<text x="590" y="422" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">codigo_pdu</text>
+<text x="772" y="422" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="581" y="432" width="198" height="20" fill="#ffffff"/>
+<text x="590" y="442" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">mac_address</text>
+<text x="772" y="442" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="581" y="452" width="198" height="20" fill="#f9fafb"/>
+<text x="590" y="462" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">ip_local</text>
+<text x="772" y="462" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="581" y="472" width="198" height="20" fill="#ffffff"/>
+<text x="590" y="482" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">nombre</text>
+<text x="772" y="482" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="581" y="492" width="198" height="20" fill="#f9fafb"/>
+<text x="590" y="502" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">modo</text>
+<text x="772" y="502" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">enum</text>
+<rect x="581" y="512" width="198" height="20" fill="#ffffff"/>
+<text x="590" y="522" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">activo</text>
+<text x="772" y="522" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">tinyint</text>
+<rect x="580" y="530" width="200" height="4" rx="3" fill="#5f7dbe" opacity="0.2"/>
+<rect x="583" y="763" width="200" height="134" rx="8" fill="#cccccc" opacity="0.3"/>
+<rect x="580" y="760" width="200" height="134" rx="8" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+<rect x="580" y="760" width="200" height="30" rx="8" fill="#16a34a"/>
+<rect x="580" y="784" width="200" height="6" fill="#16a34a"/>
+<rect x="728" y="766" width="46" height="14" rx="7" fill="rgba(255,255,255,0.18)"/>
+<text x="751" y="773" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="700" fill="#ffffff" letter-spacing="0.5">DIM</text>
+<text x="680" y="776" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff">dim_sesiones</text>
+<rect x="581" y="792" width="198" height="20" fill="#f9fafb"/>
+<rect x="590" y="796" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="600" y="802" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="614" y="802" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">id</text>
+<text x="772" y="802" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">bigint</text>
+<rect x="581" y="812" width="198" height="20" fill="#ffffff"/>
+<rect x="590" y="816" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="600" y="822" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="614" y="822" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">pdu_id</text>
+<text x="772" y="822" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="581" y="832" width="198" height="20" fill="#f9fafb"/>
+<text x="590" y="842" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">inicio</text>
+<text x="772" y="842" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">datetime</text>
+<rect x="581" y="852" width="198" height="20" fill="#ffffff"/>
+<text x="590" y="862" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">fin</text>
+<text x="772" y="862" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">datetime</text>
+<rect x="581" y="872" width="198" height="20" fill="#f9fafb"/>
+<text x="590" y="882" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">duracion_seg</text>
+<text x="772" y="882" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="580" y="890" width="200" height="4" rx="3" fill="#16a34a" opacity="0.2"/>
+<rect x="853" y="203" width="200" height="154" rx="8" fill="#cccccc" opacity="0.3"/>
+<rect x="850" y="200" width="200" height="154" rx="8" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+<rect x="850" y="200" width="200" height="30" rx="8" fill="#5f7dbe"/>
+<rect x="850" y="224" width="200" height="6" fill="#5f7dbe"/>
+<rect x="998" y="206" width="46" height="14" rx="7" fill="rgba(255,255,255,0.18)"/>
+<text x="1021" y="213" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="700" fill="#ffffff" letter-spacing="0.5">DIM</text>
+<text x="950" y="216" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff">dim_outlets</text>
+<rect x="851" y="232" width="198" height="20" fill="#f9fafb"/>
+<rect x="860" y="236" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="870" y="242" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="884" y="242" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">id</text>
+<text x="1042" y="242" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="851" y="252" width="198" height="20" fill="#ffffff"/>
+<rect x="860" y="256" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="870" y="262" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="884" y="262" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">pdu_id</text>
+<text x="1042" y="262" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="851" y="272" width="198" height="20" fill="#f9fafb"/>
+<text x="860" y="282" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">outlet_number</text>
+<text x="1042" y="282" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">tinyint</text>
+<rect x="851" y="292" width="198" height="20" fill="#ffffff"/>
+<text x="860" y="302" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">label</text>
+<text x="1042" y="302" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="851" y="312" width="198" height="20" fill="#f9fafb"/>
+<text x="860" y="322" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">is_on</text>
+<text x="1042" y="322" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">tinyint</text>
+<rect x="851" y="332" width="198" height="20" fill="#ffffff"/>
+<text x="860" y="342" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">is_locked</text>
+<text x="1042" y="342" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">tinyint</text>
+<rect x="850" y="350" width="200" height="4" rx="3" fill="#5f7dbe" opacity="0.2"/>
+<rect x="853" y="543" width="200" height="174" rx="8" fill="#cccccc" opacity="0.3"/>
+<rect x="850" y="540" width="200" height="174" rx="8" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+<rect x="850" y="540" width="200" height="30" rx="8" fill="#16a34a"/>
+<rect x="850" y="564" width="200" height="6" fill="#16a34a"/>
+<rect x="998" y="546" width="46" height="14" rx="7" fill="rgba(255,255,255,0.18)"/>
+<text x="1021" y="553" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="700" fill="#ffffff" letter-spacing="0.5">DIM</text>
+<text x="950" y="556" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff">dim_licencias</text>
+<rect x="851" y="572" width="198" height="20" fill="#f9fafb"/>
+<rect x="860" y="576" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="870" y="582" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="884" y="582" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">id</text>
+<text x="1042" y="582" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="851" y="592" width="198" height="20" fill="#ffffff"/>
+<rect x="860" y="596" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="870" y="602" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="884" y="602" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">pdu_id</text>
+<text x="1042" y="602" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="851" y="612" width="198" height="20" fill="#f9fafb"/>
+<rect x="860" y="616" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="870" y="622" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="884" y="622" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">tipo_lic_id</text>
+<text x="1042" y="622" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="851" y="632" width="198" height="20" fill="#ffffff"/>
+<text x="860" y="642" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">codigo_activacion</text>
+<text x="1042" y="642" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="851" y="652" width="198" height="20" fill="#f9fafb"/>
+<text x="860" y="662" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">fecha_inicio</text>
+<text x="1042" y="662" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">date</text>
+<rect x="851" y="672" width="198" height="20" fill="#ffffff"/>
+<text x="860" y="682" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">fecha_vencimiento</text>
+<text x="1042" y="682" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">date</text>
+<rect x="851" y="692" width="198" height="20" fill="#f9fafb"/>
+<text x="860" y="702" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">estado</text>
+<text x="1042" y="702" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">enum</text>
+<rect x="850" y="710" width="200" height="4" rx="3" fill="#16a34a" opacity="0.2"/>
+<rect x="1123" y="423" width="200" height="114" rx="8" fill="#cccccc" opacity="0.3"/>
+<rect x="1120" y="420" width="200" height="114" rx="8" fill="#ffffff" stroke="#ddd" stroke-width="1"/>
+<rect x="1120" y="420" width="200" height="30" rx="8" fill="#7c3aed"/>
+<rect x="1120" y="444" width="200" height="6" fill="#7c3aed"/>
+<rect x="1268" y="426" width="46" height="14" rx="7" fill="rgba(255,255,255,0.18)"/>
+<text x="1291" y="433" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="700" fill="#ffffff" letter-spacing="0.5">DIM</text>
+<text x="1220" y="436" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="11" font-weight="bold" fill="#ffffff">dim_tipos_licencia</text>
+<rect x="1121" y="452" width="198" height="20" fill="#f9fafb"/>
+<rect x="1130" y="456" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="1140" y="462" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="1154" y="462" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">id</text>
+<text x="1312" y="462" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="1121" y="472" width="198" height="20" fill="#ffffff"/>
+<text x="1130" y="482" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">nombre</text>
+<text x="1312" y="482" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="1121" y="492" width="198" height="20" fill="#f9fafb"/>
+<text x="1130" y="502" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">duracion_meses</text>
+<text x="1312" y="502" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">int</text>
+<rect x="1121" y="512" width="198" height="20" fill="#ffffff"/>
+<text x="1130" y="522" dominant-baseline="central" font-family="Arial" font-size="10" fill="#23264f">descripcion</text>
+<text x="1312" y="522" text-anchor="end" dominant-baseline="central" font-family="Arial" font-size="9" fill="#999" font-style="italic">varchar</text>
+<rect x="1120" y="530" width="200" height="4" rx="3" fill="#7c3aed" opacity="0.2"/>
+<path d="M410,560 L545,560 L545,534 L680,534" fill="none" stroke="#aab4cc" stroke-width="1.8"  marker-end="url(#aaab4cc)"/>
+<path d="M410,880 L545,880 L545,894 L680,894" fill="none" stroke="#aab4cc" stroke-width="1.8"  marker-end="url(#aaab4cc)"/>
+<path d="M410,814 L545,814 L545,760 L680,760" fill="none" stroke="#aab4cc" stroke-width="1.8"  marker-end="url(#aaab4cc)"/>
+<path d="M310,687 L310,560 L410,560 L410,434" fill="none" stroke="#aab4cc" stroke-width="1.8"  marker-end="url(#aaab4cc)"/>
+<path d="M310,687 L310,582 L240,582 L240,477" fill="none" stroke="#aab4cc" stroke-width="1.8"  marker-end="url(#aaab4cc)"/>
+<path d="M510,687 L510,482 L850,482 L850,277" fill="none" stroke="#aab4cc" stroke-width="1.8"  marker-end="url(#aaab4cc)"/>
+<path d="M510,687 L680,687 L680,627 L850,627" fill="none" stroke="#aab4cc" stroke-width="1.8"  marker-end="url(#aaab4cc)"/>
+<path d="M510,967 L510,897 L580,897 L580,827" fill="none" stroke="#aab4cc" stroke-width="1.8"  marker-end="url(#aaab4cc)"/>
+<path d="M780,437 L780,357 L850,357 L850,277" fill="none" stroke="#aab4cc" stroke-width="1.8"  marker-end="url(#aaab4cc)"/>
+<path d="M780,437 L780,532 L850,532 L850,627" fill="none" stroke="#aab4cc" stroke-width="1.8"  marker-end="url(#aaab4cc)"/>
+<path d="M580,437 L580,392 L510,392 L510,347" fill="none" stroke="#aab4cc" stroke-width="1.8"  marker-end="url(#aaab4cc)"/>
+<path d="M410,260 L410,217 L410,217 L410,174" fill="none" stroke="#7c3aed" stroke-width="1.8"  marker-end="url(#a7c3aed)"/>
+<path d="M1050,627 L1050,552 L1120,552 L1120,477" fill="none" stroke="#7c3aed" stroke-width="1.8"  marker-end="url(#a7c3aed)"/>
+<path d="M40,477 L40,322 L240,322 L240,167" fill="none" stroke="#7c3aed" stroke-width="1.8"  marker-end="url(#a7c3aed)"/>
+<rect x="40" y="1090" width="520" height="90" rx="8" fill="#ffffff" stroke="#ddd"/>
+<text x="54" y="1108" font-family="Arial" font-size="11" font-weight="bold" fill="#23264f">Leyenda</text>
+<rect x="54" y="1119" width="12" height="12" rx="3" fill="#23264f"/>
+<text x="71" y="1127" font-family="Arial" font-size="10" fill="#555">Tabla de hechos</text>
+<rect x="224" y="1119" width="12" height="12" rx="3" fill="#5f7dbe"/>
+<text x="241" y="1127" font-family="Arial" font-size="10" fill="#555">Dimensión principal</text>
+<rect x="394" y="1119" width="12" height="12" rx="3" fill="#7c3aed"/>
+<text x="411" y="1127" font-family="Arial" font-size="10" fill="#555">Subdimensión (copo de nieve)</text>
+<rect x="54" y="1139" width="12" height="12" rx="3" fill="#16a34a"/>
+<text x="71" y="1147" font-family="Arial" font-size="10" fill="#555">Dimensión derivada</text>
+<rect x="224" y="1139" width="12" height="12" rx="3" fill="#dc2626"/>
+<text x="241" y="1147" font-family="Arial" font-size="10" fill="#555">Dimensión de alertas</text>
+<rect x="54" y="1159" width="20" height="12" rx="3" fill="#f49825"/>
+<text x="64" y="1167" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">PK</text>
+<text x="79" y="1167" font-family="Arial" font-size="10" fill="#555">Clave primaria</text>
+<rect x="194" y="1159" width="20" height="12" rx="3" fill="#5f7dbe"/>
+<text x="204" y="1167" text-anchor="middle" dominant-baseline="central" font-family="Arial" font-size="7" font-weight="bold" fill="#ffffff">FK</text>
+<text x="219" y="1167" font-family="Arial" font-size="10" fill="#555">Clave foránea</text>
+<text x="1380" y="1188" text-anchor="end" font-family="Arial" font-size="10" fill="#aaa" font-style="italic">SmartRACK · AucaTek · Instituto Leonardo Murialdo · 2026</text>
+</svg>
