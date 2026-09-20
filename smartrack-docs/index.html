@@ -176,6 +176,10 @@
   <a class="nav-item" href="#s5">5. Oferta de Gestión</a>
   <a class="nav-item sub" href="#s5-1">5.1 GANTT</a>
   <a class="nav-item sub" href="#s5-2">5.2 Infraestructura Administrativa</a>
+  <a class="nav-item" href="#s6">6. Estimación de Costos</a>
+  <a class="nav-item sub" href="#s6-1">6.1 Costos de Personal</a>
+  <a class="nav-item sub" href="#s6-2">6.2 Costos Varios</a>
+  <a class="nav-item sub" href="#s6-3">6.3 Resumen General</a>
 </nav>
 
 <main class="main">
@@ -645,6 +649,89 @@
         <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">Claude (Anthropic)</div><div class="tool-desc">IA asistente de desarrollo</div></div></div>
         <div class="tool-chip"><div class="tool-dot"></div><div><div class="tool-name">Chrome DevTools</div><div class="tool-desc">Depuración frontend</div></div></div>
       </div>
+    </div>
+  </section>
+
+
+  <!-- 6. ESTIMACIÓN DE COSTOS -->
+  <section class="doc-section" id="s6">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">Estimación de Costos y Gastos</div>
+    </div>
+    <p>La presente estimación contempla los costos reales incurridos durante el desarrollo del proyecto SmartRACK, incluyendo personal, infraestructura, materiales y servicios. Todos los valores incluyen un 5% de contingencia en personal y 7% de IVA en costos varios.</p>
+
+    <div class="subsection" id="s6-1">
+      <div class="subsection-title">6.1 Costos de Personal</div>
+      <p>El equipo acumuló un total de <strong>342 horas</strong> de trabajo distribuidas entre los distintos roles del proyecto.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Categoría / Rol</th><th>Horas</th><th>Costo/hr</th><th>Coeficiente</th><th>Contingencia</th><th>Costo final</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Project Manager</td><td>18</td><td>$30,00</td><td>1</td><td>5%</td><td><strong>$567,00</strong></td></tr>
+            <tr><td>Desarrollador 01 — Backend</td><td>137</td><td>$34,00</td><td>1</td><td>5%</td><td><strong>$4.890,90</strong></td></tr>
+            <tr><td>Desarrollador 02 — Firmware</td><td>30</td><td>$34,00</td><td>1</td><td>5%</td><td><strong>$1.071,00</strong></td></tr>
+            <tr><td>Desarrollador 03 — Frontend / UX/UI</td><td>49</td><td>$27,00</td><td>1</td><td>5%</td><td><strong>$1.389,15</strong></td></tr>
+            <tr><td>Desarrollador 04 — CAD Developer</td><td>37</td><td>$32,00</td><td>1</td><td>5%</td><td><strong>$1.243,20</strong></td></tr>
+            <tr><td>Encargado Administrativo</td><td>71</td><td>$32,00</td><td>1</td><td>5%</td><td><strong>$2.385,60</strong></td></tr>
+            <tr><td>Encargado de Electrónica</td><td>71</td><td>$32,00</td><td>1</td><td>5%</td><td><strong>$2.385,60</strong></td></tr>
+            <tr><td>Encargado de Multimedios</td><td>11</td><td>$32,00</td><td>1</td><td>5%</td><td><strong>$369,60</strong></td></tr>
+          </tbody>
+          <tfoot>
+            <tr style="background:var(--navy);">
+              <td style="color:#fff;font-weight:700;">SUBTOTAL PERSONAL</td>
+              <td style="color:var(--orange);font-weight:700;">342 hs</td>
+              <td colspan="3"></td>
+              <td style="color:var(--orange);font-weight:700;">$11.546,85</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection" id="s6-2">
+      <div class="subsection-title">6.2 Costos Varios</div>
+      <p>Incluye infraestructura, servicios externos y materiales de hardware. Todos los valores incluyen IVA del 7%.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Ítem</th><th>Precio unitario</th><th>Cantidad</th><th>Unidad</th><th>IVA</th><th>Total con IVA</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Servicios e Infraestructura</td><td>$50.000,00</td><td>2</td><td>meses</td><td>7%</td><td><strong>$107.000,00</strong></td></tr>
+            <tr><td>Materiales Hardware</td><td>$96.246,00</td><td>1</td><td>total de compra</td><td>7%</td><td><strong>$102.983,22</strong></td></tr>
+          </tbody>
+          <tfoot>
+            <tr style="background:var(--navy);">
+              <td style="color:#fff;font-weight:700;">SUBTOTAL COSTOS VARIOS</td>
+              <td colspan="4"></td>
+              <td style="color:var(--orange);font-weight:700;">$209.983,22</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+
+    <div class="subsection" id="s6-3">
+      <div class="subsection-title">6.3 Resumen General</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Categoría</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>1.A — Costos de Personal</td><td><strong>$11.546,85</strong></td></tr>
+            <tr><td>1.B — Costos Varios</td><td><strong>$209.983,22</strong></td></tr>
+          </tbody>
+          <tfoot>
+            <tr style="background:var(--navy);">
+              <td style="color:#fff;font-weight:700;font-size:15px;">TOTAL GENERAL DEL PROYECTO</td>
+              <td style="color:var(--orange);font-weight:800;font-size:15px;">$221.530,07</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px;">Valores expresados en pesos argentinos (ARS) — Agosto/Septiembre 2026. Personal con 5% de contingencia. Costos varios con IVA del 7%.</p>
     </div>
   </section>
 
