@@ -46,6 +46,13 @@ if (isset($_POST['Enviar'])) {
         } else {
         $pass_cifrada = password_hash($password, PASSWORD_DEFAULT, array("cost" => 10));
 
+        // ── Verificar que el codigo_pdu existe y está activo ──
+        $res_pdu = mysqli_query($conex,
+            "SELECT id FROM pdus WHERE codigo_pdu = '$codigo_pdu' AND activo = 1 LIMIT 1");
+        if (mysqli_num_rows($res_pdu) === 0) {
+            $mensaje_feedback = "<div class='alert alert-danger'><i class='fas fa-exclamation-triangle me-1'></i> El código del PDU no es válido o no está registrado. Verificá el código que te entregó AucaTek.</div>";
+        } else {
+
         $verificar = "SELECT email, user FROM users WHERE email='$email' OR user='$User' LIMIT 1";
         $res_verificar = mysqli_query($conex, $verificar);
 
@@ -69,6 +76,7 @@ if (isset($_POST['Enviar'])) {
                 $mensaje_feedback = "<div class='alert alert-danger'><i class='fas fa-exclamation-triangle me-1'></i> Error inesperado en la base de datos.</div>";
             }
         }
+        } // fin else (PDU válido)
         } // fin else (contraseña >= 8 chars)
     } else {
         $mensaje_feedback = "<div class='alert alert-danger'><i class='fas fa-exclamation-triangle me-1'></i> Completá todos los campos y verificá que las contraseñas coincidan.</div>";
