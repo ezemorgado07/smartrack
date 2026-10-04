@@ -54,9 +54,19 @@ if ($action === 'create' && $_SERVER['REQUEST_METHOD'] === 'POST') {
     $hash     = password_hash($pass, PASSWORD_DEFAULT);
     $hash_sql = mysqli_real_escape_string($conex, $hash);
 
+    // ── El nuevo usuario hereda el codigo_pdu del admin que lo crea ──
+    // Así todos los usuarios de un PDU quedan vinculados al mismo dispositivo.
+    $admin_uid = (int) $_SESSION['usuario_id'];
+    $res_admin = mysqli_query($conex, "SELECT codigo_pdu FROM users WHERE id = $admin_uid LIMIT 1");
+    $row_admin = mysqli_fetch_assoc($res_admin);
+    $codigo_pdu_admin = mysqli_real_escape_string($conex, $row_admin['codigo_pdu'] ?? '');
+
+    // El admin no puede crear otros admin desde acá — solo operator o viewer.
+    if ($rol === 'admin') { $rol = 'viewer'; }
+
     mysqli_query($conex,
-        "INSERT INTO users (nombre, apellido, email, user, pass, rol, must_change_password)
-         VALUES ('$nombre','$apellido','$email','$username','$hash_sql','$rol',$must_cp)");
+        "INSERT INTO users (nombre, apellido, email, user, pass, rol, codigo_pdu, must_change_password)
+         VALUES ('$nombre','$apellido','$email','$username','$hash_sql','$rol','$codigo_pdu_admin',$must_cp)");
 
     header("Location: admin_usuarios.php?msg=ok_create"); exit();
 }

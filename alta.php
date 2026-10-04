@@ -49,8 +49,13 @@ if (isset($_POST['Enviar'])) {
         // ── Verificar que el codigo_pdu existe y está activo ──
         $res_pdu = mysqli_query($conex,
             "SELECT id FROM pdus WHERE codigo_pdu = '$codigo_pdu' AND activo = 1 LIMIT 1");
+        // ── Verificar que el PDU no tenga ya un administrador registrado ──
+        $res_admin_pdu = mysqli_query($conex,
+            "SELECT id FROM users WHERE codigo_pdu = '$codigo_pdu' AND rol = 'admin' LIMIT 1");
         if (mysqli_num_rows($res_pdu) === 0) {
             $mensaje_feedback = "<div class='alert alert-danger'><i class='fas fa-exclamation-triangle me-1'></i> El código del PDU no es válido o no está registrado. Verificá el código que te entregó AucaTek.</div>";
+        } elseif (mysqli_num_rows($res_admin_pdu) > 0) {
+            $mensaje_feedback = "<div class='alert alert-danger'><i class='fas fa-exclamation-triangle me-1'></i> Este PDU ya tiene un administrador registrado. Si necesitás acceso, pedile al administrador de tu empresa que te cree un usuario, o contactá a AucaTek.</div>";
         } else {
 
         $verificar = "SELECT email, user FROM users WHERE email='$email' OR user='$User' LIMIT 1";
@@ -62,7 +67,7 @@ if (isset($_POST['Enviar'])) {
             $consulta_insertar = "INSERT INTO users 
                 (nombre, apellido, empresa, codigo_pdu, email, user, pass, rol, must_change_password) 
                 VALUES 
-                ('$nombre','$apellido','$empresa','$codigo_pdu','$email','$User','$pass_cifrada','viewer', 0)";
+                ('$nombre','$apellido','$empresa','$codigo_pdu','$email','$User','$pass_cifrada','admin', 0)";
             $resultado = mysqli_query($conex, $consulta_insertar);
 
             if ($resultado) {

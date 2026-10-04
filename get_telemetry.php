@@ -9,6 +9,8 @@ requerir_login();
 
 ob_clean();
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: https://aucateksmartrack.alwaysdata.net');
+header('Vary: Origin');
 
 $uid = (int) $_SESSION['usuario_id'];
 
@@ -51,10 +53,10 @@ if (!empty($codigo_pdu_param)) {
     $cod_sql = $param_sql;
 
 } else {
-    // Sin parámetro — comportamiento original:
+    // Sin parámetro — resolución del PDU del usuario:
     // 1. Buscar por users.codigo_pdu
     // 2. Si no hay, primer PDU del usuario por user_id
-    // 3. Si no hay, primer PDU activo (fallback dev)
+    // Si ninguno resuelve, se devuelve error (sin fallback al primer PDU del sistema).
     $usr_res = mysqli_query($conex,
         "SELECT codigo_pdu FROM users WHERE id = $uid LIMIT 1");
     $usr_row = mysqli_fetch_assoc($usr_res);
@@ -81,19 +83,6 @@ if (!empty($codigo_pdu_param)) {
     }
 
     $pdu = mysqli_fetch_assoc($pdu_res);
-
-    // Fallback final: primer PDU activo del sistema (entorno dev)
-    if (!$pdu) {
-        $pdu_res = mysqli_query($conex,
-            "SELECT p.id, p.codigo_pdu, p.modo, p.activo, p.ultimo_contacto,
-                    l.fecha_vencimiento, l.fecha_fin_gracia
-             FROM pdus p
-             LEFT JOIN licencias l ON l.codigo_pdu = p.codigo_pdu AND l.estado IN ('activa','vencida')
-             WHERE p.activo = 1
-             ORDER BY p.id ASC
-             LIMIT 1");
-        $pdu = mysqli_fetch_assoc($pdu_res);
-    }
 
     if (!$pdu) {
         echo json_encode([
