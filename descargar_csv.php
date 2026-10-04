@@ -45,10 +45,10 @@ if ($diff_dias > 90) {
     ob_clean(); exit('El rango no puede superar los 90 días.');
 }
 
-// ── Resolver PDU del usuario (tres niveles) ───────────────────
+// ── Resolver PDU del usuario ──────────────────────────────────
 // 1. users.codigo_pdu
 // 2. pdus.user_id = $uid
-// 3. Primer PDU activo (fallback dev)
+// Sin fallback al primer PDU del sistema: evita exponer datos de otros clientes.
 $usr_res = mysqli_query($conex, "SELECT codigo_pdu FROM users WHERE id = $uid LIMIT 1");
 $usr_row = mysqli_fetch_assoc($usr_res);
 $cpdu_usuario = $usr_row['codigo_pdu'] ?? '';
@@ -69,16 +69,6 @@ if (!empty($cpdu_usuario)) {
 }
 
 $pdu = mysqli_fetch_assoc($pdu_res);
-
-// Fallback dev: primer PDU activo del sistema
-if (!$pdu) {
-    $pdu_res = mysqli_query($conex,
-        "SELECT p.id, p.codigo_pdu, p.modo, p.nombre, l.fecha_vencimiento
-         FROM pdus p
-         LEFT JOIN licencias l ON l.codigo_pdu = p.codigo_pdu AND l.estado = 'activa'
-         WHERE p.activo = 1 ORDER BY p.id ASC LIMIT 1");
-    $pdu = mysqli_fetch_assoc($pdu_res);
-}
 
 if (!$pdu) {
     ob_clean(); exit('PDU no encontrado o no autorizado.');

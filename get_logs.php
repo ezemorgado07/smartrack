@@ -38,7 +38,8 @@ if (!empty($codigo_pdu_param)) {
     $device_id = (int) $pdu['id'];
 
 } else {
-    // Sin parámetro — resolver igual que get_telemetry.php
+    // Sin parámetro — resolver por users.codigo_pdu, luego por user_id.
+    // Sin fallback al primer PDU del sistema.
     $usr_res = mysqli_query($conex, "SELECT codigo_pdu FROM users WHERE id = $uid LIMIT 1");
     $usr_row = mysqli_fetch_assoc($usr_res);
 
@@ -48,7 +49,7 @@ if (!empty($codigo_pdu_param)) {
             "SELECT id FROM pdus WHERE codigo_pdu = '$cod_tmp' AND activo = 1 LIMIT 1");
     } else {
         $pdu_res = mysqli_query($conex,
-            "SELECT id FROM pdus WHERE activo = 1 ORDER BY id ASC LIMIT 1");
+            "SELECT id FROM pdus WHERE user_id = $uid AND activo = 1 ORDER BY id ASC LIMIT 1");
     }
 
     $pdu = mysqli_fetch_assoc($pdu_res);

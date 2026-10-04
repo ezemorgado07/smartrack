@@ -79,7 +79,8 @@ if (!empty($codigo_pdu_param)) {
     $cod_sql    = $param_sql;
 
 } else {
-    // Sin parámetro — resolver por users.codigo_pdu, luego user_id, luego fallback
+    // Sin parámetro — resolver por users.codigo_pdu, luego por user_id.
+    // Sin fallback al primer PDU del sistema: si ninguno resuelve, se rechaza.
     $usr_res = mysqli_query($conex,
         "SELECT codigo_pdu FROM users WHERE id = $uid LIMIT 1");
     $usr_row = mysqli_fetch_assoc($usr_res);
@@ -94,13 +95,14 @@ if (!empty($codigo_pdu_param)) {
     } else {
         $pdu_res = mysqli_query($conex,
             "SELECT id, codigo_pdu FROM pdus
-             WHERE activo = 1 ORDER BY id ASC LIMIT 1");
+             WHERE user_id = $uid AND activo = 1 ORDER BY id ASC LIMIT 1");
     }
 
     $pdu = mysqli_fetch_assoc($pdu_res);
 
     if (!$pdu) {
         echo json_encode(array('success' => false, 'error' => 'No hay un PDU activo vinculado a este usuario.'));
+        mysqli_close($conex);
         exit();
     }
 
