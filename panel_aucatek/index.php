@@ -139,8 +139,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             margin-bottom: var(--sp-2);
         }
         .brand img {
-            height: 52px;
-            width: auto;
+            height: auto;
+            width: 200px;
             display: block;
         }
 
