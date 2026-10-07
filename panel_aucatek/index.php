@@ -25,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
 
         // ── Verificar bloqueo ANTES de procesar credenciales ─────
-        // Si la IP ya tiene 3+ intentos en la ventana, rechazar sin dar pistas.
         if (panel_ip_bloqueada($conex)) {
             $bloqueado = true;
             $error = 'Acceso temporalmente no disponible. Intentá en unos minutos.';
@@ -44,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $row = mysqli_fetch_assoc($res);
 
                 if ($row && password_verify($pass, $row['pass'])) {
-                    // Login correcto: sesión válida, registrar actividad inicial
                     session_regenerate_id(true);
                     $_SESSION['panel_logueado']          = true;
                     $_SESSION['panel_user']              = $row['user'];
@@ -54,20 +52,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('Location: dashboard.php');
                     exit();
                 } else {
-                    // ── Registrar intento fallido ─────────────────
                     $intentos = panel_registrar_intento_fallido($conex, $user);
 
-                    // Al 2do intento: mandar mail de alerta a Diego
                     if ($intentos === PANEL_RL_MAIL_EN) {
                         panel_enviar_alerta_mail(panel_get_ip(), $user, $intentos);
                     }
 
-                    // Al 3er intento: IP queda bloqueada en la próxima verificación.
-                    // El mensaje es el mismo siempre (no revelar cuántos intentos quedan).
                     $error = 'Usuario o contraseña incorrectos.';
                 }
             }
-        } // fin else (no bloqueado)
+        }
     }
 }
 ?>
@@ -141,22 +135,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
             justify-content: center;
-            margin-bottom: var(--sp-1);
+            margin-bottom: var(--sp-2);
         }
-        .brand-icon {
-            width: 34px; height: 34px;
-            border-radius: 8px;
-            background: var(--navy);
-            display: flex; align-items: center; justify-content: center;
+        .brand img {
+            height: 52px;
+            width: auto;
+            display: block;
         }
-        .brand-icon i { color: var(--orange); font-size: 16px; }
-        .brand-title {
-            font-size: 21px; font-weight: 700; color: var(--navy);
-            letter-spacing: -0.4px;
-        }
-        .brand-title span { color: var(--orange); }
 
         .brand-sub {
             text-align: center;
@@ -206,7 +192,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             gap: 8px;
             transition: background 0.18s ease;
         }
-        .btn-login:hover { background: var(--orange-hover); }
         .btn-login:hover:not(:disabled) { background: var(--orange-hover); }
         .btn-login:disabled {
             background: #ccc;
@@ -250,8 +235,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <main class="login-box">
         <div class="brand">
-            <span class="brand-icon" aria-hidden="true"><i class="fas fa-server"></i></span>
-            <span class="brand-title">Auca<span>Tek</span></span>
+            <img src="logo.png" alt="AucaTek">
         </div>
         <p class="brand-sub">Panel de administración</p>
 
