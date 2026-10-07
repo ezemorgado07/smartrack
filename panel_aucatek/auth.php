@@ -143,19 +143,18 @@ function panel_enviar_alerta_mail(string $ip, string $user_intentado, int $inten
     require_once $vendor;
 
     // Cargar .env si no está cargado
-    if (empty($_ENV['MAIL_HOST'])) {
+    if (empty($_ENV['SMTP_HOST'])) {
         if (class_exists('Dotenv\\Dotenv')) {
             $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
             $dotenv->safeLoad();
         }
     }
 
-    $mail_host = $_ENV['MAIL_HOST']        ?? '';
-    $mail_user = $_ENV['MAIL_USERNAME']    ?? '';
-    $mail_pass = $_ENV['MAIL_PASSWORD']    ?? '';
-    $mail_port = (int)($_ENV['MAIL_PORT']  ?? 587);
-    $mail_from = $_ENV['MAIL_FROM']        ?? $mail_user;
-    // Destino: mail de Diego (superadmin). Se puede hardcodear o poner en .env.
+    $mail_host = $_ENV['SMTP_HOST']        ?? '';
+    $mail_user = $_ENV['SMTP_USER']        ?? '';
+    $mail_pass = $_ENV['SMTP_PASS']        ?? '';
+    $mail_port = (int)($_ENV['SMTP_PORT']  ?? 587);
+    $mail_from = $_ENV['SMTP_USER']        ?? '';
     $mail_dest = $_ENV['PANEL_ALERT_MAIL'] ?? $mail_user;
 
     if (empty($mail_host) || empty($mail_dest)) return;
