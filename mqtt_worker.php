@@ -198,7 +198,6 @@ function procesar_estado_toma($conex, string $codigo_pdu, int $outlet_number, ar
 function procesar_alerta_firmware($conex, string $codigo_pdu, array $data): void {
     $cod_sql = mysqli_real_escape_string($conex, $codigo_pdu);
 
-    // Validar campos mínimos
     if (!isset($data['tipo'], $data['valor'], $data['umbral'])
         || !is_string($data['tipo'])
         || !is_numeric($data['valor'])
@@ -210,22 +209,16 @@ function procesar_alerta_firmware($conex, string $codigo_pdu, array $data): void
     $tipo   = mysqli_real_escape_string($conex, $data['tipo']);
     $valor  = (float) $data['valor'];
     $umbral = (float) $data['umbral'];
-    $ts     = !empty($data['timestamp'])
-        ? "'" . mysqli_real_escape_string($conex, $data['timestamp']) . "'"
-        : 'NOW()';
 
-    // Mapeo de tipo firmware → mensaje legible
     $mensajes = [
-        'voltaje_bajo'      => "Voltaje por debajo del mínimo permitido",
-        'voltaje_alto'      => "Voltaje por encima del máximo permitido",
-        'temperatura_alta'  => "Temperatura interna del PDU superó el umbral máximo",
+        'voltaje_bajo'     => 'Voltaje por debajo del mínimo permitido',
+        'voltaje_alto'     => 'Voltaje por encima del máximo permitido',
+        'temperatura_alta' => 'Temperatura interna del PDU superó el umbral máximo',
     ];
-    $mensaje = isset($mensajes[$data['tipo']])
-        ? $mensajes[$data['tipo']]
-        : "Alerta del firmware: " . $data['tipo'];
+    $mensaje     = $mensajes[$data['tipo']] ?? 'Alerta del firmware: ' . $data['tipo'];
     $mensaje_sql = mysqli_real_escape_string($conex, $mensaje);
 
-    // Insertar en tabla alertas solo si no hay una activa del mismo tipo para este PDU
+    // No insertar si ya hay una alerta activa del mismo tipo para este PDU
     $res_check = mysqli_query($conex,
         "SELECT id FROM alertas
          WHERE codigo_pdu = '$cod_sql'
@@ -307,7 +300,7 @@ function procesar_mensaje($conex, string $topic, string $message): void {
 // ══════════════════════════════════════════════════════════════
 
 $mqtt_host = $_ENV['MQTT_HOST'] ?? '';
-$mqtt_port = (int) ($_ENV['MQTT_PORT'] ?? 8883);
+$mqtt_port = (int) ($_ENV['MQTT_PORT'] ?? 1883);
 $mqtt_user = $_ENV['MQTT_USER'] ?? '';
 $mqtt_pass = $_ENV['MQTT_PASS'] ?? '';
 
@@ -320,17 +313,15 @@ while (true) {
         $mqtt = new PhpMqttClient($mqtt_host, $mqtt_port, $client_id);
 
         $settings = (new ConnectionSettings())
-            ->setUsername($mqtt_user)
-            ->setPassword($mqtt_pass)
-            ->setUseTls(true)
-            ->setTlsSelfSignedAllowed(false)
+            ->setUsername($mqtt_user ?: null)
+            ->setPassword($mqtt_pass ?: null)
+            ->setUseTls(false)
             ->setConnectTimeout(10)
             ->setKeepAliveInterval(60);
 
         $mqtt->connect($settings, true);
         wlog('Conectado al broker MQTT.');
 
-        // Tópicos — se agregó pdu/+/alertas para recibir alertas del firmware
         $topicos = [
             'pdu/+/telemetria/pzem',
             'pdu/+/telemetria/aht10',
@@ -340,8 +331,8 @@ while (true) {
         ];
 
         foreach ($topicos as $t) {
-            $mqtt->subscribe($t, function (string $topic, string $message) use ($conex) {
-                global $conex;
+            // use (&$conex): referencia para que la reconexión de DB surta efecto
+            $mqtt->subscribe($t, function (string $topic, string $message) use (&$conex) {
                 if (!mysqli_ping($conex)) {
                     wlog('DB caída — reconectando...');
                     $conex = db_connect();
