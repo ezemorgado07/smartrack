@@ -2,7 +2,7 @@
 // ============================================================
 //  SmartRACK — MqttClient.php
 //  Wrapper de la librería php-mqtt/client para el broker
-//  HiveMQ Cloud con TLS.
+//  Mosquitto propio (sin TLS, puerto 1883).
 //
 //  Instalación:
 //    composer require php-mqtt/client
@@ -25,12 +25,17 @@ require_once __DIR__ . '/vendor/autoload.php';
 class MqttClient
 {
     private $client;
-    private $host;
-    private $port;
-    private $user;
-    private $pass;
-    private $client_id;
-    private $connected = false;
+    private string $host;
+    private int    $port;
+    private string $user;
+    private string $pass;
+    private string $client_id;
+    private bool   $connected = false;
+
+    // Last Will Testament (opcional, configurar ANTES de connect())
+    private ?string $lwt_topic   = null;
+    private ?string $lwt_payload = null;
+    private int     $lwt_qos     = 1;
 
     public function __construct(string $client_id_suffix = '')
     {
@@ -43,7 +48,7 @@ class MqttClient
         }
 
         $this->host = $_ENV['MQTT_HOST'] ?? '';
-        $this->port = (int) ($_ENV['MQTT_PORT'] ?? 8883);
+        $this->port = (int) ($_ENV['MQTT_PORT'] ?? 1883);
         $this->user = $_ENV['MQTT_USER'] ?? '';
         $this->pass = $_ENV['MQTT_PASS'] ?? '';
 
@@ -54,19 +59,36 @@ class MqttClient
     }
 
     /**
-     * Configuración de conexión con TLS para HiveMQ Cloud.
+     * Configuración de conexión sin TLS (broker Mosquitto propio).
      */
     private function buildSettings(): ConnectionSettings
     {
-        return (new ConnectionSettings())
-            ->setUsername($this->user)
-            ->setPassword($this->pass)
-            ->setUseTls(true)
-            ->setTlsSelfSignedAllowed(false)
+        $settings = (new ConnectionSettings())
+            ->setUsername($this->user ?: null)
+            ->setPassword($this->pass ?: null)
+            ->setUseTls(false)
             ->setConnectTimeout(10)
-            ->setKeepAliveInterval(60)
-            ->setLastWillTopic(null)
-            ->setLastWillMessage(null);
+            ->setKeepAliveInterval(60);
+
+        if ($this->lwt_topic !== null) {
+            $settings = $settings
+                ->setLastWillTopic($this->lwt_topic)
+                ->setLastWillMessage($this->lwt_payload ?? '')
+                ->setLastWillQualityOfService($this->lwt_qos);
+        }
+
+        return $settings;
+    }
+
+    /**
+     * Registra el Last Will Testament.
+     * Debe llamarse ANTES de connect().
+     */
+    public function setLastWill(string $topic, string $payload, int $qos = 1): void
+    {
+        $this->lwt_topic   = $topic;
+        $this->lwt_payload = $payload;
+        $this->lwt_qos     = $qos;
     }
 
     /**
@@ -88,6 +110,7 @@ class MqttClient
 
     /**
      * Publica un mensaje. Conecta automáticamente si hace falta.
+     * Un reintento automático tras reconexión.
      *
      * @return bool true si se publicó correctamente
      */
@@ -101,7 +124,6 @@ class MqttClient
             $this->client->publish($topic, $payload, $qos);
             return true;
         } catch (MqttClientException $e) {
-            // Un reintento tras reconexión
             $this->connected = false;
             if ($this->connect()) {
                 try {
@@ -139,18 +161,6 @@ class MqttClient
     public function loop(bool $allowSleep = true): void
     {
         $this->client->loop($allowSleep);
-    }
-
-    /**
-     * Registra el Last Will Testament antes de conectar.
-     * Debe llamarse ANTES de connect().
-     */
-    public function setLastWill(string $topic, string $payload, int $qos = 1): void
-    {
-        // Reconstruir cliente con LWT en los settings
-        $this->lwt_topic   = $topic;
-        $this->lwt_payload = $payload;
-        $this->lwt_qos     = $qos;
     }
 
     public function isConnected(): bool
