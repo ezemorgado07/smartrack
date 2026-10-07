@@ -333,7 +333,7 @@ while (true) {
         foreach ($topicos as $t) {
             // use (&$conex): referencia para que la reconexión de DB surta efecto
             $mqtt->subscribe($t, function (string $topic, string $message) use (&$conex) {
-                if (!mysqli_ping($conex)) {
+                if (!$conex || $conex->connect_errno) {
                     wlog('DB caída — reconectando...');
                     $conex = db_connect();
                 }
