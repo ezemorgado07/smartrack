@@ -86,15 +86,15 @@ $mail_enviado = false;
 try {
     $mail = new PHPMailer(true);
     $mail->isSMTP();
-    $mail->Host       = $_ENV['SMTP_HOST'] ?? 'smtp.gmail.com';
+    $mail->Host       = $_ENV['MAIL_HOST']     ?? '';
     $mail->SMTPAuth   = true;
-    $mail->Username   = $_ENV['SMTP_USER'] ?? '';
-    $mail->Password   = $_ENV['SMTP_PASS'] ?? '';
+    $mail->Username   = $_ENV['MAIL_USERNAME'] ?? '';
+    $mail->Password   = $_ENV['MAIL_PASSWORD'] ?? '';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = (int) ($_ENV['SMTP_PORT'] ?? 587);
+    $mail->Port       = (int) ($_ENV['MAIL_PORT'] ?? 587);
     $mail->CharSet    = 'UTF-8';
 
-    $mail->setFrom($_ENV['SMTP_USER'] ?? 'info@aucatek.com.ar', 'AucaTek — SmartRACK');
+    $mail->setFrom($_ENV['MAIL_FROM'] ?? $_ENV['MAIL_USERNAME'] ?? 'info@aucatek.com.ar', 'AucaTek — SmartRACK');
     $mail->addAddress($pdu['email'], $pdu['nombre'] ?? '');
 
     $mail->isHTML(true);
