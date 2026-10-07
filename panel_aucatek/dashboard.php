@@ -116,15 +116,10 @@ mysqli_close($conex);
             color: #fff;
             letter-spacing: -0.3px;
         }
-        .topbar-brand .brand-icon {
-            width: 30px; height: 30px;
-            border-radius: 7px;
-            background: rgba(244,152,37,0.15);
-            display: flex; align-items: center; justify-content: center;
+            .topbar-brand img {
+                height: 32px;
+                width: auto;
         }
-        .topbar-brand .brand-icon i { color: var(--orange); font-size: 14px; }
-        .topbar-brand span { color: var(--orange); }
-        .topbar-brand .sep { color: rgba(255,255,255,0.35); font-weight: 400; }
 
         .topbar-right { display: flex; align-items: center; gap: var(--sp-4); }
         .topbar-user {
@@ -411,8 +406,7 @@ mysqli_close($conex);
 <body>
     <header class="topbar">
         <div class="topbar-brand">
-            <span class="brand-icon" aria-hidden="true"><i class="fas fa-server"></i></span>
-            Auca<span>Tek</span> <span class="sep">·</span> Panel
+            <img src="logo.png" alt="AucaTek">
         </div>
         <div class="topbar-right">
             <span class="topbar-user">
