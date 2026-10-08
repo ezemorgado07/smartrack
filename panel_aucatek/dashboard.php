@@ -63,7 +63,6 @@ mysqli_close($conex);
             --text-muted:  #6b7280;
             --text-invert: #ffffff;
 
-            /* Estados semánticos — solo para significado, no decoración */
             --ok:          #276749;
             --ok-bg:       rgba(39,103,73,0.12);
             --danger:      #c0392b;
@@ -110,15 +109,10 @@ mysqli_close($conex);
         .topbar-brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 16px;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: -0.3px;
         }
-            .topbar-brand img {
-                height: 32px;
-                width: auto;
+        .topbar-brand img {
+            height: 42px;
+            width: auto;
         }
 
         .topbar-right { display: flex; align-items: center; gap: var(--sp-4); }
@@ -154,7 +148,7 @@ mysqli_close($conex);
         .page-title { font-size: 24px; font-weight: 700; color: var(--navy); letter-spacing: -0.5px; }
         .page-sub { font-size: 14px; color: var(--text-muted); margin-top: var(--sp-1); }
 
-        /* ── Estadísticas — jerarquía dominante ─────────────────── */
+        /* ── Estadísticas ────────────────────────────────────────── */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -171,7 +165,6 @@ mysqli_close($conex);
             align-items: center;
             gap: var(--sp-4);
         }
-        /* La primera card — PDUs totales — es la métrica ancla */
         .stat-card.is-primary {
             background: var(--navy);
             border-color: var(--navy);
@@ -258,7 +251,7 @@ mysqli_close($conex);
         .cell-muted { color: var(--text-muted); font-size: 12px; }
         .sin-vincular { color: var(--text-muted); font-style: italic; }
 
-        /* ── Badges (con ícono, no solo color — WCAG) ───────────── */
+        /* ── Badges ─────────────────────────────────────────────── */
         .badge {
             font-size: 12px;
             font-weight: 600;
@@ -401,6 +394,50 @@ mysqli_close($conex);
         .empty-row td { text-align: center; color: var(--text-muted); padding: 28px; }
 
         a:focus-visible { outline: 3px solid rgba(244,152,37,0.5); outline-offset: 2px; }
+
+        /* ── Botón secundario (navy outline) ────────────────────── */
+        .btn-nuevo-pdu {
+            background: transparent;
+            color: var(--navy);
+            border: 1.5px solid var(--border-strong);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 600;
+            font-family: var(--font);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: background 0.15s ease, border-color 0.15s ease;
+        }
+        .btn-nuevo-pdu:hover { background: var(--surface-alt); border-color: var(--navy); }
+        .btn-nuevo-pdu:focus-visible { outline: 3px solid rgba(244,152,37,0.45); outline-offset: 2px; }
+
+        /* ── Card header con acción ─────────────────────────────── */
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface-alt);
+        }
+        .card-header-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        /* ── Modal input ─────────────────────────────────────────── */
+        .modal input[type="text"] {
+            width: 100%; padding: 11px 14px;
+            border: 1.5px solid var(--border-strong); border-radius: var(--radius-sm);
+            font-size: 14px; font-family: var(--font); margin-bottom: var(--sp-4);
+            outline: none; background: var(--surface); color: var(--text);
+        }
+        .modal input[type="text"]:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(244,152,37,0.15); }
+        .modal .field-hint { font-size: 12px; color: var(--text-muted); margin-top: -12px; margin-bottom: var(--sp-4); }
     </style>
 </head>
 <body>
@@ -481,7 +518,6 @@ mysqli_close($conex);
 
         <!-- PANEL PDUs -->
         <div class="panel active" id="panel-pdus" role="tabpanel">
-            <!-- Skeleton tabla -->
             <div class="card skeleton-wrap" id="sk-table-pdus" aria-hidden="true">
                 <div class="table-scroll">
                     <table>
@@ -504,6 +540,12 @@ mysqli_close($conex);
             </div>
 
             <div class="card real-content hidden">
+                <div class="card-header">
+                    <span class="card-header-title"><i class="fas fa-server" aria-hidden="true"></i> Dispositivos registrados</span>
+                    <button class="btn-nuevo-pdu" onclick="abrirModalPdu()">
+                        <i class="fas fa-plus" aria-hidden="true"></i> Agregar PDU
+                    </button>
+                </div>
                 <div class="table-scroll">
                     <table>
                         <thead>
@@ -613,6 +655,36 @@ mysqli_close($conex);
         </div>
     </main>
 
+    <!-- MODAL AGREGAR PDU -->
+    <div class="modal-overlay" id="modal-pdu-nuevo" role="dialog" aria-modal="true" aria-labelledby="modal-pdu-title">
+        <div class="modal">
+            <h3 id="modal-pdu-title"><i class="fas fa-plus-circle" aria-hidden="true"></i> Agregar nuevo PDU</h3>
+            <p>Ingresá los datos del dispositivo. El código PDU se genera automáticamente desde la MAC.</p>
+
+            <label for="pdu-mac">Dirección MAC</label>
+            <input type="text" id="pdu-mac" placeholder="AA:BB:CC:DD:EE:FF" maxlength="17"
+                   oninput="formatearMac(this)" autocomplete="off">
+            <p class="field-hint">Formato: AA:BB:CC:DD:EE:FF — se genera el código PDU automáticamente.</p>
+
+            <label for="pdu-nombre">Nombre del dispositivo</label>
+            <input type="text" id="pdu-nombre" placeholder="Ej: SmartRACK Rack 01" maxlength="100" autocomplete="off">
+
+            <label for="pdu-ip">IP local <span style="font-weight:400;color:var(--text-muted)">(opcional)</span></label>
+            <input type="text" id="pdu-ip" placeholder="192.168.1.100" maxlength="45" autocomplete="off">
+
+            <div class="modal-info" id="pdu-preview" style="display:none;">
+                Código PDU que se asignará: <strong id="pdu-codigo-preview" style="font-family:var(--font-mono);color:var(--orange);"></strong>
+            </div>
+
+            <div class="modal-btns">
+                <button class="btn-modal-cancel" onclick="cerrarModalPdu()">Cancelar</button>
+                <button class="btn-modal-gen" id="btn-registrar-pdu" onclick="registrarPdu()">Registrar PDU</button>
+            </div>
+
+            <div class="modal-feedback" id="modal-pdu-feedback" role="status"></div>
+        </div>
+    </div>
+
     <!-- MODAL GENERAR CÓDIGO -->
     <div class="modal-overlay" id="modal-codigo" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal">
@@ -641,7 +713,6 @@ mysqli_close($conex);
     </div>
 
     <script>
-        // Ocultar skeletons y mostrar contenido real una vez cargado el DOM
         window.addEventListener('DOMContentLoaded', function() {
             requestAnimationFrame(function() {
                 document.querySelectorAll('.skeleton-wrap').forEach(function(s) { s.classList.add('hidden'); });
@@ -649,7 +720,6 @@ mysqli_close($conex);
             });
         });
 
-        // Tabs
         document.querySelectorAll('.tab').forEach(function(tab) {
             tab.addEventListener('click', function() {
                 document.querySelectorAll('.tab').forEach(function(t) {
@@ -718,12 +788,111 @@ mysqli_close($conex);
             });
         }
 
-        // Cerrar modal con Escape y clic fuera
         document.getElementById('modal-codigo').addEventListener('click', function(e) {
             if (e.target === this) cerrarModal();
         });
+
+        // ── Modal Agregar PDU ─────────────────────────────────────
+        function formatearMac(input) {
+            var raw = input.value.replace(/[^a-fA-F0-9]/g, '').toUpperCase();
+            var groups = raw.match(/.{1,2}/g) || [];
+            var formatted = groups.join(':').substring(0, 17);
+            input.value = formatted;
+
+            var preview  = document.getElementById('pdu-preview');
+            var codigoEl = document.getElementById('pdu-codigo-preview');
+            if (formatted.length === 17) {
+                codigoEl.textContent = formatted.replace(/:/g, '-');
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+
+        function abrirModalPdu() {
+            document.getElementById('pdu-mac').value    = '';
+            document.getElementById('pdu-nombre').value = '';
+            document.getElementById('pdu-ip').value     = '';
+            document.getElementById('pdu-preview').style.display = 'none';
+            var fb = document.getElementById('modal-pdu-feedback');
+            fb.style.display = 'none';
+            fb.className = 'modal-feedback';
+            var btn = document.getElementById('btn-registrar-pdu');
+            btn.disabled    = false;
+            btn.textContent = 'Registrar PDU';
+            document.getElementById('modal-pdu-nuevo').classList.add('open');
+            document.getElementById('pdu-mac').focus();
+        }
+
+        function cerrarModalPdu() {
+            document.getElementById('modal-pdu-nuevo').classList.remove('open');
+        }
+
+        function registrarPdu() {
+            var btn  = document.getElementById('btn-registrar-pdu');
+            var fb   = document.getElementById('modal-pdu-feedback');
+            var mac    = document.getElementById('pdu-mac').value.trim();
+            var nombre = document.getElementById('pdu-nombre').value.trim();
+            var ip     = document.getElementById('pdu-ip').value.trim();
+            var csrf   = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            fb.style.display = 'none';
+
+            if (mac.length !== 17) {
+                fb.className = 'modal-feedback err';
+                fb.style.display = 'block';
+                fb.innerHTML = '<i class="fas fa-exclamation-circle"></i> Ingresá una MAC completa (AA:BB:CC:DD:EE:FF).';
+                return;
+            }
+            if (!nombre) {
+                fb.className = 'modal-feedback err';
+                fb.style.display = 'block';
+                fb.innerHTML = '<i class="fas fa-exclamation-circle"></i> El nombre del dispositivo es obligatorio.';
+                return;
+            }
+
+            btn.disabled    = true;
+            btn.textContent = 'Registrando…';
+
+            fetch('registrar_pdu.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'mac='    + encodeURIComponent(mac)
+                    + '&nombre='+ encodeURIComponent(nombre)
+                    + '&ip='    + encodeURIComponent(ip)
+                    + '&csrf_token=' + encodeURIComponent(csrf)
+            })
+            .then(function(r){ return r.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    fb.className = 'modal-feedback ok';
+                    fb.style.display = 'block';
+                    fb.innerHTML = '<i class="fas fa-check-circle"></i> PDU registrado. Código: <strong style="font-family:var(--font-mono)">' + data.codigo_pdu + '</strong>';
+                    btn.textContent = 'Registrado ✓';
+                    setTimeout(function(){ location.reload(); }, 1800);
+                } else {
+                    fb.className = 'modal-feedback err';
+                    fb.style.display = 'block';
+                    fb.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + (data.error || 'Error al registrar.');
+                    btn.disabled    = false;
+                    btn.textContent = 'Registrar PDU';
+                }
+            })
+            .catch(function() {
+                fb.className = 'modal-feedback err';
+                fb.style.display = 'block';
+                fb.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error de red. Intentá nuevamente.';
+                btn.disabled    = false;
+                btn.textContent = 'Registrar PDU';
+            });
+        }
+
+        document.getElementById('modal-pdu-nuevo').addEventListener('click', function(e) {
+            if (e.target === this) cerrarModalPdu();
+        });
+
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') cerrarModal();
+            if (e.key === 'Escape') { cerrarModal(); cerrarModalPdu(); }
         });
     </script>
 </body>
