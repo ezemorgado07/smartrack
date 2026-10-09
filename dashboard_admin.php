@@ -459,7 +459,7 @@ mysqli_close($conex);
                     <div class="card h-100">
                         <div class="card-header">
                             <h3 class="card-title section-title mb-0">
-                                <i class="fas fa-server" style="color: var(--at-navy);"></i>
+                                <i class="fas fa-server" style="color: var(--at-orange);"></i>
                                 Estado del Dispositivo
                             </h3>
                         </div>
@@ -470,9 +470,9 @@ mysqli_close($conex);
                                 <dt class="col-5" style="color: var(--at-text-muted);">Estado</dt>
                                 <dd class="col-7">
                                     <?php if ($pdu_online): ?>
-                                        <span class="badge bg-success" id="badge-pdu-online">Online</span>
+                                        <span class="badge" id="badge-pdu-online" style="background:#2fb344;color:#fff;">Online</span>
                                     <?php else: ?>
-                                        <span class="badge bg-danger" id="badge-pdu-online">Offline</span>
+                                        <span class="badge" id="badge-pdu-online" style="background:#d63939;color:#fff;font-weight:600;">Offline</span>
                                     <?php endif; ?>
                                 </dd>
                                 <dt class="col-5" style="color: var(--at-text-muted);">Modo</dt>
@@ -725,8 +725,11 @@ function actualizarDashboard(codigoPdu) {
         const badgeOnline = document.getElementById('badge-pdu-online');
         const badgeModo   = document.getElementById('badge-pdu-modo');
         if (badgeOnline) {
-            badgeOnline.textContent = d.online ? 'Online' : 'Offline';
-            badgeOnline.className   = d.online ? 'badge bg-success' : 'badge bg-danger';
+            badgeOnline.textContent    = d.online ? 'Online' : 'Offline';
+            badgeOnline.className      = 'badge';
+            badgeOnline.style.background = d.online ? '#2fb344' : '#d63939';
+            badgeOnline.style.color      = '#fff';
+            badgeOnline.style.fontWeight = '600';
         }
         if (badgeModo) {
             badgeModo.textContent      = d.modo === 'premium' ? 'Premium' : 'Normal';
@@ -962,7 +965,9 @@ document.getElementById('sidebarToggle').addEventListener('click', function() {
     }
 
     let ticking = false;
+    let clickLock = false;
     window.addEventListener("scroll", function() {
+        if (clickLock) return;
         if (!ticking) {
             requestAnimationFrame(function() { updateActive(); ticking = false; });
             ticking = true;
@@ -973,6 +978,8 @@ document.getElementById('sidebarToggle').addEventListener('click', function() {
         item.link.addEventListener("click", function() {
             clearActive();
             item.link.classList.add("active");
+            clickLock = true;
+            setTimeout(function() { clickLock = false; }, 800);
         });
     });
 

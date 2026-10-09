@@ -263,7 +263,7 @@ mysqli_close($conex);
                     <div class="card h-100">
                         <div class="card-header">
                             <h3 class="card-title section-title mb-0">
-                                <i class="fas fa-server" style="color:var(--at-navy);"></i>
+                                <i class="fas fa-server" style="color:var(--at-orange);"></i>
                                 Estado del Dispositivo
                             </h3>
                         </div>
@@ -272,7 +272,7 @@ mysqli_close($conex);
                                 <dt class="col-5" style="color:var(--at-text-muted);">Dispositivo</dt><dd class="col-7 fw-bold">ePDU SmartRACK</dd>
                                 <dt class="col-5" style="color:var(--at-text-muted);">Estado</dt>
                                 <dd class="col-7">
-                                    <span class="badge <?php echo $pdu_online ? 'bg-success' : 'bg-danger'; ?>" id="badge-pdu-online">
+                                    <span class="badge" id="badge-pdu-online" style="background:<?php echo $pdu_online ? '#2fb344' : '#d63939'; ?>;color:#fff;font-weight:600;">
                                         <?php echo $pdu_online ? 'Online' : 'Offline'; ?>
                                     </span>
                                 </dd>
@@ -411,7 +411,7 @@ function actualizarDashboard(codigoPdu){
         }else if(bannerAlertas){bannerAlertas.style.display='none';}
         const badgeOnline=document.getElementById('badge-pdu-online');
         const badgeModo=document.getElementById('badge-pdu-modo');
-        if(badgeOnline){badgeOnline.textContent=d.online?'Online':'Offline';badgeOnline.className=d.online?'badge bg-success':'badge bg-danger';}
+        if(badgeOnline){badgeOnline.textContent=d.online?'Online':'Offline';badgeOnline.className='badge';badgeOnline.style.background=d.online?'#2fb344':'#d63939';badgeOnline.style.color='#fff';badgeOnline.style.fontWeight='600';}
         if(badgeModo){badgeModo.textContent=d.modo==='premium'?'Premium':'Normal';badgeModo.style.background=d.modo==='premium'?'var(--at-orange)':'var(--at-celeste)';}
 
         // Mensaje de período de gracia
@@ -507,7 +507,9 @@ document.getElementById('sidebarToggle').addEventListener('click',function(){
     }
 
     let ticking = false;
+    let clickLock = false;
     window.addEventListener("scroll", function() {
+        if (clickLock) return;
         if (!ticking) {
             requestAnimationFrame(function() { updateActive(); ticking = false; });
             ticking = true;
@@ -518,6 +520,8 @@ document.getElementById('sidebarToggle').addEventListener('click',function(){
         item.link.addEventListener("click", function() {
             clearActive();
             item.link.classList.add("active");
+            clickLock = true;
+            setTimeout(function() { clickLock = false; }, 800);
         });
     });
 
